@@ -9,6 +9,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		
+	<context:component-scan base-package="uni.sta.*" />
+	
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean
@@ -45,5 +47,32 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+<!-- <mvc:interceptors>
+		<mvc:interceptor>     모든요청에 인터셉트를 하려면 **붙여주기
+			<mvc:mapping path="/event/list.do" />
+			<bean class="AuthLoginInterceptor.AuthLoginInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean
+				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+				p:paramName="language" />
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+
+
+	<bean id="StaffDao" class="uni.sta.service.StaffDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean id="StuInsertDao" class="uni.sta.service.StuInsertDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />	
+
+
+	<bean id="LoginStuDao" class="uni.sta.service.LoginStuDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />	
+	<bean id="StaLeaveDao" class="uni.sta.service.StaLeaveDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />	
 
 </beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="staff">
+
+<!-- 부서목록 -->
+	<select id="deptlist" resultType="uni.sta.model.StaffDto">
+    select distinct STAFF_DEPT from STAFF_TB
+</select>
+
+<!-- 부서선택으로 교직원목록 -->	
+	<select id="stafflist" resultType="uni.sta.model.StaffDto" parameterType="String">
+   select staff_no,staff_nm,STAFF_TEL,STAFF_EMAIL,STAFF_DEPT from STAFF_TB where STAFF_DEPT=#{STAFF_DEPT}
+</select>
+
+<!-- 학생등록 -->
+	<insert id="insertstu" parameterType="uni.sta.model.StuDto">
+   insert into STUDENT_TB set STU_NO=(SELECT MAX(STU_NO)+1 FROM STUDENT_TB t),
+                             DEPT_CD=#{dept_cd},
+                             MEM_NO=1,
+                             STU_NAME=#{stu_name},
+                             STU_PWD=1111,
+                             STU_BIRTH=#{stu_birth},
+                             STU_YEAR=#{stu_year},
+                             STU_SEM=#{stu_sem},
+                             STU_ADDRESS=#{stu_address},
+                             STU_ZIP=#{stu_zip},
+                             STU_TEL=#{stu_tel},
+                             STU_EMAIL=#{stu_email},
+                             STU_COUN=#{stu_coun},
+                             STU_GEN=#{stu_gen},
+                             STATE="재학중"
+    </insert>
+
+<!-- 학생로그인 -->
+	
+	<select id="selectstu" resultType="uni.sta.model.StuDto">
+	select * from STUDENT_TB where stu_no=#{stu_no} and stu_pwd=#{stu_pwd}
+	</select>
+	
+	<select id="leavelist" resultType="uni.sta.model.StaLeaveDto">
+   select stu_no,stu_name,leave_year,leave_sem,leave_state,leave_dt from LEAVE_TB natural join STUDENT_TB where LEAVE_STATE="미승인" order by no desc;
+</select>
+
+ 	<update id="leavestateok" parameterType="int">
+	update LEAVE_TB set LEAVE_STATE="승인" where no=#{no}
+	</update>
+	
+	
+	
+	
+
+</mapper>
