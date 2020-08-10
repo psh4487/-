@@ -22,7 +22,7 @@ public class LoginStuController {
 	}
 
 	// 로그인 폼을 띄우는 부분
-	@RequestMapping(value = "loginstu")
+	@RequestMapping(value = "loginstu.do")
 	public String loginForm() throws Exception {
 		return "loginformstu";
 	}
