@@ -1,0 +1,1119 @@
+-- 멤버 insert
+insert into TYPE_TB
+set MEM_NO = 1,
+	JOB = '학생'
+;
+insert into TYPE_TB
+set MEM_NO = 2,
+	JOB = '교수'
+;
+insert into TYPE_TB
+set MEM_NO = 3,
+	JOB = '교직원'
+;
+insert into TYPE_TB
+set MEM_NO = 4,
+	JOB = '관리자'
+;
+
+-- 등급
+insert into GRADE_TB values("A+", 90, 100, 4.5);
+insert into GRADE_TB values("A", 80, 89, 4);
+insert into GRADE_TB values("B+", 70, 79, 3.5);
+insert into GRADE_TB values("B", 60, 69, 3);
+insert into GRADE_TB values("C+", 50, 59, 2.5);
+insert into GRADE_TB values("C", 40, 49, 2);
+insert into GRADE_TB values("D+", 30, 39,1.5);
+insert into GRADE_TB values("D", 20, 29, 1);
+insert into GRADE_TB values("F", 0, 19, 0);
+
+INSERT INTO SUBJECT_ROOM_TB(BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A101');
+INSERT INTO SUBJECT_ROOM_TB(BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A102');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A103');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A201');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A202');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A203');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A301');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A302');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A303');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A401');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A402');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A403');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A501');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A502');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('이젠관', 'A503');
+
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B101');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B102');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B103');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B201');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B202');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B203');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B301');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B302');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B303');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B401');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B402');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B403');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B501');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B502');
+INSERT INTO SUBJECT_ROOM_TB (BUIL_NO,SUBROOM_NM) VALUES ('자바관', 'B503');
+-- 학생 insert
+insert into STUDENT_TB set STU_NO=2020101,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="김연아",
+                             STU_PWD=1234,
+                             STU_BIRTH=000801,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 의왕시 내손로 14(내손동)",
+                             STU_ZIP=34354,
+                             STU_TEL="010-1321-4264",
+                             STU_EMAIL="dfdBC@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                                               
+
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="백순애",
+                             STU_PWD=1234,
+                             STU_BIRTH=000801,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 고양시 일산동구 무궁화로 8-28(장항동)",
+                             STU_ZIP=43212,
+                             STU_TEL="010-6575-4564",
+                             STU_EMAIL="AfdsBC@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                                                          
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="이광철",
+                             STU_PWD=1234,
+                             STU_BIRTH=001201,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 용인시 기흥구 관곡로77번길 3-10(구갈동)",
+                             STU_ZIP=12433,
+                             STU_TEL="010-2552-4544",
+                             STU_EMAIL="AfsdfBC@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="전상정",
+                             STU_PWD=1234,
+                             STU_BIRTH=000801,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 서초구 사평대로22길 69(반포동)",
+                             STU_ZIP=98664,
+                             STU_TEL="010-2232-4454",
+                             STU_EMAIL="sfdsABC@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+ 
+ insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="이호근",
+                             STU_PWD=1234,
+                             STU_BIRTH=000931,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기도 남양주시 의안로240번길 31_평내동",
+                             STU_ZIP=23432,
+                             STU_TEL="010-3322-4434",
+                             STU_EMAIL="sdfs@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+                             
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="이성아",
+                             STU_PWD=1234,
+                             STU_BIRTH=000621,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 용인시 기흥구 한일로15번길 11(공세동)",
+                             STU_ZIP=23423,
+                             STU_TEL="010-2352-4532",
+                             STU_EMAIL="fsdf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                             
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="신동일",
+                             STU_PWD=1234,
+                             STU_BIRTH=000304,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 서대문구 응암로1길 10(북가좌동)",
+                             STU_ZIP=13532,
+                             STU_TEL="010-3242-5324",
+                             STU_EMAIL="sdfs@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+                                               
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="김수민",
+                             STU_PWD=1234,
+                             STU_BIRTH=000701,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="인천 부평구 장제로257번길 9-5(갈산동)	",
+                             STU_ZIP=13563,
+                             STU_TEL="010-4342-4344",
+                             STU_EMAIL="sfd@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                                                          
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="김영아",
+                             STU_PWD=1234,
+                             STU_BIRTH=000821,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 서초구 청룡마을3길 5(신원동)",
+                             STU_ZIP=13532,
+                             STU_TEL="010-4222-4432",
+                             STU_EMAIL="sfsf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="3M0101",
+                             MEM_NO=1,
+                             STU_NAME="이창석",
+                             STU_PWD=1234,
+                             STU_BIRTH=001112,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 강북구 삼양로58길 50-6(미아동)",
+                             STU_ZIP=12432,
+                             STU_TEL="010-2352-4425",
+                             STU_EMAIL="dfs@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+ 
+ insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="3M0101",
+                             MEM_NO=1,
+                             STU_NAME="이상래",
+                             STU_PWD=1234,
+                             STU_BIRTH=000501,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 서대문구 응암로1길 10(북가좌동)",
+                             STU_ZIP=65544,
+                             STU_TEL="010-1245-2444",
+                             STU_EMAIL="sdf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";   
+                                                       
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="3M0101",
+                             MEM_NO=1,
+                             STU_NAME="이주아",
+                             STU_PWD=1234,
+                             STU_BIRTH=990511,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 의왕시 내손로 14(내손동)",
+                             STU_ZIP=10201,
+                             STU_TEL="010-1453-2344",
+                             STU_EMAIL="sfsdf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                             
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="3M0101",
+                             MEM_NO=1,
+                             STU_NAME="김수진",
+                             STU_PWD=1234,
+                             STU_BIRTH=990831,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기도 안산시 상록구 태마당로 28_부곡동",
+                             STU_ZIP=24532,
+                             STU_TEL="010-2452-4544",
+                             STU_EMAIL="sfdsd@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                                               
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="3M0101",
+                             MEM_NO=1,
+                             STU_NAME="김정민",
+                             STU_PWD=1234,
+                             STU_BIRTH=990501,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 노원구 덕릉로86길 70(중계동)",
+                             STU_ZIP=24211,
+                             STU_TEL="010-2452-4435",
+                             STU_EMAIL="sdfsdf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+                                                          
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="조인수",
+                             STU_PWD=1234,
+                             STU_BIRTH=990311,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기 용인시 기흥구 관곡로77번길 3-10(구갈동)",
+                             STU_ZIP=13423,
+                             STU_TEL="010-2355-3544",
+                             STU_EMAIL="sfsdf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="2C0101",
+                             MEM_NO=1,
+                             STU_NAME="김정성",
+                             STU_PWD=1234,
+                             STU_BIRTH=990211,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="경기도 남양주시 의안로240번길 31_평내동",
+                             STU_ZIP=12322,
+                             STU_TEL="010-4346-4334",
+                             STU_EMAIL="sfsd@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+ 
+ insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="박아영",
+                             STU_PWD=1234,
+                             STU_BIRTH=990301,
+                             STU_YEAR=2,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울 강북구 삼양로58길 50-6(미아동)",
+                             STU_ZIP=22423,
+                             STU_TEL="010-3632-4354",
+                             STU_EMAIL="sfdsf@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";
+                             
+
+insert into PROFESSOR_TB set
+                             MEM_NO = 2,
+                             PROF_CD=2020201,
+                             DEPT_CD='1A0101',
+                               PROF_NM='이힘찬',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 노원구 동일로 182길 현대아파트 301동 808호',
+                               PROF_ZIP=25558,
+                               PROF_TEL='010-5667-8765',
+                               PROF_EMAIL='art123@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+							    PROF_BIRTH=690815;
+
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                                MEM_NO = 2,
+                               DEPT_CD='1A0101',
+                               PROF_NM='김이람',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 개포동 롯데캐슬301동 208호',
+                               PROF_ZIP=12458,
+                               PROF_TEL='010-5657-1785',
+                               PROF_EMAIL='art321@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='여',
+                               PROF_BIRTH=790625;
+                               
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                         MEM_NO = 2,
+                               DEPT_CD='1A0101',
+                               PROF_NM='이미적',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 서초구 개포동 미레안101동 1108호',
+                               PROF_ZIP=12578,
+                               PROF_TEL='010-5757-8885',
+                               PROF_EMAIL='art231@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+                               PROF_BIRTH=650707;
+                               
+	insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                         MEM_NO = 2,
+                               DEPT_CD='2C0101',
+                               PROF_NM='김종봉',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 서초구 개포동 미레안501동 1108호',
+                               PROF_ZIP=12578,
+                               PROF_TEL='010-6667-8895',
+                               PROF_EMAIL='COM123@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+                               PROF_BIRTH=651230;
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='2C0101',
+                               PROF_NM='김호경',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 노원구 공릉동 롯대캐슬501동 1108호',
+                               PROF_ZIP=12878,
+                               PROF_TEL='010-1234-4321',
+                               PROF_EMAIL='COM321@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+                               PROF_BIRTH=771230;
+	insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='2C0101',
+                               PROF_NM='김스림',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 노원구 공릉동 현대아파트102동 806호',
+                               PROF_ZIP=14785,
+                               PROF_TEL='010-5454-4321',
+                               PROF_EMAIL='COM231@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='여',
+                               PROF_BIRTH=770507;
+                               
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                         MEM_NO = 2,
+                               DEPT_CD='3M0101',
+                               PROF_NM='김미나',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 서초구 논현동 롯대캐슬아파트102동 806호',
+                               PROF_ZIP=26548,
+                               PROF_TEL='010-5754-4231',
+                               PROF_EMAIL='MAT123@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='여',
+                               PROF_BIRTH=700507;
+                               
+                               
+	insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='3M0101',
+                               PROF_NM='오민석',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 대치동 레미안101동 1108호',
+                               PROF_ZIP=22878,
+                               PROF_TEL='010-3334-4421',
+                               PROF_EMAIL='MAT321@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+                               PROF_BIRTH=770728;
+	insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='3M0101',
+                               PROF_NM='김안희',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 대치동 레미안301동 806호',
+                               PROF_ZIP=13568,
+                               PROF_TEL='010-4334-7721',
+                               PROF_EMAIL='MAT231@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='여',
+                               PROF_BIRTH=771230;
+
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='4L0101',
+                               PROF_NM='ANNA',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 도곡동 레미안101동 106호',
+                               PROF_ZIP=12578,
+                               PROF_TEL='010-4337-6721',
+                               PROF_EMAIL='LUX123@naver.com',
+                               PROF_COUN='USA',
+                               PROF_GEN='WOMEM',
+                               PROF_BIRTH=830130;
+insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='4L0101',
+                               PROF_NM='김동경',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 대치동 현대아파트 501동 1806호',
+                               PROF_ZIP=12568,
+                               PROF_TEL='010-8826-7821',
+                               PROF_EMAIL='LUX321@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='남',
+                               PROF_BIRTH=771128;
+		insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
+                               MEM_NO = 2,
+                               DEPT_CD='4L0101',
+                               PROF_NM='김윤아',
+                               PROF_PWD='123456a',
+                               PROF_ADDRESS='서울시 강남구 대치동 아리하우스 101동 106호',
+                               PROF_ZIP=11558,
+                               PROF_TEL='010-7826-8821',
+                               PROF_EMAIL='LUX231@naver.com',
+                               PROF_COUN='대한민국',
+                               PROF_GEN='여',
+                               PROF_BIRTH=700128;
+
+INSERT INTO STAFF_TB
+(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES
+(3,'2020301','C:\사진\증명사진.JPG','김철수','1234','남','대한민국','010-1234-5678','행정부','adf@naver.com',40431,'서초대로 55길 77',19881212);
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020302','C:\사진\증명사진.JPG','김영희','1234','여','대한민국','010-1357-2468','행정부','kyh@naver.com',40432,'진흥로 7가길 3',19860804);
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020303','C:\사진\증명사진.JPG','김호영','1234','여','대한민국','010-1564-7489','행정부','KHY@naver.com','54120','전라북도 군산시 동리1길 47','19850403');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020304','C:\사진\증명사진.JPG','박명지','1234','남','대한민국','010-4987-1325','행정부','PMJ@naver.com','51215','경상남도 창원시 마산회원구 내서읍 광려천동로 3','19901214');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020305','C:\사진\증명사진.JPG','송서홍','1234','남','대한민국','010-4654-2115','행정부','SSH@naver.com','51651','경상남도 창원시 진해구 진해대로 974','19831024');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020306','C:\사진\증명사진.JPG','임일우','1234','남','대한민국','010-4812-8721','행정부','ILW@naver.com','25421','강원도 강릉시 주문진읍 공시내길 8-1','19830521');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020307','C:\사진\증명사진.JPG','김 봉','1234','남','캐나다','010-6874-4181','행정부','KB1230@naver.com','15642','경기도 안산시 단원구 구안1길 8','19881230');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020308','C:\사진\증명사진.JPG','Ronald L. Shelley','1234','여','캐나다','010-4864-1452','행정부','RLS@nate.com','03900','서울특별시 마포구 가양대로 1','19890604');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020309','C:\사진\증명사진.JPG','하상범','1234','남','대한민국','010-7896-4152','행정부','HSB1244@gmail.com','24741','강원도 고성군 간성읍 가마골길 3','19931004');
+INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
+VALUES(3,'2020310','C:\사진\증명사진.JPG','김정이','1234','여','대한민국','010-3547-1560','행정부','iuww@nate.com','12752','경기도 광주시 포돌이로 1','19950806');
+
+-- 강의 insert
+insert into SUBJECT_TB  -- 강의 
+set   SUB_CD = 1001, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '패션학개론', -- 강의명
+      SUBROOM_NM = 'A101', -- 강의실명
+      PROF_CD = 2020201, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 27, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "1", -- 강의1
+      LEC_2 = "2", -- 강의2
+      LEC_3 = '3', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2019 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1002, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '패션이란 무엇인가?', -- 강의명
+      SUBROOM_NM = 'B101', -- 강의실명
+      PROF_CD = 2020202, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 60, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "4", -- 강의1
+      LEC_2 = "5", -- 강의2
+      LEC_3 = '6', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2019 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1003, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '패션에 대하여', -- 강의명
+      SUBROOM_NM = 'A102', -- 강의실명
+      PROF_CD = 2020203, -- 교수번호
+      ISU = '전공선택', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 22, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "7", -- 강의1
+      LEC_2 = "8", -- 강의2
+      LEC_3 = '9', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1004, -- 강의 코드
+	  DEPT_CD ='2C0101', -- 학과코드
+      SUB_NM = '컴퓨터란 무엇인가?', -- 강의명
+      SUBROOM_NM = 'A201', -- 강의실명
+      PROF_CD = 2020204, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 22, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "11", -- 강의1
+      LEC_2 = "12", -- 강의2
+      LEC_3 = '13', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1005, -- 강의 코드
+	  DEPT_CD ='2C0101', -- 학과코드
+      SUB_NM = '컴퓨터학개론', -- 강의명
+      SUBROOM_NM = 'A303', -- 강의실명
+      PROF_CD = 2020205, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 37, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "14", -- 강의1
+      LEC_2 = "15", -- 강의2
+      LEC_3 = '16', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2019 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1006, -- 강의 코드
+	  DEPT_CD ='2C0101', -- 학과코드
+      SUB_NM = '컴퓨터학개론', -- 강의명
+      SUBROOM_NM = 'A401', -- 강의실명
+      PROF_CD = 2020206, -- 교수번호
+      ISU = '전공선택', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 22, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "17", -- 강의1
+      LEC_2 = "18", -- 강의2
+      LEC_3 = '19', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1007, -- 강의 코드
+	  DEPT_CD ='3M0101', -- 학과코드
+      SUB_NM = '수학이란 무엇인가?', -- 강의명
+      SUBROOM_NM = 'B102', -- 강의실명
+      PROF_CD = 2020207, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 60, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "21", -- 강의1
+      LEC_2 = "22", -- 강의2
+      LEC_3 = '23', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1008, -- 강의 코드
+	  DEPT_CD ='3M0101', -- 학과코드
+      SUB_NM = '수학학개론', -- 강의명
+      SUBROOM_NM = 'B103', -- 강의실명
+      PROF_CD = 2020208, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 41, -- 신청인원
+      MAX_MEM = 60, -- 최대인원1
+      LEC_1 = "24", -- 강의1
+      LEC_2 = "25", -- 강의2
+      LEC_3 = '26', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2019 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1009, -- 강의 코드
+	  DEPT_CD ='3M0101', -- 학과코드
+      SUB_NM = '피타고라스의 정리', -- 강의명
+      SUBROOM_NM = 'B201', -- 강의실명
+      PROF_CD = 2020209, -- 교수번호
+      ISU = '전공선택', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 12, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "27", -- 강의1
+      LEC_2 = "28", -- 강의2
+      LEC_3 = '29', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1010, -- 강의 코드
+      SUB_NM = '영어토론', -- 강의명
+      SUBROOM_NM = 'B501', -- 강의실명
+      PROF_CD = 2020210, -- 교수번호
+      ISU = '교양필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 17, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "31", -- 강의1
+      LEC_2 = "32", -- 강의2
+      LEC_3 = '33', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2019 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1011, -- 강의 코드
+      SUB_NM = '기업가정신', -- 강의명
+      SUBROOM_NM = 'B502', -- 강의실명
+      PROF_CD = 2020211, -- 교수번호
+      ISU = '교양필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 17, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "41", -- 강의1
+      LEC_2 = "42", -- 강의2
+      LEC_3 = '43', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+insert into SUBJECT_TB
+set   SUB_CD = 1012, -- 강의 코드
+      SUB_NM = '공감프리젠테이션', -- 강의명
+      SUBROOM_NM = 'B503', -- 강의실명
+      PROF_CD = 2020212, -- 교수번호
+      ISU = '교양선택', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 60, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "47", -- 강의1
+      LEC_2 = "48", -- 강의2
+      LEC_3 = '49', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2020 -- 년도
+;
+
+-- 봉사활동 insert
+insert into SERVICE_TB
+set STU_NO = "2020101",
+	SER_START = "2020-03-20",
+    SER_FINISH = "2020-04-20",
+    SER_TIME = "60",
+    SER_CON =  '연탄 나르기'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020102",
+	SER_START = "2020-03-20",
+    SER_FINISH = "2020-04-20",
+    SER_TIME = "60",
+    SER_CON =  '연탄 나르기'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020103",
+	SER_START = "2020-03-20",
+    SER_FINISH = "2020-04-20",
+    SER_TIME = "60",
+    SER_CON =  '연탄 나르기'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020101",
+	SER_START = "2020-07-15",
+    SER_FINISH = "2020-08-15",
+    SER_TIME = "40",
+    SER_CON =  '노인정 봉사활동'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020107",
+	SER_START = "2020-07-15",
+    SER_FINISH = "2020-08-15",
+    SER_TIME = "40",
+    SER_CON =  '노인정 봉사활동'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020109",
+	SER_START = "2020-07-15",
+    SER_FINISH = "2020-08-15",
+    SER_TIME = "40",
+    SER_CON =  '노인정 봉사활동'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020110",
+	SER_START = "2020-07-15",
+    SER_FINISH = "2020-08-15",
+    SER_TIME = "40",
+    SER_CON =  '노인정 봉사활동'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020115",
+	SER_START = "2020-05-12",
+    SER_FINISH = "2020-06-01",
+    SER_TIME = "30",
+    SER_CON =  '한강 공원 청소'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020117",
+	SER_START = "2020-05-12",
+    SER_FINISH = "2020-06-01",
+    SER_TIME = "30",
+    SER_CON =  '한강 공원 청소'
+;
+
+insert into SERVICE_TB
+set STU_NO = "2020117",
+	SER_START = "2020-05-12",
+    SER_FINISH = "2020-06-01",
+    SER_TIME = "30",
+    SER_CON =  '한강 공원 청소'
+;
+-- 휴강신청 insert
+insert into CLASS_CANCEL_TB
+set SUB_CD = 1011,
+	CAN_DT = "2020-09-10",
+    SUP_DT = "2020-10-10",
+    CAN_IU = "몸살 감기로 인한"
+;
+
+insert into CLASS_CANCEL_TB
+set SUB_CD = 1009,
+	CAN_DT = "2020-09-17",
+    SUP_DT = "2020-10-11",
+    CAN_IU = "건강 상태의 문제로 인한"
+;
+
+insert into CLASS_CANCEL_TB
+set SUB_CD = 1002,
+	CAN_DT = "2020-08-21",
+    SUP_DT = "2020-10-15",
+    CAN_IU = "학사 일정으로 인한"
+;
+
+INSERT INTO LICENSE_TB(LI_NM,LI_FILE,LI_DATE,LI_PATH)
+VALUES('정보처리기사','정보처리기사 자격증명서','2016-05-28','C:\자격증\정보처리기사.JPG');
+INSERT INTO LICENSE_TB(LI_NM,LI_FILE,LI_DATE,LI_PATH)
+VALUES('정보보안기사','정보보안기사 자격증명서','2018-05-31','C:\자격증\정보보안기사.JPG');
+INSERT INTO LICENSE_TB(LI_NM,LI_FILE,LI_DATE,LI_PATH)
+VALUES('OCJP','OCJP 자격증명서','2019-06-06','C:\자격증\OCJP.JPG');
+
+insert into BOARD_TB set MEM_NO=3,
+                         HORSE='공지',
+                         TITLE='의무교육: 2020학년도 재학생 대상 온라인 폭력예방교육',
+                         CONTENT='의무교육: 2020학년도 재학생 대상 온라인 폭력예방교육',
+                         hit=55,
+                         WRITER='김정민';
+                         
+insert into SUBJECT_BOARD_TB set DEPT_CD='A0101',
+								 TITLE='패션학과 2020-2학기 수강신청가이드',
+								 CONTENT='패션학과 2020-2학기 수강신청가이드',
+								 MEM_NO=2,
+								 hit=23,
+								 WRITER='김정민';
+                                                  
+insert into SUBJECT_BOARD_TB set DEPT_CD='2C0101',
+                         TITLE='컴퓨터공학과 2020-2학기 수강신청가이드',
+                         CONTENT='컴퓨터공학과 2020-2학기 수강신청가이드',
+                         MEM_NO=2,
+                         hit=34,
+                         WRITER='조경철';
+                        
+ insert into SUBJECT_BOARD_TB set DEPT_CD='3M0101',
+								  TITLE='수학교육학과 2020-2학기 수강신청가이드',
+								  CONTENT='수학교육학과 2020-2학기 수강신청가이드',
+								  MEM_NO=2,
+								  hit=24,
+								  WRITER='박수진';                       
+
+insert into QNA_TB set   MEM_NO=1,
+                         TITLE='교수님 학점에 문제가 있어요',
+                         CONTENT='교수님 학점에 문제가 있어요',
+                         hit=33,
+                         WRITER='김정민';
+
+
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1001", 
+    MID_SCORE  =  40,
+    END_SCORE  =   40,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    100,
+    ATTEND_GRADE  = 'A+',
+    ATTEND_RATING = '4.5'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1002", 
+    MID_SCORE  =  35,
+    END_SCORE  =   40,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    100,
+    ATTEND_GRADE  = 'A+',
+    ATTEND_RATING =  '4.5'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1010", 
+    MID_SCORE  =  30,
+    END_SCORE  =   35,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    85,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING =  '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1003" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1011" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020101,
+    SUB_CD  = "1012" 
+;
+
+----------------------------
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD = '1001',
+    MID_SCORE  =   30,
+    END_SCORE  =   20,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    70,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING = '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD  = "1002", 
+    MID_SCORE  =  20,
+    END_SCORE  =   40,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    80,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING =  '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD = '1010',
+    MID_SCORE  =   30,
+    END_SCORE  =   35,
+    REPORT_SCORE =  8,
+    ATTEND_SCORE =  9,
+    ATTEND_SUM  =    82,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING = '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD  = "1003" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD  = "1011" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020102,
+    SUB_CD  = "1012" 
+;
+----------------------------
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD = '1001',
+    MID_SCORE  =   20,
+    END_SCORE  =   15,
+    REPORT_SCORE =  5,
+    ATTEND_SCORE =  3,
+    ATTEND_SUM  =    43,
+    ATTEND_GRADE  = 'C',
+    ATTEND_RATING = '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD  = "1002", 
+    MID_SCORE  =  20,
+    END_SCORE  =   40,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    100,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING =  '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD = '1010',
+    MID_SCORE  =   30,
+    END_SCORE  =   35,
+    REPORT_SCORE =  8,
+    ATTEND_SCORE =  9,
+    ATTEND_SUM  =    82,
+    ATTEND_GRADE  = 'A',
+    ATTEND_RATING = '4'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD  = "1003" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD  = "1011" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020103,
+    SUB_CD  = "1012" 
+;
+
+----------------------------
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD = '1001',
+    MID_SCORE  =   10,
+    END_SCORE  =  10 ,
+    REPORT_SCORE =  0,
+    ATTEND_SCORE =  3,
+    ATTEND_SUM  =   23 ,
+    ATTEND_GRADE  = 'D',
+    ATTEND_RATING = '1'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD  = "1002", 
+    MID_SCORE  = 0,
+    END_SCORE  =  0,
+    REPORT_SCORE =  0,
+    ATTEND_SCORE = 0, 
+    ATTEND_SUM  =    0,
+    ATTEND_GRADE  = 'F',
+    ATTEND_RATING =  '0'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD = '1010',
+    MID_SCORE  =   15,
+    END_SCORE  =   10,
+    REPORT_SCORE =  5,
+    ATTEND_SCORE =  2,
+    ATTEND_SUM  =    32,
+    ATTEND_GRADE  = 'D+',
+    ATTEND_RATING = '1.5'
+;
+
+
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD  = "1003" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD  = "1011" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020104,
+    SUB_CD  = "1012" 
+;
+----------------------------
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD = '1001',
+    MID_SCORE  =   17,
+    END_SCORE  =   10,
+    REPORT_SCORE =  10,
+    ATTEND_SCORE =  10,
+    ATTEND_SUM  =    47,
+    ATTEND_GRADE  = 'C+',
+    ATTEND_RATING = '2.5'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD  = "1002", 
+    MID_SCORE  = 30,
+    END_SCORE  =  25,
+    REPORT_SCORE =  6,
+    ATTEND_SCORE = 10, 
+    ATTEND_SUM  =    71,
+    ATTEND_GRADE  = 'B+',
+    ATTEND_RATING =  '3.5'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD = '1010',
+    MID_SCORE  = 13  ,
+    END_SCORE  = 15  ,
+    REPORT_SCORE = 10,
+    ATTEND_SCORE = 10 ,
+    ATTEND_SUM  =    48 ,
+    ATTEND_GRADE  = 'C',
+    ATTEND_RATING = '2'
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD  = "1003" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD  = "1011" 
+;
+
+insert into ATTEND_TB  
+set        STU_NO  =  2020105,
+    SUB_CD  = "1012" 
+;
+
