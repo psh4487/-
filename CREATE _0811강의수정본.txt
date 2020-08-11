@@ -183,7 +183,7 @@ CREATE TABLE LEAVE_TB
     `NO`            INT          NOT NULL    AUTO_INCREMENT COMMENT '순번', 
     `STU_NO`        INT          NULL        COMMENT '학생번호', 
     `LEAVE_CHANGE`  VARCHAR(20)  NULL        COMMENT '학적변동', 
-    `LEAVE_STATE`   VARCHAR(20)  not null    DEFAULT '미승인'  COMMENT '처리상태', 
+    `LEAVE_STATE`   VARCHAR(20)  not null    DEFAULT '대기'  COMMENT '처리상태', 
     `LEAVE_YEAR`    VARCHAR(20)  NULL        COMMENT '휴학할연도', 
     `LEAVE_SEM`     VARCHAR(20)  NULL        COMMENT '휴학할학기', 
     `LEAVE_DT`  timestamp not null default now()  COMMENT '현재신청일자',  
