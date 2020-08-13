@@ -1117,3 +1117,7 @@ set        STU_NO  =  2020105,
     SUB_CD  = "1012" 
 ;
 
+
+insert into dept_tb values('1A0101', '패션학과');
+insert into dept_tb values('2C0101', '컴퓨터공학과');
+insert into dept_tb values('3M0101', '수학과');
