@@ -50,7 +50,6 @@ CREATE TABLE SUBJECT_TB -- 강의
     `ATTEND_MEM`   INT            NULL        COMMENT '신청인원', 
     `MAX_MEM`      INT            NULL        DEFAULT 60 COMMENT '최대인원', 
     `SUB_PATH`     TEXT           NULL        COMMENT '강의 계획서 경로', 
-    `WEEK`         VARCHAR(20)    NULL        COMMENT '요일', 
     `LEC_1` 	   INT            NULL        COMMENT '교시1',
     `LEC_2` 	   INT            NULL        COMMENT '교시2',
     `LEC_3` 	   INT            NULL        COMMENT '교시3',
