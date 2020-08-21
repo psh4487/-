@@ -133,9 +133,9 @@ CREATE TABLE ESTIMATION_TB
     `NO6`     INT            NULL        COMMENT '6번 문항', 
     `NO7`     INT            NULL        COMMENT '7번 문항', 
     `NO8`     INT            NULL        COMMENT '8번 문항', 
-    `NO9`     INT            NULL        COMMENT '9번 문항', 
-    `NO10`    INT            NULL        COMMENT '10번문항', 
-    'PROF_SAY' TEXT	     NULL	 COMMENT '교수에게 하고 싶은 말'
+    `NO9`     INT            NULL        COMMENT '9번 문항',
+    `NO10`    INT            NULL        COMMENT '10번문항',
+    prof_say  TEXT	         NULL	     COMMENT '교수에게 하고 싶은 말',
     PRIMARY KEY (STU_NO, SUB_CD)
 );
 
