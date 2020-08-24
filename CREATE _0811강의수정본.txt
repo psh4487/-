@@ -136,7 +136,7 @@ CREATE TABLE ESTIMATION_TB
     `NO9`     INT            NULL        COMMENT '9번 문항',
     `NO10`    INT            NULL        COMMENT '10번문항',
     prof_say  TEXT	         NULL	     COMMENT '교수에게 하고 싶은 말',
-    est_state varchar(20)       null   DEFAULT '미확인' COMMENT '확인상태'
+    est_state varchar(20)       null   DEFAULT '미확인' COMMENT '확인상태',
     PRIMARY KEY (STU_NO, SUB_CD)
 );
 
