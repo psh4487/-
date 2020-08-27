@@ -338,7 +338,7 @@ insert into PROFESSOR_TB set
                              PROF_CD=2020201,
                              DEPT_CD='1A0101',
                                PROF_NM='이힘찬',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 노원구 동일로 182길 현대아파트 301동 808호',
                                PROF_ZIP=25558,
                                PROF_TEL='010-5667-8765',
@@ -351,7 +351,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                 MEM_NO = 2,
                                DEPT_CD='1A0101',
                                PROF_NM='김이람',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 개포동 롯데캐슬301동 208호',
                                PROF_ZIP=12458,
                                PROF_TEL='010-5657-1785',
@@ -364,7 +364,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                          MEM_NO = 2,
                                DEPT_CD='1A0101',
                                PROF_NM='이미적',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 서초구 개포동 미레안101동 1108호',
                                PROF_ZIP=12578,
                                PROF_TEL='010-5757-8885',
@@ -377,7 +377,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                          MEM_NO = 2,
                                DEPT_CD='2C0101',
                                PROF_NM='김종봉',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 서초구 개포동 미레안501동 1108호',
                                PROF_ZIP=12578,
                                PROF_TEL='010-6667-8895',
@@ -389,7 +389,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='2C0101',
                                PROF_NM='김호경',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 노원구 공릉동 롯대캐슬501동 1108호',
                                PROF_ZIP=12878,
                                PROF_TEL='010-1234-4321',
@@ -401,7 +401,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='2C0101',
                                PROF_NM='김스림',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 노원구 공릉동 현대아파트102동 806호',
                                PROF_ZIP=14785,
                                PROF_TEL='010-5454-4321',
@@ -414,7 +414,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                          MEM_NO = 2,
                                DEPT_CD='3M0101',
                                PROF_NM='김미나',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 서초구 논현동 롯대캐슬아파트102동 806호',
                                PROF_ZIP=26548,
                                PROF_TEL='010-5754-4231',
@@ -428,7 +428,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='3M0101',
                                PROF_NM='오민석',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 대치동 레미안101동 1108호',
                                PROF_ZIP=22878,
                                PROF_TEL='010-3334-4421',
@@ -440,7 +440,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='3M0101',
                                PROF_NM='김안희',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 대치동 레미안301동 806호',
                                PROF_ZIP=13568,
                                PROF_TEL='010-4334-7721',
@@ -453,7 +453,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='4L0101',
                                PROF_NM='ANNA',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 도곡동 레미안101동 106호',
                                PROF_ZIP=12578,
                                PROF_TEL='010-4337-6721',
@@ -465,7 +465,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='4L0101',
                                PROF_NM='김동경',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 대치동 현대아파트 501동 1806호',
                                PROF_ZIP=12568,
                                PROF_TEL='010-8826-7821',
@@ -477,7 +477,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
                                MEM_NO = 2,
                                DEPT_CD='4L0101',
                                PROF_NM='김윤아',
-                               PROF_PWD='123456a',
+                               PROF_PWD='1234',
                                PROF_ADDRESS='서울시 강남구 대치동 아리하우스 101동 106호',
                                PROF_ZIP=11558,
                                PROF_TEL='010-7826-8821',
@@ -524,7 +524,8 @@ set   SUB_CD = 1001, -- 강의 코드
       LEC_2 = "2", -- 강의2
       LEC_3 = '3', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2019 -- 년도
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -541,7 +542,8 @@ set   SUB_CD = 1002, -- 강의 코드
       LEC_2 = "5", -- 강의2
       LEC_3 = '6', -- 강의3
       SEM = "2", -- 학기
-      YEARS = 2019 -- 년도
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -558,7 +560,8 @@ set   SUB_CD = 1003, -- 강의 코드
       LEC_2 = "8", -- 강의2
       LEC_3 = '9', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -575,7 +578,8 @@ set   SUB_CD = 1004, -- 강의 코드
       LEC_2 = "12", -- 강의2
       LEC_3 = '13', -- 강의3
       SEM = "2", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -593,6 +597,7 @@ set   SUB_CD = 1005, -- 강의 코드
       LEC_3 = '16', -- 강의3
       SEM = "1", -- 학기
       YEARS = 2019 -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -609,7 +614,8 @@ set   SUB_CD = 1006, -- 강의 코드
       LEC_2 = "18", -- 강의2
       LEC_3 = '19', -- 강의3
       SEM = "2", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -626,7 +632,8 @@ set   SUB_CD = 1007, -- 강의 코드
       LEC_2 = "22", -- 강의2
       LEC_3 = '23', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -643,7 +650,8 @@ set   SUB_CD = 1008, -- 강의 코드
       LEC_2 = "25", -- 강의2
       LEC_3 = '26', -- 강의3
       SEM = "2", -- 학기
-      YEARS = 2019 -- 년도
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -660,7 +668,8 @@ set   SUB_CD = 1009, -- 강의 코드
       LEC_2 = "28", -- 강의2
       LEC_3 = '29', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -676,7 +685,8 @@ set   SUB_CD = 1010, -- 강의 코드
       LEC_2 = "32", -- 강의2
       LEC_3 = '33', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2019 -- 년도
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -692,7 +702,8 @@ set   SUB_CD = 1011, -- 강의 코드
       LEC_2 = "42", -- 강의2
       LEC_3 = '43', -- 강의3
       SEM = "1", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 insert into SUBJECT_TB
@@ -708,7 +719,8 @@ set   SUB_CD = 1012, -- 강의 코드
       LEC_2 = "48", -- 강의2
       LEC_3 = '49', -- 강의3
       SEM = "2", -- 학기
-      YEARS = 2020 -- 년도
+      YEARS = 2020, -- 년도
+      SUB_STATE= '승인'
 ;
 
 -- 봉사활동 insert
