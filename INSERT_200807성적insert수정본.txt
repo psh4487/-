@@ -722,6 +722,59 @@ set   SUB_CD = 1012, -- 강의 코드
       YEARS = 2020, -- 년도
       SUB_STATE= '승인'
 ;
+insert into SUBJECT_TB
+set   SUB_CD = 1013, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '패션의 세계화', -- 강의명
+      SUBROOM_NM = 'A502', -- 강의실명
+      PROF_CD = 2020201, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 15, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "15", -- 강의1
+      LEC_2 = "22", -- 강의2
+      LEC_3 = '23', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
+;
+insert into SUBJECT_TB
+set   SUB_CD = 1014, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '패션속 역사', -- 강의명
+      SUBROOM_NM = 'A501', -- 강의실명
+      PROF_CD = 2020201, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 55, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "33", -- 강의1
+      LEC_2 = "34", -- 강의2
+      LEC_3 = '41', -- 강의3
+      SEM = "2", -- 학기
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
+;
+
+
+set   SUB_CD = 1015, -- 강의 코드
+	  DEPT_CD ='1A0101', -- 학과코드
+      SUB_NM = '창의적 디자인', -- 강의명
+      SUBROOM_NM = 'A401', -- 강의실명
+      PROF_CD = 2020201, -- 교수번호
+      ISU = '전공필수', -- 이수구분
+      CREDIT = 3, -- 학점
+      ATTEND_MEM = 60, -- 신청인원
+      MAX_MEM = 60, -- 최대인원
+      LEC_1 = "38", -- 강의1
+      LEC_2 = "46", -- 강의2
+      LEC_3 = '47', -- 강의3
+      SEM = "1", -- 학기
+      YEARS = 2019, -- 년도
+      SUB_STATE= '승인'
+;
+
 
 -- 봉사활동 insert
 insert into SERVICE_TB
