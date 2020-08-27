@@ -804,7 +804,7 @@ set   SUB_CD = 1014, -- 강의 코드
       SUB_STATE= '승인'
 ;
 
-
+insert into SUBJECT_TB
 set   SUB_CD = 1015, -- 강의 코드
 	  DEPT_CD ='1A0101', -- 학과코드
       SUB_NM = '창의적 디자인', -- 강의명
