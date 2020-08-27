@@ -331,6 +331,53 @@ insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t) ,
                              STU_COUN="대한민국",
                              STU_GEN="여",
                              STATE="재학중";
+			     
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t),
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="권기훈",
+                             STU_PWD=1234,
+                             STU_BIRTH=001101,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울특별시 서초대로길 92길(양재동)",
+                             STU_ZIP=25454,
+                             STU_TEL="010-2228-2774",
+                             STU_EMAIL="zsqwe123@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t),
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="한사무엘",
+                             STU_PWD=1234,
+                             STU_BIRTH=000801,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울특별시 동일로 181길(공릉동)",
+                             STU_ZIP=25754,
+                             STU_TEL="010-1828-2264",
+                             STU_EMAIL="qwe123@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="남",
+                             STATE="재학중";
+                             
+	insert into STUDENT_TB set STU_NO=(seLECT MAX(STU_NO)+1 FROM STUDENT_TB t),
+                             DEPT_CD="1A0101",
+                             MEM_NO=1,
+                             STU_NAME="이미녀",
+                             STU_PWD=1234,
+                             STU_BIRTH=001227,
+                             STU_YEAR=1,
+                             STU_SEM=2,
+                             STU_ADDRESS="서울특별시 동일로 189길(공릉동)",
+                             STU_ZIP=25578,
+                             STU_TEL="010-8728-7564",
+                             STU_EMAIL="qweasd123@NAVER.COM",
+                             STU_COUN="대한민국",
+                             STU_GEN="여",
+                             STATE="재학중";			     
                              
 
 insert into PROFESSOR_TB set
@@ -1181,7 +1228,20 @@ insert into ATTEND_TB
 set        STU_NO  =  2020105,
     SUB_CD  = "1012" 
 ;
+----------------------------------------
+insert into attend_tb 
+set stu_no=2020120 ,
+sub_cd=1001
+;
 
+insert into attend_tb 
+set stu_no=2020118 ,
+sub_cd=1001
+;
+insert into attend_tb 
+set stu_no=2020119 ,
+sub_cd=1001
+;
 
 
 insert into dept_tb values('1A0101', '패션학과');
