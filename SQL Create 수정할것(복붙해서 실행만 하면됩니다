@@ -1,0 +1,62 @@
+#조회수 int타입으로 변경, default 0으로 설정
+#board_tb에 조회수(hit) 기본값 0으로 설정
+#qna_tb에 학생번호, 교수번호 추가
+alter table qna_tb add stu_no int;
+alter table qna_tb add prof_cd int;
+#subject_board_tb 학과게시판에 교수번호 컬럼 추가
+alter table subject_board_tb add prof_cd int;
+#board_tb 조회수 기본값 0으로 설정
+#qna_tb에 학생번호와 교수번호 추가
+use project1;
+create table qna_reply (
+    rno int not null auto_increment,
+    no int not null ,
+    content varchar(1000) null,
+    writer varchar(50) null,
+    regdate timestamp default now(),
+    primary key(rno),
+    FOREIGN KEY (NO) REFERENCES qna_tb (NO) ON DELETE CASCADE
+);
+#댓글 테이블 새로 추가
+#subject_board_tb 조회수 default 0으로 설정
+#학과 게시판에 강의명 컬럼 추가
+alter table subject_board_tb add dept_nm varchar(45);
+
+drop table board_tb;
+CREATE TABLE BOARD_TB
+(
+    `NO`        INT            NOT NULL    AUTO_INCREMENT COMMENT '순번', 
+    `MEM_NO`    INT            NULL    COMMENT '멤버번호', 
+    `HORSE`     VARCHAR(20)    NULL    COMMENT '말머리', 
+    `TITLE`     VARCHAR(45)    NULL    COMMENT '제목', 
+    `CONTENT`   TEXT           NULL    COMMENT '내용', 
+    `BOARD_DT`  timestamp not null default now()    COMMENT '등록일자', 
+    `HIT`       INT            NULL default 0    COMMENT '조회수', 
+    `WRITER`    VARCHAR(20)    NULL    COMMENT '작성자', 
+    PRIMARY KEY (NO)
+);
+drop table qna_tb;
+CREATE TABLE QNA_TB
+(
+    `NO`        INT            NOT NULL    AUTO_INCREMENT COMMENT '순번', 
+    `TITLE`     VARCHAR(45)    NULL        COMMENT '제목', 
+    `MEM_NO`    INT            NULL        COMMENT '멤버번호', 
+    `HIT`       INT 		   NULL        default 0  COMMENT '조회수', 
+    `BOARD_DT`  timestamp 	   not null    default now()  COMMENT '등록일자', 
+    `CONTENT`   TEXT           NULL        COMMENT '내용',
+    `WRITER`    VARCHAR(20)    NULL        COMMENT '작성자', 
+    PRIMARY KEY (NO)
+);
+drop table subject_board_tb;
+CREATE TABLE SUBJECT_BOARD_TB
+(
+    `NO`        INT            NOT NULL     AUTO_INCREMENT COMMENT '순번', 
+    `DEPT_CD`   VARCHAR(20)    NULL         COMMENT '학과코드', 
+    `TITLE`     VARCHAR(45)    NULL         COMMENT '제목', 
+    `CONTENT`   TEXT           NULL         COMMENT '내용', 
+    `MEM_NO`    INT            NULL         COMMENT '멤버번호', 
+    `HIT`       INT            NULL         default 0 COMMENT '조회수', 
+    `BOARD_DT`  timestamp not null default now()         COMMENT '등록일자', 
+    `WRITER`    VARCHAR(20)    NULL         COMMENT '작성자', 
+    PRIMARY KEY (NO)
+);
