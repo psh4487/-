@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="counseling">
+	<select id="subList" resultType="uni.stu.model.CounselingDto" parameterType="map">
+		select b.sub_cd, b.sub_nm
+		from attend_tb a, subject_tb b
+		where a.sub_cd = b.sub_cd
+		and a.stu_no = #{stu_no}
+	</select>
+	<select id="historyList" resultType="uni.stu.model.CounselingDto" parameterType="map">
+		select b.sub_nm, c.cs_date, d.prof_nm, cs_state
+		from attend_tb a, subject_tb b, counseling_tb c, professor_tb d
+		where a.stu_no = c.stu_no
+		and a.sub_cd = b.sub_cd
+		and b.sub_cd = c.sub_cd
+		and b.prof_cd = d.prof_cd
+		and a.stu_no = #{stu_no}
+	</select>
+	<insert id="counselingApply" parameterType="map">
+		insert into counseling_tb
+		set sub_cd=#{sub_cd},
+			cs_date=#{cs_date},
+            stu_no=#{stu_no},
+            cs_nm=#{cs_nm},
+            cs_con=#{cs_con}
+	</insert>
+</mapper>

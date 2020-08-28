@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gradeMana">
+	<select id="yearsList" resultType="uni.stu.model.GradeMDto">
+		select years from SUBJECT_TB group by years
+	</select>
+	
+	<select id="semList" resultType="uni.stu.model.GradeMDto">
+		select sem from SUBJECT_TB group by sem
+	</select>
+	
+	<select id="gradeList" resultType="uni.stu.model.GradeMDto">
+		select c.isu,
+		       c.sub_nm,
+		       c.SUB_CD,
+		       MID_SCORE, 
+		       END_SCORE, 
+		       REPORT_SCORE,
+		       ATTEND_SCORE,
+		       ATTEND_SUM,
+		       ATTEND_RATING,
+		       ATTEND_GRADE
+		from ATTEND_TB a, STUDENT_TB b, SUBJECT_TB c
+		where b.dept_cd = c.dept_cd and a.sub_cd = c.sub_cd
+		and a.stu_no=#{stu_no} and years=#{years} and c.sem=#{sem} group by a.sub_cd
+	</select>
+</mapper>

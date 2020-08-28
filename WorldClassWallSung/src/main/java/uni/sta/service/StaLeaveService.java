@@ -16,10 +16,19 @@ public class StaLeaveService {
 	public void setDao(StaLeaveDao dao) {
 		this.dao = dao;
 	}
-	
-	public List<StaLeaveDto> selectLeaveList(){
+
+	public List<StaLeaveDto> selectLeaveList() {
 		return dao.selectLeaveList();
 	}
-	
-	
+
+	public int updateStaLeave(int no) {
+		return dao.updateStaLeave(no);
+
+	}
+
+	public int StaLeavechaNo(int no) {
+		return dao.StaLeavechaNo(no);
+
+	}
+
 }

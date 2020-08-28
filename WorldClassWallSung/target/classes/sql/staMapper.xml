@@ -5,51 +5,159 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="staff">
 
-<!-- 부서목록 -->
+	<!-- 부서목록 -->
 	<select id="deptlist" resultType="uni.sta.model.StaffDto">
-    select distinct STAFF_DEPT from STAFF_TB
-</select>
-
-<!-- 부서선택으로 교직원목록 -->	
-	<select id="stafflist" resultType="uni.sta.model.StaffDto" parameterType="String">
-   select staff_no,staff_nm,STAFF_TEL,STAFF_EMAIL,STAFF_DEPT from STAFF_TB where STAFF_DEPT=#{STAFF_DEPT}
-</select>
-
-<!-- 학생등록 -->
-	<insert id="insertstu" parameterType="uni.sta.model.StuDto">
-   insert into STUDENT_TB set STU_NO=(SELECT MAX(STU_NO)+1 FROM STUDENT_TB t),
-                             DEPT_CD=#{dept_cd},
-                             MEM_NO=1,
-                             STU_NAME=#{stu_name},
-                             STU_PWD=1111,
-                             STU_BIRTH=#{stu_birth},
-                             STU_YEAR=#{stu_year},
-                             STU_SEM=#{stu_sem},
-                             STU_ADDRESS=#{stu_address},
-                             STU_ZIP=#{stu_zip},
-                             STU_TEL=#{stu_tel},
-                             STU_EMAIL=#{stu_email},
-                             STU_COUN=#{stu_coun},
-                             STU_GEN=#{stu_gen},
-                             STATE="재학중"
-    </insert>
-
-<!-- 학생로그인 -->
-	
-	<select id="selectstu" resultType="uni.sta.model.StuDto">
-	select * from STUDENT_TB where stu_no=#{stu_no} and stu_pwd=#{stu_pwd}
+		select distinct STAFF_DEPT from STAFF_TB where STAFF_DEPT not in('관리부')
 	</select>
-	
-	<select id="leavelist" resultType="uni.sta.model.StaLeaveDto">
-   select stu_no,stu_name,leave_year,leave_sem,leave_state,leave_dt from LEAVE_TB natural join STUDENT_TB where LEAVE_STATE="미승인" order by no desc;
-</select>
 
- 	<update id="leavestateok" parameterType="int">
-	update LEAVE_TB set LEAVE_STATE="승인" where no=#{no}
+	<!-- 부서선택으로 교직원목록 -->
+	<select id="stafflist" resultType="uni.sta.model.StaffDto"
+		parameterType="String">
+		select staff_no,staff_nm,STAFF_TEL,STAFF_EMAIL,STAFF_DEPT from STAFF_TB
+		where STAFF_DEPT=#{STAFF_DEPT}
+	</select>
+
+	<!-- 학생등록 -->
+	<insert id="insertstu" parameterType="uni.sta.model.StuDto">
+		insert into STUDENT_TB set STU_NO=(SELECT MAX(STU_NO)+1 FROM STUDENT_TB t),
+		DEPT_CD=(SELECT DEPT_CD FROM dept_tb where DEPT_NM=#{dept_nm}),
+		MEM_NO=1,
+		STU_NAME=#{stu_name},
+		STU_PWD=1111,
+		STU_BIRTH=#{stu_birth},
+		STU_YEAR=#{stu_year},
+		STU_SEM=#{stu_sem},
+		STU_ADDRESS=#{stu_address},
+		STU_ZIP=#{stu_zip},
+		STU_TEL=#{stu_tel},
+		STU_EMAIL=#{stu_email},
+		STU_COUN=#{stu_coun},
+		STU_GEN=#{stu_gen},
+		stu_path=#{stu_path},
+		STATE="재학중"
+	</insert>
+
+	<!-- 교직원등록 -->
+	<insert id="insertsta" parameterType="uni.sta.model.StaffDto">
+		insert into STAFF_TB set STAFF_NO=(SELECT MAX(STAFF_NO)+1 FROM STAFF_TB t),
+		STAFF_DEPT=#{staff_dept},
+		MEM_NO=3,
+		STAFF_NM=#{staff_nm},
+		STAFF_PWD=1111,
+		STAFF_BIRTH=#{staff_birth},
+		STAFF_ADDRESS=#{staff_address},
+		STAFF_ZIP=#{staff_zip},
+		STAFF_TEL=#{staff_tel},
+		STAFF_email=#{staff_email},
+		STAFF_COUN=#{staff_coun},
+		staff_path=#{staff_path},
+		STAFF_GEN=#{staff_gen}
+
+	</insert>
+
+
+
+	<!-- 교수등록 -->
+	<insert id="insertpro" parameterType="uni.sta.model.ProDto">
+		insert into PROFESSOR_TB set PROF_CD=(SELECT MAX(PROF_CD)+1 FROM
+		PROFESSOR_TB t),
+		DEPT_CD=(SELECT DEPT_CD FROM dept_tb where DEPT_NM=#{dept_nm}),
+		MEM_NO=2,
+		PROF_NM=#{prof_nm},
+		PROF_PWD=1111,
+		PROF_BIRTH=#{prof_birth},
+		PROF_ADDRESS=#{prof_address},
+		PROF_ZIP=#{prof_zip},
+		PROF_TEL=#{prof_tel},
+		PROF_EMAIL=#{prof_email},
+		PROF_COUN=#{prof_coun},
+		prof_path=#{prof_path},
+		PROF_GEN=#{prof_gen}
+
+	</insert>
+
+
+
+	<select id="leavelist" resultType="uni.sta.model.StaLeaveDto">
+		select * from LEAVE_TB natural join STUDENT_TB where LEAVE_STATE="대기" order
+		by no desc;
+	</select>
+
+	<update id="leavestateok" parameterType="int">
+		update LEAVE_TB set LEAVE_STATE="승인" where no=#{no}
 	</update>
-	
-	
-	
-	
+
+
+	<!-- 로그인 -->
+
+	<select id="selectstu" resultType="uni.main.model.Login_All_Dto"
+		parameterType="hashMap">
+		select * from STUDENT_TB where stu_no=#{stu_no} and stu_pwd=#{stu_pwd}
+	</select>
+	<select id="selectsta" resultType="uni.main.model.Login_All_Dto"
+		parameterType="hashMap">
+		select * from STAFF_TB where staff_no=#{staff_no} and
+		staff_pwd=#{staff_pwd}
+	</select>
+
+	<select id="selectpro" resultType="uni.main.model.Login_All_Dto"
+		parameterType="hashMap">
+		select * from PROFESSOR_TB where PROF_CD=#{prof_cd} and
+		PROF_PWD=#{prof_pwd}
+	</select>
+
+
+
+
+
+	<!-- 휴복학 업데이트 -->
+	<update id="leavestateno" parameterType="int">
+		update LEAVE_TB set LEAVE_STATE="미승인" where no=#{no}
+	</update>
+
+
+	<!-- 학생 등록폼 학과 셀렉 -->
+	<select id="selectStuDept" resultType="uni.sta.model.StuDeptDto">
+		select DEPT_NM from
+		DEPT_TB;
+	</select>
+
+
+	<!-- 비밀번호 변경시 아이디 이메일 체크 -->
+	<select id="idmailcheck_stu" parameterType="hashMap"
+		resultType="uni.main.model.Login_All_Dto">
+		select * from STUDENT_TB where stu_no=#{stu_no} and stu_email=#{stu_email}
+	</select>
+
+	<select id="idmailcheck_pro" parameterType="hashMap"
+		resultType="uni.main.model.Login_All_Dto">
+		select * from PROFESSOR_TB where PROF_CD=#{prof_cd} and
+		PROF_EMAIL=#{prof_email}
+	</select>
+
+	<select id="idmailcheck_sta" parameterType="hashMap"
+		resultType="uni.main.model.Login_All_Dto">
+		select * from STAFF_TB where staff_no=#{staff_no} and
+		staff_email=#{staff_email}
+	</select>
+
+
+	<!-- 비밀번호 변경 -->
+
+	<update id="pass_change_stu" parameterType="hashMap">
+		update STUDENT_TB set STU_PWD=#{stu_pwd} where stu_email=#{stu_email}
+
+	</update>
+
+	<update id="pass_change_pro" parameterType="hashMap">
+		update PROFESSOR_TB set prof_PWD=#{prof_pwd} where prof_email=#{prof_email}
+
+	</update>
+
+	<update id="pass_change_sta" parameterType="hashMap">
+		update STAFF_TB set staff_pwd=#{staff_pwd} where staff_email=#{staff_email}
+
+	</update>
+
 
 </mapper>

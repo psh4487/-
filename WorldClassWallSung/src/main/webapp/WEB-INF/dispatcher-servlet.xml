@@ -5,11 +5,118 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="uni.*"/>
+
+	<!-- 로그인 -->
+	<bean id="LoginStuDao" class="uni.main.service.LoginStuDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<!-- 학생  -->
+	<bean class="uni.stu.service.SubjectDao" id="subjectDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
 		
-	<context:component-scan base-package="uni.sta.*" />
+	<bean class="uni.stu.service.GradeMDao" id="GradeMDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+		
+	<bean class="uni.stu.service.LeaveDao" id="LeaveDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+		
+	<bean class="uni.stu.service.RevokeDao" id="RevokeDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+		
+	<bean class="uni.stu.service.ScheduleDao" id="scheduleDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+
+	<bean class="uni.stu.service.LicenseDao" id="licenseDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean class="uni.stu.service.ServiceDao" id="serviceDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean class="uni.stu.service.MajorDao" id="majorDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean class="uni.stu.service.InReportDao" id="inReportDao"
+		 p:sqlSessionFactory-ref="sqlSessionFactory"/>	
+		 
+	<bean id="selScheduleDao" class="uni.stu.service.SelScheduleDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean id="counselingDao" class="uni.stu.service.CounselingDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean id="estimationDao" class="uni.stu.service.EstimationDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />	
+			 
+	<bean id="StuInfoDao" class="uni.stu.service.StuInfoDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />		 
+		 
+	<!-- 교수  -->
+	<bean class="uni.pro.service.SchedulProDao" id="SchedulProDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean id="CounselingProDao" class="uni.pro.service.CounselingProDao"
+     	p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<bean id="fileDownloadUtil" class="uni.pro.down.FileDownloadUtil"/>
+	
+	<bean id="ReportDao" class="uni.pro.service.ReportDao"
+     	p:sqlSessionFactory-ref="sqlSessionFactory" />
+     	
+	<bean id="EstimationProDao" class="uni.pro.service.EstimationProDao"
+        p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<bean id="ProSubjectDao" class="uni.pro.service.ProSubjectDao"
+        p:sqlSessionFactory-ref="sqlSessionFactory" />
+        
+    <bean id="SelScheduleProDao" class="uni.pro.service.SelScheduleProDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		   
+	<bean id="LecturDao" class="uni.pro.service.LecturDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<bean id="TestDao" class="uni.pro.service.TestDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<!-- 교직원  -->
+	<bean id="RestDao" class="uni.sta.service.RestDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean id="RestSubDao" class="uni.sta.service.RestSubDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />	
+		
+	<bean id="StaLeaveDao" class="uni.sta.service.StaLeaveDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean id="StaffDao" class="uni.sta.service.StaffDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+
+	<bean id="StuInsertDao" class="uni.sta.service.StuInsertDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<!-- 게시판  -->	
+	<bean class = "uni.board.service.BoardDao" id = "boardDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean class = "uni.board.service.QnaDao" id = "qnaDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean class = "uni.board.service.QnaReplyDao" id = "qnaReplyDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	<bean class = "uni.board.service.SubjectBoardDao" id = "subjectBoardDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+
+	
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
 	
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -23,6 +130,41 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+	
+		<!-- 인터셉터 객체 생성 -->
+ 	<mvc:interceptors>
+		<mvc:interceptor>    
+			<mvc:mapping path="/**" />
+			<!-- <mvc:exclude-mapping path="/stafflist/login*"/> -->
+			<mvc:exclude-mapping path="/stafflist/findpass/*"/>
+			<bean class="uni.main.AuthLoginInterceptor.AuthLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+		<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+				p:paramName="language" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" /><!-- 465 or 25 -->
+    <property name="username" value="momomichael7@gmail.com" /><!-- 본인 이메일 계정 -->
+    <property name="password" value="910517***" /><!-- 해당 계정의 비밀번호 -->
+    <property name="defaultEncoding" value="utf-8" />
+    <property name="javaMailProperties"> 
+        <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+            <prop key="mail.debug">true</prop>
+        </props>
+    </property>
+</bean> 
 	
 	<!-- Tiles 뷰 리졸버 -->
 	<bean id="tielsViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -38,41 +180,18 @@
 			</list>
 		</property>
 	</bean>		
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	      	<property name="order" value="0"/>
+	</bean>
 	
-		<bean id="viewResolver1"
-		class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	<bean id="viewResolver1"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver"/>	
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-<!-- <mvc:interceptors>
-		<mvc:interceptor>     모든요청에 인터셉트를 하려면 **붙여주기
-			<mvc:mapping path="/event/list.do" />
-			<bean class="AuthLoginInterceptor.AuthLoginInterceptor" />
-		</mvc:interceptor>
-
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean
-				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-				p:paramName="language" />
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-
-
-	<bean id="StaffDao" class="uni.sta.service.StaffDao"
-		p:sqlSessionFactory-ref="sqlSessionFactory" />
-		
-	<bean id="StuInsertDao" class="uni.sta.service.StuInsertDao"
-		p:sqlSessionFactory-ref="sqlSessionFactory" />	
-
-
-	<bean id="LoginStuDao" class="uni.sta.service.LoginStuDao"
-		p:sqlSessionFactory-ref="sqlSessionFactory" />	
-	<bean id="StaLeaveDao" class="uni.sta.service.StaLeaveDao"
-		p:sqlSessionFactory-ref="sqlSessionFactory" />	
 
 </beans>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+
+	<!-- 학생 -->
+    <definition name="layout1" template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/headerStu.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menuStu.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	<definition name="stuInfo" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/stuInfo.jsp"/>    
+    </definition>	
+	<definition name="stuInfoUp" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/stuInfoUp.jsp"/>    
+    </definition>	
+	<definition name="insertreport" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/insertreport/list.jsp"/>    
+    </definition>	
+	<definition name="license" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/license/list.jsp"/>    
+    </definition>	
+	<definition name="subject" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/subject/list.jsp"/>    
+    </definition>	
+	<definition name="major" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/major/list.jsp"/>    
+    </definition>	
+	<definition name="gradeManaMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/gradeManaMain.jsp"/>    
+    </definition>	
+	<definition name="leaveMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/leaveMain.jsp"/>    
+    </definition>	
+	<definition name="revokeMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/revokeMain.jsp"/>    
+    </definition>	
+	<definition name="scheduleMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/scheduleMain.jsp"/>    
+    </definition>	
+	<definition name="scoreMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/scoreMain.jsp"/>    
+    </definition>
+    <definition name="counselingMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/counselingMain.jsp"/>    
+    </definition>	
+    <definition name="estimationMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/estimationMain.jsp"/>    
+    </definition>	
+    <definition name="selScheduleMain" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/stu/selScheduleMain.jsp"/>    
+    </definition>	
+    <definition name="board1" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/board/board/list.jsp"/>    
+    </definition>	
+    <definition name="subjectBoard1" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/board/subjectBoard/list.jsp"/>    
+    </definition>	
+    <definition name="qnaBoard1" extends="layout1">
+      <put-attribute name="content" value="/WEB-INF/view/board/qnaBoard/list.jsp"/>    
+    </definition>	
+
+    
+	<!-- 교수  -->
+	<definition name="layout2" template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/headerPro.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menuPro.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	<definition name="SchedulProInfo" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/SchedulProInfo.jsp"/>    
+    </definition>
+    <definition name="couInfo" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/counseling/couInfo.jsp"/>    
+    </definition>
+    <definition name="reportInfo" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/report/reportInfo.jsp"/>    
+    </definition>
+    <definition name="EstimationinfoPro" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/estimation/Estimationinfo.jsp"/>    
+    </definition>
+    <definition name="subjectmain" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/subject/subjectmain.jsp"/>    
+    </definition>
+    <definition name="lecturemain" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/lecture/lecturemain.jsp"/>    
+    </definition>
+    <definition name="prograde" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/lecture/grade.jsp"/>    
+    </definition>
+    <definition name="prograde" extends="layout2">
+      	<put-attribute name="content" value="/WEB-INF/view/pro/lecture/grade.jsp"/>    
+    </definition>
+    <definition name="proInfo" extends="layout2">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/proInfo.jsp"/>    
+    </definition>
+    <definition name="proInfoUp" extends="layout2">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/proInfoUp.jsp"/>    
+    </definition>
+     <definition name="board2" extends="layout2">
+      <put-attribute name="content" value="/WEB-INF/view/board/board/list.jsp"/>    
+    </definition>	
+    <definition name="subjectBoard2" extends="layout2">
+      <put-attribute name="content" value="/WEB-INF/view/board/subjectBoard/list.jsp"/>    
+    </definition>	
+    <definition name="qnaBoard2" extends="layout2">
+      <put-attribute name="content" value="/WEB-INF/view/board/qnaBoard/list.jsp"/>    
+    </definition>		
+
+	<!-- 교직원  -->
+	<definition name="layout3" template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/headerSta.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menuSta.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/layout/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	<definition name="staInfo" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/staInfo.jsp"/>    
+    </definition>
+	<definition name="staInfoUp" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/staInfoUp.jsp"/>    
+    </definition>	
+	<definition name="StaLeave" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/StaLeave.jsp"/>    
+    </definition>	
+    <definition name="StaSubMain" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/sta/StaSubMain.jsp"/>    
+    </definition>	
+   	<definition name="StaRest" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/sta/StaRest.jsp"/>    
+    </definition>	
+   	<definition name="stujoin1" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/stujoin.jsp"/>    
+    </definition>	
+   	<definition name="projoin1" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/projoin.jsp"/>    
+    </definition>
+        <definition name="board3" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/board/board/list.jsp"/>    
+    </definition>	
+    <definition name="subjectBoard3" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/board/subjectBoard/list.jsp"/>    
+    </definition>	
+    <definition name="qnaBoard3" extends="layout3">
+      <put-attribute name="content" value="/WEB-INF/view/board/qnaBoard/list.jsp"/>    
+    </definition>			
+	
+	<!-- 관리자  -->
+	<definition name="layout4" template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/headerSta.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menuMan.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	<definition name="manInfo" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/staInfo.jsp"/>    
+    </definition>	
+	<definition name="manInfoUp" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/InfoAndPassUp/staInfoUp.jsp"/>    
+    </definition>	
+	<definition name="staffInfo" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/staffInfo.jsp"/>    
+    </definition>	
+	<definition name="stujoin2" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/stujoin.jsp"/>    
+    </definition>	
+    <definition name="projoin2" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/projoin.jsp"/>    
+    </definition>
+	<definition name="stajoin" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/stafflist/stajoin.jsp"/>    
+    </definition>
+        <definition name="board4" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/board/board/list.jsp"/>    
+    </definition>	
+    <definition name="subjectBoard4" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/board/subjectBoard/list.jsp"/>    
+    </definition>	
+    <definition name="qnaBoard4" extends="layout4">
+      <put-attribute name="content" value="/WEB-INF/view/board/qnaBoard/list.jsp"/>    
+    </definition>			
+</tiles-definitions>

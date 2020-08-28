@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Estimationpro">
+
+	<select id="sublist" resultType="uni.pro.model.EstimationProDto" parameterType="int">
+		select sub_nm,sub_cd from subject_tb where prof_cd=#{prof_cd}
+	</select>
+	
+	<select id="Estimationproall" resultType="uni.pro.model.EstimationProDto" parameterType="String">
+		select stu_name,est_state,stu_no,sub_cd from estimation_tb natural join student_tb where sub_cd=#{sub_cd}
+	</select>
+	
+	<select id="Estimationproview"  resultType="hashmap" parameterType="uni.pro.model.EstimationProDto">
+		select stu_name,stu_no,no1,no2,no3,no4,no5,no6,no7,no8,no9,no10,prof_say from estimation_tb  natural join student_tb where stu_no=#{stu_no} and sub_cd=#{sub_cd}
+	</select>
+	
+	<update id="es_state" parameterType="int" >
+		update estimation_tb set est_state='확인' where stu_no =#{stu_no}
+	</update>
+	
+	<select id="view"  resultType="hashmap" parameterType="String">
+		SELECT count(stu_no) as num,sub_nm,sum(no1) as s1, sum(no2) as s2, sum(no3) as s3, sum(no4) as s4, sum(no5) as s5, sum(no6) as s6, sum(no7) as s7, sum(no8) as s8, sum(no9) as s9, sum(no10) as s10,avg(no1) as a1,avg(no2) as a2,avg(no3) as a3,avg(no4) as a4,avg(no5) as a5,avg(no6) as a6,avg(no7) as a7,avg(no8) as a8,avg(no9) as a9,avg(no10) as a10,
+		ATTEND_MEM FROM  estimation_tb natural join subject_tb where sub_cd=#{sub_cd}
+	</select>
+	
+</mapper>

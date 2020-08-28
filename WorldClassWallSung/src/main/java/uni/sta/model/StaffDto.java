@@ -12,11 +12,9 @@ public class StaffDto {
 	String staff_tel;
 	String staff_dept;
 	String staff_email;
-	int staff_zip;
+	String staff_zip;
 	String staff_address;
-	int staff_birth;
-	
-	
+	String staff_birth;
 	public int getStaff_no() {
 		return staff_no;
 	}
@@ -77,10 +75,10 @@ public class StaffDto {
 	public void setStaff_email(String staff_email) {
 		this.staff_email = staff_email;
 	}
-	public int getStaff_zip() {
+	public String getStaff_zip() {
 		return staff_zip;
 	}
-	public void setStaff_zip(int staff_zip) {
+	public void setStaff_zip(String staff_zip) {
 		this.staff_zip = staff_zip;
 	}
 	public String getStaff_address() {
@@ -89,11 +87,12 @@ public class StaffDto {
 	public void setStaff_address(String staff_address) {
 		this.staff_address = staff_address;
 	}
-	public int getStaff_birth() {
+	public String getStaff_birth() {
 		return staff_birth;
 	}
-	public void setStaff_birth(int staff_birth) {
+	public void setStaff_birth(String staff_birth) {
 		this.staff_birth = staff_birth;
 	}
-
+	
+	
 }

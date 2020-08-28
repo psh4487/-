@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="estimation">
+	<select id="subjectList" resultType="uni.stu.model.EestimationDto">		
+		select b.sub_cd, b.sub_nm
+		from attend_tb a, subject_tb b
+		where a.sub_cd = b.sub_cd
+		and stu_no=#{stu_no}
+	</select>
+	<insert id="joinEstimation" parameterType="map">
+		insert into estimation_tb
+		set stu_no = #{stu_no},
+			sub_cd = #{sub_cd},
+		    no1 = #{no1},
+		    no2 = #{no2},
+		    no3 = #{no3},
+		    no4 = #{no4},
+		    no5 = #{no5},
+		    no6 = #{no6},
+		    no7 = #{no7},
+		    no8 = #{no8},
+		    no9 = #{no9},
+		    no10 = #{no10},
+		    prof_say = #{prof_say}
+	</insert>
+	<select id="dataCheck" resultType="uni.stu.model.EestimationDto">
+		select sub_cd from estimation_tb where stu_no=#{stu_no}
+	</select>
+</mapper>

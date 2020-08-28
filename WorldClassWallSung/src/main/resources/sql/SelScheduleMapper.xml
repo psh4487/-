@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="selSchedule">
+	<select id="builName" resultType="uni.stu.model.SelScheduleDto">
+		select subroom_nm, buil_no from subject_room_tb group by buil_no
+	</select>
+	<select id="subroomName" resultType="uni.stu.model.SelScheduleDto" parameterType="map">
+		select subroom_nm from subject_room_tb where buil_no=#{buil_no}
+	</select>
+	<select id="subroomList" resultType="uni.stu.model.SelScheduleDto" parameterType="map">
+		select a.buil_no,
+			   a.subroom_nm,
+		       b.sub_nm,
+		       c.prof_nm, LEC_1, LEC_2, LEC_3
+		from
+		subject_room_tb a, subject_tb b, professor_tb c
+		where b.prof_cd = c.prof_cd
+		and a.subroom_nm = b.subroom_nm
+		and a.buil_no=a.buil_no and b.subroom_nm=#{subroom_nm}
+	</select>
+</mapper>

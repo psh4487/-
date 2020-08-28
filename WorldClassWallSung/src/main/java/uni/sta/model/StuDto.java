@@ -4,6 +4,7 @@ public class StuDto {
 	
 		int stu_no;
 		String dept_cd;
+		String dept_nm;
 		int mem_no;
 		String stu_name;
 		String stu_pwd;
@@ -11,14 +12,35 @@ public class StuDto {
 		int stu_year;
 		String stu_sem;
 		String stu_address;
-		int stu_zip;
+		String stu_zip;
 		String stu_tel;
 		String stu_email;
 		String stu_coun;
 		String stu_gen;
 		String stu_path;
 		String state;
+		String member_pass;
 		
+		
+		
+		public String getMember_pass() {
+			return member_pass;
+		}
+		public void setMember_pass(String member_pass) {
+			this.member_pass = member_pass;
+		}
+		public String getStu_zip() {
+			return stu_zip;
+		}
+		public void setStu_zip(String stu_zip) {
+			this.stu_zip = stu_zip;
+		}
+		public String getDept_nm() {
+			return dept_nm;
+		}
+		public void setDept_nm(String dept_nm) {
+			this.dept_nm = dept_nm;
+		}
 		public int getStu_no() {
 			return stu_no;
 		}
@@ -73,12 +95,7 @@ public class StuDto {
 		public void setStu_address(String stu_address) {
 			this.stu_address = stu_address;
 		}
-		public int getStu_zip() {
-			return stu_zip;
-		}
-		public void setStu_zip(int stu_zip) {
-			this.stu_zip = stu_zip;
-		}
+	
 		public String getStu_tel() {
 			return stu_tel;
 		}

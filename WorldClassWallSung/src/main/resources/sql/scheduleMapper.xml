@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schedule">
+	<select id="scheduleName" resultType="uni.stu.model.ScheduleDto" parameterType="map">
+		select b.dept_nm, a.stu_name
+		from student_tb a, dept_tb b
+		where a.dept_cd = b.dept_cd
+		and a.stu_no="2020101"
+	</select>
+	<select id="scheduleList" resultType="uni.stu.model.ScheduleDto" parameterType="map">
+		select a.sub_nm, d.prof_nm, subroom_nm, LEC_1, LEC_2, LEC_3
+		from subject_tb a, student_tb b, attend_tb c, professor_tb d
+		where a.sub_cd = c.sub_cd
+		and b.stu_no = c.stu_no
+		and a.prof_cd = d.prof_cd
+		and c.stu_no=#{stu_no}
+	</select>
+</mapper>

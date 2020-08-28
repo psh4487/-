@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="revoke">
+	<select id="revokeList" resultType="uni.stu.model.RevokeDto" parameterType="map">
+		select 		   d.stu_no,
+			   b.SUB_CD,
+			   b.sub_nm,
+		       b.isu,
+		       b.credit,
+		       c.prof_nm
+		from ATTEND_TB a, SUBJECT_TB b, PROFESSOR_TB c, student_tb d
+		where a.stu_no = d.stu_no
+		and b.prof_cd = c.prof_cd
+        and a.sub_cd = b.sub_cd
+		and b.years=(select date_format(now(), "%Y") as years)
+		and b.sem = d.stu_sem
+        and a.stu_no=#{stu_no}
+		group by sub_cd
+	</select>
+	<delete id="revokeDelete" parameterType="map">
+		delete from ATTEND_TB where stu_no = #{stu_no} and sub_cd = #{sub_cd};	
+	</delete>
+</mapper>

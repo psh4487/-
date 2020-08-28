@@ -5,12 +5,20 @@ public class StaLeaveDto {
 	String stu_name;
 	int no;
 	String leave_year;
+	String leave_change;
 	String leave_sem;
 	String leave_state;
 	String leave_dt;
 	String leave_start;
 	String leave_finish;
 	
+	
+	public String getLeave_change() {
+		return leave_change;
+	}
+	public void setLeave_change(String leave_change) {
+		this.leave_change = leave_change;
+	}
 	public int getNo() {
 		return no;
 	}

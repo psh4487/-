@@ -18,12 +18,22 @@ public class StaffController {
 	public void setStaff(StaffService staff) {
 		this.staff = staff;
 	}
-	@RequestMapping(value = "staffInfo")
+	
+	@RequestMapping(value = "staffInfo.do")
 	public String staff() throws Exception {
 		return "staffInfo";
 	}
 	
-	@RequestMapping(value = "depts", method = RequestMethod.POST)
+	@RequestMapping(value = "Go3.do")
+	public String staGo1() throws Exception {
+		return "layout3";
+	}
+	@RequestMapping(value = "Go4.do")
+	public String staGo2() throws Exception {
+		return "layout4";
+	}
+	
+	@RequestMapping(value = "depts.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void deptList(HttpServletResponse resp) throws Exception {
 		List<StaffDto> list = staff.selectDepts();
@@ -34,7 +44,7 @@ public class StaffController {
 	
 	}
 	
-	@RequestMapping(value = "staffList", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "staffList.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String staffList(String staff_dept) throws Exception {
 		List<StaffDto> list = staff.selectstaffList(staff_dept);

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "board">
+<!-- 게시판 목록,글쓰기, 조회, 수정, 삭제 -->
+
+<insert id = "insertBoard" parameterType = "uni.board.model.BoardDto">
+insert into board_tb(mem_no, horse, title, content, writer) values(#{mem_no}, #{horse}, #{title}, #{content}, #{writer})
+</insert>
+<select id = "selectTitle" parameterType = "int" resultType = "uni.board.model.BoardDto">
+select * from board_tb where no = #{no} 
+</select>
+<update id = "updateTitle" parameterType = "uni.board.model.BoardDto">
+update board_tb set title = #{title}, content = #{content}, writer = #{writer}, horse = #{horse} where no = #{no}
+</update>
+<delete id = "deleteTitle" parameterType = "int">
+delete from board_tb where no = #{no}
+</delete>
+<select id = "selectCount" resultType = "int">
+select count(no) from board_tb
+</select>
+<!-- 공지사항 고정 -->
+<select id = "selectNotice" resultType = "uni.board.model.BoardDto">
+select * from board_tb where horse = '공지' order by no desc limit 3;
+</select>
+<!-- 조회수 증가 -->
+<update id = "addHit" parameterType = "int">
+update board_tb set hit = hit+1 where no = #{no}
+</update>
+<!-- 검색어 -->
+
+<!-- 페이징 처리 -->
+<select id = "listPage" resultType = "uni.board.model.BoardDto" parameterType = "uni.board.model.SearchCriteria">
+SELECT  * FROM ( 
+		        SELECT NO, 
+		               TITLE, 
+		               CONTENT, 
+		               WRITER, 
+		               BOARD_DT,
+		               HIT,
+		               HORSE, 
+		               ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		         FROM BOARD_TB WHERE 1=1
+		         <include refid="search"></include>
+		         ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY NO DESC;
+</select>
+<select id = "listCount" resultType = "int" parameterType = "uni.board.model.SearchCriteria">
+select count(no) 
+	from board_tb 
+	where 1=1 
+	<include refid = "search"></include> 
+	and no > 0
+</select>
+<sql id = "search">
+	<if test = "searchType != null">
+		<if test = "searchType == 't'.toString()">AND TITLE LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'c'.toString()">AND CONTENT LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'w'.toString()">AND WRITER LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'tc'.toString()">AND (TITLE LIKE CONCAT('%',#{keyword},'%')) OR (CONTENT LIKE CONCAT('%',#{keyword},'%'))</if>
+	</if>
+</sql>
+</mapper>

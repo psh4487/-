@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "student">
+	<!-- 이수학점 -->
+	<select id = "isu" resultType = "uni.stu.model.SubjectDto" parameterType="int">
+	select ISU, SUB_NM, a.SUB_CD, CREDIT, YEARS, SEM from SUBJECT_TB a join attend_tb b where a.SUB_CD = b.SUB_CD and STU_NO= #{stu_no} order by years, sem;
+	</select>
+	<select id = "sumsub" resultType = "int" parameterType="int">
+		 select sum(credit) from SUBJECT_TB a join attend_tb b where a.SUB_CD = b.SUB_CD and STU_NO= #{stu_no} and isu like '전공%'
+	</select>
+	<select id = "sumsub1" resultType = "int" parameterType="int">
+		select sum(credit) from SUBJECT_TB a join attend_tb b where a.SUB_CD = b.SUB_CD and STU_NO= #{stu_no} and isu like '교양%'
+	</select>
+	<select id = "sumsub2" resultType = "int" parameterType="int">
+		select sum(credit) from SUBJECT_TB a join attend_tb b where a.SUB_CD = b.SUB_CD and STU_NO= #{stu_no}
+	</select>
+		
+	<!-- 자격증 -->
+	<select id = "listLicense" parameterType="int" resultType = "uni.stu.model.LicenseDto">
+		select * from license_tb where STU_NO = #{stu_no}
+	</select>
+	<delete id = "deleteLicense" parameterType = "uni.stu.model.LicenseDto">
+		delete from license_tb where li_no = #{li_no} and STU_NO = #{stu_no}
+	</delete>
+	<insert id = "insertLicense" parameterType = "uni.stu.model.LicenseDto">
+		INSERT INTO LICENSE_TB(li_nm, LI_FILE,LI_DATE,LI_PATH,STU_NO) VALUES (#{li_nm}, #{li_file}, #{li_date}, #{li_path},#{stu_no})
+	</insert>
+	
+	<!-- 봉사활동 -->
+	<select id  = "listService" resultType = "uni.stu.model.ServiceDto" parameterType="int">
+		select * from service_tb where stu_no = #{stu_no}
+	</select>
+	<delete id = "deleteService" parameterType = "uni.stu.model.ServiceDto">
+		delete from service_tb where ser_no = #{ser_no} and STU_NO = #{stu_no}
+	</delete>
+	<insert id = "insertService" parameterType = "uni.stu.model.ServiceDto">
+		insert into service_tb set stu_no = #{stu_no}, ser_start = #{ser_start}, ser_finish = #{ser_finish}, ser_time = #{ser_time}, ser_con = #{ser_con}, ser_file = #{ser_file}, ser_path = #{ser_path}
+	</insert>
+	
+	<!--수강 가능한 강의 출력-->
+	<select resultType="uni.stu.model.MajorDto" id="listCulture" parameterType="string">
+		select * from subject_tb natural join professor_tb natural join dept_tb where isu like CONCAT('%',#{isu},'%') 
+	</select>
+	<select resultType="string" id="listDept">
+		select dept_nm from dept_tb
+	</select>
+	
+	<!-- 수강신청 -->
+	<insert id="apply" parameterType="uni.stu.model.ApplyDto">
+		insert into attend_tb(stu_no, sub_cd) values(#{stu_no}, #{sub_cd}) 
+	</insert>	
+	<select resultType="uni.stu.model.ApplyDto" id="selectApply" parameterType="int">
+		select * from attend_tb a join subject_tb b join professor_tb c where  a.SUB_CD=b.SUB_CD and b.PROF_CD=c.PROF_CD and stu_no = #{stu_no};
+	</select>	
+	<delete id = "deleteApply" parameterType = "uni.stu.model.ApplyDto">
+		delete from attend_tb where sub_cd = #{sub_cd} and stu_no = #{stu_no}
+	</delete>	
+	<update id = "updateApply" parameterType = "uni.stu.model.ApplyDto">
+		update subject_tb set attend_mem = attend_mem+1 where sub_cd = #{sub_cd}
+	</update>
+	
+	<update id = "updateApply1" parameterType = "uni.stu.model.ApplyDto">
+		update subject_tb set attend_mem = attend_mem-1 where sub_cd = #{sub_cd}
+	</update>
+	
+	<select id = "score" resultType = "int" parameterType="int">
+		select ifnull(sum(credit),0) from subject_tb natural join attend_tb where stu_no = #{stu_no}
+	</select>
+	
+	<!-- 과제 제출 -->
+	<!-- 강의 출력 -->
+	<select id = "selectDept_tb" resultType = "uni.stu.model.InReportDto">
+		select distinct SUB_NM,SUB_CD from attend_tb natural join subject_tb;
+	</select>
+	<!-- 과제 제출  학생번호, 강의명, 파일명, 파일경로, 과제 제목 -->
+	<insert id = "insertReport_tb" parameterType = "uni.stu.model.InReportDto">
+		insert into report_tb(stu_no, sub_cd, report_file, report_path, report_nm) values(#{stu_no}, #{sub_cd}, #{report_file}, #{report_path}, #{report_nm})
+	</insert>
+	<!-- 제출과제 출력 -->
+	<select id = "selectReport_tb" resultType = "uni.stu.model.InReportDto" parameterType="int">
+		select * from report_tb a join subject_tb b where a.SUB_CD = b.SUB_CD and stu_no = #{stu_no}
+	</select>
+</mapper>

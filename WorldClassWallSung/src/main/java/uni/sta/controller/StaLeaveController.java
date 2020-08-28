@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import uni.sta.model.StaLeaveDto;
 import uni.sta.model.StaffDto;
+import uni.sta.model.StuDto;
 import uni.sta.service.StaLeaveService;
 @Controller
 public class StaLeaveController {
@@ -24,21 +26,27 @@ public class StaLeaveController {
 		this.sls = sls;
 	}
 	
-	@RequestMapping(value = "StaLeave")
-	public String staff() throws Exception {
-		return "StaLeave";
-	}
 
-	@GetMapping("StaLeave")
+	@GetMapping("StaLeave.do")
 	public String selectLeaveList(Model m) {
-	    List<StaLeaveDto> list = sls.selectLeaveList(); //요청페이지 번호와 현재 페이지에서 보내줄양 
-		m.addAttribute("selectLeaveList", list);
-		
+	    List<StaLeaveDto> list = sls.selectLeaveList(); 
+		m.addAttribute("selectLeaveList", list);		
 		return "StaLeave";
 	}
 	
+
+	@RequestMapping(value ="StaLeavechaUpdate.go") 
+	public String updateStaLeave(int no) { 
+		sls.updateStaLeave(no);
+		return "redirect:StaLeave.do";
+		}
 	
-	
+	@RequestMapping(value ="StaLeavechaNo.go") 
+	public String StaLeavechaNo(int no) { 
+		sls.StaLeavechaNo(no);
+		return "redirect:StaLeave.do";
+		}
+
 	/*
 	 * @RequestMapping(value = "leaveList", method = RequestMethod.POST, produces =
 	 * "text/plain;charset=UTF-8")
