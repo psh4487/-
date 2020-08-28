@@ -262,3 +262,12 @@ CREATE TABLE QNA_TB
     `WRITER`    VARCHAR(20)    NULL        COMMENT '작성자', 
     PRIMARY KEY (NO)
 );
+create table qna_reply (
+    rno int not null auto_increment,
+    no int not null ,
+    content varchar(1000) null,
+    writer varchar(50) null,
+    regdate timestamp default now(),
+    primary key(rno),
+    FOREIGN KEY (NO) REFERENCES qna_tb (NO) ON DELETE CASCADE
+);
