@@ -1,0 +1,2 @@
+update professor_tb set PROF_PATH='2020201.jpg' where PROF_CD=2020201;
+update staff_tb set STAFF_PATH='2020301.jpg' where STAFF_NO=2020301;
