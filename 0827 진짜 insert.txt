@@ -399,7 +399,7 @@ insert into PROFESSOR_TB set
                                PROF_EMAIL='art123@naver.com',
                                PROF_COUN='대한민국',
                                PROF_GEN='남',
-                                PROf_PATH="19690815.jpg",
+                                PROf_PATH="2020201.jpg",
                         PROF_BIRTH="1969-08-15";
 
 insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p),
@@ -544,7 +544,7 @@ insert into PROFESSOR_TB set PROF_CD=(seLECT MAX(PROF_CD)+1 FROM PROFESSOR_TB p)
 INSERT INTO STAFF_TB
 (MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
 VALUES
-(3,'2020301','C:\사진\증명사진.JPG','김철수','1234','남','대한민국','010-1234-5678','행정부','adf@naver.com',40431,'서초대로 55길 77',1988-12-12);
+(3,'2020301','2020301.JPG','김철수','1234','남','대한민국','010-1234-5678','행정부','adf@naver.com',40431,'서초대로 55길 77',1988-12-12);
 
 INSERT INTO STAFF_TB(MEM_NO,STAFF_NO,STAFF_PATH,STAFF_NM,STAFF_PWD,STAFF_GEN,STAFF_COUN,STAFF_TEL,STAFF_DEPT,STAFF_EMAIL,STAFF_ZIP,STAFF_ADDRESS,STAFF_BIRTH)
 VALUES(3,'2020302','19860804.JPG','김영희','1234','여','대한민국','010-1357-2468','행정부','kyh@naver.com',40432,'진흥로 7가길 3',1986-08-04);
