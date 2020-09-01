@@ -1259,6 +1259,7 @@ sub_cd=1001
 insert into dept_tb values('1A0101', '패션학과');
 insert into dept_tb values('2C0101', '컴퓨터공학과');
 insert into dept_tb values('3M0101', '수학과');
+insert into dept_tb values('4L0101', '교양');
 
 
 insert into STAFF_TB set STAFF_NO=2020300,
