@@ -730,6 +730,7 @@ set   SUB_CD = 1009, -- 강의 코드
 
 insert into SUBJECT_TB
 set   SUB_CD = 1010, -- 강의 코드
+      dept_cd = '4L0101', -- 강의코드
       SUB_NM = '영어토론', -- 강의명
       SUBROOM_NM = 'B501', -- 강의실명
       PROF_CD = 2020210, -- 교수번호
@@ -747,6 +748,7 @@ set   SUB_CD = 1010, -- 강의 코드
 
 insert into SUBJECT_TB
 set   SUB_CD = 1011, -- 강의 코드
+      dept_cd = '4L0101', -- 과목코드
       SUB_NM = '기업가정신', -- 강의명
       SUBROOM_NM = 'B502', -- 강의실명
       PROF_CD = 2020211, -- 교수번호
@@ -764,6 +766,7 @@ set   SUB_CD = 1011, -- 강의 코드
 
 insert into SUBJECT_TB
 set   SUB_CD = 1012, -- 강의 코드
+      dept_cd = '4L0101', -- 강의코드
       SUB_NM = '공감프리젠테이션', -- 강의명
       SUBROOM_NM = 'B503', -- 강의실명
       PROF_CD = 2020212, -- 교수번호
