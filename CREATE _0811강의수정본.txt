@@ -271,3 +271,4 @@ create table qna_reply (
     primary key(rno),
     FOREIGN KEY (NO) REFERENCES qna_tb (NO) ON DELETE CASCADE
 );
+alter table subject_board_tb add dept_nm varchar(45);
