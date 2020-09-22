@@ -25,8 +25,7 @@
 }
 
 #footer {
-   width: 100%;
-   border-left: 1px solid;   
+   width: 100%;  
    text-align: center;   
    clear: both;
    border-top: 1px solid;
@@ -35,13 +34,16 @@
 #menu, #content {   
    min-height: 700px;
 }
+.font_ {
+	font-size: 14px;
+}
 </style>
 </head>
 <body>
 <div style="width:100%; height:100%;">
     <div id="header"><tiles:insertAttribute name="header" /></div>
     <div id="menu"><tiles:insertAttribute name="menu" /></div>
-    <div id="content"><tiles:insertAttribute name="content" /></div>    
+    <div id="content" class="font_"><tiles:insertAttribute name="content" /></div>    
     <div id="footer"><tiles:insertAttribute name="footer" /></div>
 </div>
 </body>

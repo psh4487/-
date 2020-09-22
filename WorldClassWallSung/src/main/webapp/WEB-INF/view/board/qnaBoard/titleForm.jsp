@@ -1,37 +1,47 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <style>
-td:nth-child(3){font-size:1px; text-align:center; padding: 10px 5px;}
+	.replyList{margin-left:400px;
+			   }
+	
+	.rep{margin-left:500px;}
 </style>
 </head>
 <body>
 <form>
-<div>
-	<label for = "exampleFormControlInput1">제목</label>
-	<input type = "text" id = "exampleFormControlInput1" name = "exampleFormControlInput1" value = "${no.title }" readonly>
+<div class = "form-group" align = "center">
+	<label for = "title">제목</label>
+	<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "exampleFormControlInput1" name = "exampleFormControlInput1" value = "${no.title }" readonly>
 </div>
-<div>
-<label for = "exampleFormControlInput1">작성자</label>
-	<input type = "text" id = "exampleFormControlInput1" name = "exampleFormControlInput2" value = "${no.writer }" readonly>
+<div class = "form-group" align = "center">
+<label for = "writer">작성자</label>
+	<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "exampleFormControlInput1" name = "exampleFormControlInput2" value = "${no.writer }" readonly>
 </div>
-<div>
-<label for = "exampleFormControlTextarea1">내용</label>
-	<textarea id = "exampleFormControlTextarea1" name = "exampleFormControlTextarea1" rows = "10" readonly >${no.content }</textarea>
+<div class = "form-group" align = "center">
+<label for = "content">내용</label>
+	<textarea class = "form-control" id = "exampleFormControlTextarea1" style = "width:500px;" name = "exampleFormControlTextarea1" rows = "10" readonly >${no.content }</textarea>
 </div>
-<input type = "button" value = "목록으로" onclick = "location.href='qnaMain.do'">
+<div class = "input-group" style = "padding:0px 650px">
+<input type = "button" value = "목록으로" class = "replyWriteBtn btn btn-primary" onclick = "location.href='qnaMain.do'">
 <!-- 수정, 삭제는 글 작성에서 stu_no값을 저장, login.stu_no값이 일치하면 출력 -->
+
 <c:if test = "${login.mem_no == 1 && login.stu_no == no.stu_no }">
-<input type = "button" value = "수	정" onclick = "fn_update(${no.no})">
-<input type = "button" value = "삭 	제" onclick = "fn_delete(${no.no})">
+<input type = "button" style="margin-left:15px; margin-right:15px;" class = "replyWriteBtn btn btn-warning" value = "수   정" onclick = "fn_update(${no.no})">
+<input type = "button" class = "replyWriteBtn btn btn-danger" value = "삭   제" onclick = "fn_delete(${no.no})">
 </c:if>
 <c:if test = "${login.mem_no == 2 && login.prof_cd == no.prof_cd }">
-<input type = "button" value = "수	정" onclick = "fn_update(${no.no})">
-<input type = "button" value = "삭 	제" onclick = "fn_delete(${no.no})">
+<input type = "button" class = "replyWriteBtn btn btn-warning" style="margin-left:15px; margin-right:15px;" value = "수   정" onclick = "fn_update(${no.no})">
+<input type = "button" class = "replyWriteBtn btn btn-danger" value = "삭   제" onclick = "fn_delete(${no.no})">
 </c:if>
+</div>
 </form>
 
 
@@ -58,31 +68,64 @@ function writeSave(){
 		return false;
 		}
 }
+function deleteReply(rno){
+	var chk = confirm("정말 삭제하시겠습니까?")
+	if(chk){
+		alert("삭제되었습니다.")
+		location.href="deleteReply.do?rno="+rno
+		}
+}
 </script>
+<c:if test = "${fn:length(replyList) > 0 }">
 <div id = "reply">
-<table>
+<table class = "replyList">
+	<tr style="font-size:15px;">
+	<td>작성자</td>
+	<td align="center">내용</td>
+	<td align="center">날짜</td>
+	</tr>
 <c:forEach items = "${replyList }" var = "replyList">
 	<tr>
-	<td>${replyList.writer }</td>
-	<td>${replyList.content }</td>
-	<td>${replyList.regdate }</td>
+	<td width = "80">${replyList.writer }
+	</td><td width = "400" style="word-break:break-all">${replyList.content }
+	
+	</td><td width = "150">${replyList.regdate }
+	</td>
+	<td>
+	<c:if test = "${login.mem_no == 3 || login.mem_no == 4 }">
+	<input type = "button" class = "replyWriteBtn btn btn-danger" onclick = "deleteReply(${replyList.rno})" value = "댓글 삭제">
+	</c:if>
+	</td></tr>
+	
+	
 </c:forEach>
 </table>
+
 </div>
-<form name = "replyForm" action = '<c:url value='insertReply.do'/>' onsubmit="return writeSave()" method = "post">
+</c:if>
+<form name = "replyForm" action = '<c:url value="insertReply.do"/>' onsubmit="return writeSave()" method = "post">
 <input type = "hidden" name = "no" id = "no" value = "${no.no }">
-<div>
+<div class = "form-group">
 	<c:if test = "${login.mem_no == 3 || login.mem_no == 4}">
 	<input type = "hidden" id = "writer" name = "writer" value = "${login.staff_nm }">
 	</c:if>
-
-	<c:if test = "${login.mem_no == 3 || login.mem_no == 4 }">
-	<label for = "content">댓글</label>
-	<input type = "text" id=  "content" name = "content">
-	
-	<input type = "submit" value = "댓글 작성">
-	</c:if>
 </div>
+	<c:if test = "${login.mem_no == 3 || login.mem_no == 4 }">
+	<div class = "form-group">
+	<label for = "content" class = "rep">댓글</label>
+	
+	<input type = "text"  name = "content">
+	
+	
+	
+	<input type = "submit" class = "replyWriteBtn btn btn-success" style="margin:0px 0px;" value = "댓글 작성">
+	
+	
+	
+	</div>
+	
+	</c:if>
+
 	
 </form>
 

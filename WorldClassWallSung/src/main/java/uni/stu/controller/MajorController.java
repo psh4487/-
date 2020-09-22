@@ -109,11 +109,10 @@ public class MajorController implements ApplicationContextAware {
 	}
 	
 	@GetMapping(value = "downApply.do")
-	public ModelAndView fileDownload(String sub_path) throws Exception{		
-		Map<String, Object> down = new HashMap<String, Object>();
-		down.put("report_path", sub_path);
-		down.put("report_file", sub_path.substring(10,sub_path.length()));	
-		return new ModelAndView("fileDownloadUtil", "down", down);
+	public ModelAndView fileDownload(@RequestParam("sub_path")String sub_path) throws Exception{
+		String fullPath = sub_path.replace("\\","/");
+		File file = new File(fullPath);
+		return new ModelAndView("fileDownApply", "downloadFile", file);
 		}
 	
 

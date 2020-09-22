@@ -66,7 +66,7 @@ public class LoginStuDao extends SqlSessionDaoSupport {
 	public void pass_change_pro(Map<String, Object> map, ProDto dto) throws Exception {
 
 		map.get("prof_pwd");
-		map.get("prof_email");
+		map.get("prof_cd");
 
 		getSqlSession().update("staff.pass_change_pro", map);
 	}
@@ -74,7 +74,7 @@ public class LoginStuDao extends SqlSessionDaoSupport {
 	public void pass_change_sta(Map<String, Object> map, StaffDto dto) throws Exception {
 
 		map.get("staff_pwd");
-		map.get("staff_email");
+		map.get("staff_no");
 
 		getSqlSession().update("staff.pass_change_sta", map);
 	}

@@ -1,11 +1,14 @@
 package uni.board.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import uni.board.model.BoardDto;
-
+import uni.board.model.Criteria;
+import uni.board.model.PageMaker;
 import uni.board.model.SearchCriteria;
 
 public class BoardDao extends SqlSessionDaoSupport {

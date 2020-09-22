@@ -33,7 +33,7 @@ $(function() {
 
 <body>
 	<form:form id="signupform" class="form-horizontal" role="form"
-		action="find_pass_all" method="post">
+		action="find_pass_all.do" method="post">
 		<div class="form-group">
 			<label for="all_cd">ID</label>
 		</div>

@@ -31,7 +31,7 @@ public class StaRestController {
 	public ModelAndView go2(String sub_nm) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",rs.reasonList(sub_nm));	
-		mav.setViewName("/sta/StaRest2");		
+		mav.setViewName("StaRest2");		
 		return mav; 
 	}
 	

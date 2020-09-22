@@ -5,8 +5,7 @@
 <title>휴강 신청 내역</title>	
 	<script>
 	$(function(){		
-		var url="viewlist.do";
-		
+		var url="viewlist.do";		
 		$.ajax({
 			type:"post"		
 			,url:url		

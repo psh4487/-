@@ -24,8 +24,9 @@ public class CounselingController {
 	CounselingService cs;
 	
 	@RequestMapping("counselingMain.do")
-	public String historyList(Model m, CounselingDto cdto) throws Exception {
-		List<CounselingDto> list = cs.historyList(2020101); // 여기를 수정하면 됩니다.
+	public String historyList(Model m, CounselingDto cdto,HttpSession session) throws Exception {
+		int stu_no = ((Login_All_Dto)session.getAttribute("login")).getStu_no();
+		List<CounselingDto> list = cs.historyList(stu_no); // 여기를 수정하면 됩니다.
 		m.addAttribute("historyList", list);
 		return "counselingMain";
 	}

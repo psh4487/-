@@ -3,6 +3,7 @@ package uni.board.controller;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -41,23 +42,37 @@ public class SubjectBoardController {
 		pageMaker.setTotalCount(service.listCount(scri));
 		model.addAttribute("pageMaker",pageMaker);
 		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
-		if(mem == 2) {
-			return "subjectBoard2";
-		}else if(mem == 3) {
-			return "subjectBoard3";			
-		}else if(mem == 3) {
-			return "subjectBoard4";			
-		}		
+	  	if(mem == 2) {
+	  		return "subjectBoard2";
+	  	}else if(mem==3) {
+	  		return "subjectBoard3";
+	  	}else if(mem==4) {
+	  		return "subjectBoard4";
+	  	}		
 		return "subjectBoard1";
 	}
 	//글 작성 폼
 	@RequestMapping("writeSubjectBoardForm.do")
-	public String writeForm(Model model, @ModelAttribute("scri")SearchCriteria scri) {
+	public String writeForm(Model model, @ModelAttribute("scri")SearchCriteria scri,HttpSession session,HttpServletRequest request) {
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
 		List<SubjectBoardDto> list = service.list(scri);
 		model.addAttribute("list",list);
 		List<DeptNm> list1 = service.deptnm();
+		if(mem == 2) {
+		int prof_cd = Integer.parseInt(request.getParameter("prof_cd")); 
+		
+		System.out.println(service.dept_nm(prof_cd));
+		String i = service.dept_nm(prof_cd);
+		model.addAttribute("prof_dept_nm", i);
+		}
 		model.addAttribute("dept_nm",list1);
-		return "board/subjectBoard/writeForm";
+		
+		if(mem == 2) {
+			return "subjectBoardwriteForm2";
+		}else if(mem==3) {
+			return "subjectBoardwriteForm3";
+		}
+		return "subjectBoardwriteForm4";
 	}
 	//글 작성
 	@RequestMapping("writeSubjectBoardPro.do")
@@ -67,11 +82,23 @@ public class SubjectBoardController {
 	}
 	//글 조회
 	@RequestMapping("selectSubjectBoardForm.do")
-	public String selectTitle(@RequestParam("no")int no, Model model) {
+	public String selectTitle(@RequestParam("no")int no, Model model,HttpSession session) {
 		SubjectBoardDto dto = service.selectTitle(no);
 		model.addAttribute("no",dto);
 		service.addHit(no);
-		return "board/subjectBoard/titleForm";
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
+		if(mem == 1) {
+			return "selectSubjectForm1";
+		}
+		else if(mem == 2) {
+			return "selectSubjectForm2";
+		}
+		else if(mem ==3) {
+			return "selectSubjectForm3";
+		}
+		return "selectSubjectForm4";
+			
+		
 	}
 	//글 삭제
 	@RequestMapping("deleteSubjectBoard.do")
@@ -81,18 +108,23 @@ public class SubjectBoardController {
 	}
 	//글 수정 폼
 	@RequestMapping("updateSubjectboardForm.do")
-	public String updateTitleForm(@RequestParam("no")int no, Model model) {
+	public String updateTitleForm(@RequestParam("no")int no, Model model,HttpSession session) {
 		SubjectBoardDto dto = service.selectTitle(no);
 		model.addAttribute("no", dto);
-		
-		return "board/subjectBoard/updateForm";
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
+		if(mem==2) {
+			return "subjectBoardupdateForm2";
+		}else if(mem==3) {
+			return "subjectBoardupdateForm3";
+		}
+		return "subjectBoardupdateForm4";
 	}
 	//글 수정
 	@RequestMapping("updateSubjectBoardPro.do")
 	public String updateTitlePro(SubjectBoardDto dto,RedirectAttributes redirect) {
 		redirect.addAttribute("no", dto.getNo());
 		service.updateTitle(dto);
-		return "redirect:subjectBoardMain.do";
+		return "redirect:/selectSubjectBoardForm.do";
 	}
 	
 }

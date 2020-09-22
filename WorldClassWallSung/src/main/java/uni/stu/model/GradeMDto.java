@@ -1,20 +1,20 @@
 package uni.stu.model;
 
 public class GradeMDto {
+	
 	private String isu;
 	private String sub_nm;
-	private int stu_no; // 학생번호
-	private int sub_cd; // 강의실명
-	private int mid_score; // 중간성적
-	private int end_score; // 기말성적
-	private int report_score; // 과제점수
-	private int attend_score; // 출결점수
-	private int attend_sum; // 총합
-	private String attend_grade; // 등급
-	private String attend_rating; // 평점
+	private int stu_no; 
+	private int sub_cd;
+	private int mid_score; 
+	private int end_score; 
+	private int report_score;
+	private int attend_score; 
+	private int attend_sum; 
+	private String attend_grade=""; 
+	private String attend_rating="";
 	private int years;
 	private int sem;
-	
 	
 	public String getIsu() {
 		return isu;
@@ -93,5 +93,6 @@ public class GradeMDto {
 	}
 	public void setSem(int sem) {
 		this.sem = sem;
-	}
+	}	
+	
 }

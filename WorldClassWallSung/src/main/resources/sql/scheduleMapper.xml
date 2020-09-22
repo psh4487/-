@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b.dept_nm, a.stu_name
 		from student_tb a, dept_tb b
 		where a.dept_cd = b.dept_cd
-		and a.stu_no="2020101"
+		and a.stu_no=#{stu_no}
 	</select>
 	<select id="scheduleList" resultType="uni.stu.model.ScheduleDto" parameterType="map">
 		select a.sub_nm, d.prof_nm, subroom_nm, LEC_1, LEC_2, LEC_3

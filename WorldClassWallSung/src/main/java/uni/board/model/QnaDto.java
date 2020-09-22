@@ -12,8 +12,9 @@ public class QnaDto {
 	String writer;
 	int stu_no;
 	int prof_cd;
-	String dept_nm;
-			
+	
+	
+	
 	public int getStu_no() {
 		return stu_no;
 	}
@@ -68,12 +69,5 @@ public class QnaDto {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getDept_nm() {
-		return dept_nm;
-	}
-	public void setDept_nm(String dept_nm) {
-		this.dept_nm = dept_nm;
-	}
-	
 	
 }

@@ -14,7 +14,7 @@ SELECT  * FROM (
 		               HIT,
 		               MEM_NO,
 		               ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		         FROM QNA_TB WHERE 1=1 
+		         FROM QNA_TB WHERE 1=1
 		         <include refid="search"></include>
 		         ) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
@@ -63,4 +63,7 @@ select * from qna_reply where no = #{no}
 <insert id = "writeReply" parameterType = "uni.board.model.QnaReplyDto">
 insert into qna_reply(no, content, writer) values(#{no}, #{content}, #{writer})
 </insert>
+<delete id = "deleteReply" parameterType = "int">
+delete from qna_reply where rno = #{rno}
+</delete>
 </mapper>

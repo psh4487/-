@@ -49,7 +49,7 @@
 </head>
 <body>
 	<div>
-		<div style="float: left; width: 50%;">
+		<div style="float: left; width: 50%;" onclick="location.href='layout1.do'">
 			<image src="<c:url value="/resources/image/top_logo.png" />">
 		</div>
 		<div style="float: right; width: 50%; text-align: right; padding-right: 15px; padding-top: 13px;">

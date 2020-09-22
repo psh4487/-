@@ -8,6 +8,39 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>휴복학</title>
+<style>
+	.container {
+	    width: auto;
+	    max-width: 1140px;
+	}
+	
+	.table td, .table th {
+	    padding: .30rem;
+	}
+	.btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background-color : blue;
+            border-color: red;
+        }
+        .btn {
+       		height: 25px;
+       		width: 80px;
+       		vertical-align: bottom;
+       		padding: .0rem .75rem;
+       		font-size: 13px;
+       	}
+       	.col-md-6 {
+		    max-width: none;
+		}
+		.btn-dark:focus {
+			color: #fff;
+		    background-color: #343a40;
+		    border-color: #343a40;
+		}
+</style>
 <script>
 	$(function() {
 		$('#func').click(function() {
@@ -33,44 +66,51 @@
 </script>
 </head>
 <body>
-	<h3>학적변동 내역</h3>
-	<table border=1 style="text-align: center;">
-		<tr>
-			<td width="100">휴학 연도</td>
-			<td width="100">휴학 학기</td>
-			<td width="100">학적 뱐동</td>
-			<td width="150">휴학 신청 날짜</td>
-			<td width="100">처리 상태</td>
-		</tr>
-		<c:forEach items="${allData}" var="leaveD">
-			<tr>
-				<td>${leaveD.leave_year}</td>
-				<td>${leaveD.leave_sem}</td>
-				<td>${leaveD.leave_change}</td>
-				<td>${leaveD.leave_dt}</td>
-				<td>${leaveD.leave_state}</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<h3> 휴복학 신청 </h3>
-	<form id="subm" action="leaveSave.do" method="post">
-		<form:select path="leave_year" name="leave_year">
-			<option value="">::연도선택::</option>
-			<form:options items="${leave_year}" />
-		</form:select>
-		&nbsp;
-		<form:select path="leave_sem" name="leave_sem">
-			<option value="">::학기선택::</option>
-			<form:options items="${leave_sem}" />
-		</form:select>
-		&nbsp;
-		<form:select path="leave_change" name="leave_change">
-			<option value="">::학적변동::</option>
-			<form:options items="${leave_change}" />
-		</form:select>
-		<input type="hidden" name="stu_no" value="${login.stu_no}"> <!-- 여기를 수정하면 됩니다. -->
-		&nbsp;
-		<input type="button" value="신청" id="func">
-	</form>
+	<div class="container" style="align-content: center;">
+		<h2> 휴복학 신청 </h2>
+		<form id="subm" action="leaveSave.do" method="post">
+			<form:select class="container" path="leave_year" name="leave_year">
+				<option value="">::연도선택::</option>
+				<form:options items="${leave_year}" />
+			</form:select>
+			&nbsp;
+			<form:select class="container" path="leave_sem" name="leave_sem">
+				<option value="">::학기선택::</option>
+				<form:options items="${leave_sem}" />
+			</form:select>
+			&nbsp;
+			<form:select class="container" path="leave_change" name="leave_change">
+				<option value="">::학적변동::</option>
+				<form:options items="${leave_change}" />
+			</form:select>
+			&nbsp;&nbsp;
+			<input type="hidden" name="stu_no" value="${login.stu_no}">
+	        <input type="button" class="btn btn-dark btn-file" id="func" value="신청">
+		</form><br>
+		<hr>
+		<div class="row col-md-6 col-md-offset-2 custyle">
+		<h2>학적변동 내역</h2>
+			<table style="text-align: center;" class="table table-striped custab">
+			<thead>
+				<tr>
+					<th>휴학 연도</th>
+					<th>휴학 학기</th>
+					<th>학적 뱐동</th>
+					<th>휴학 신청 날짜</th>
+					<th>처리 상태</th>
+				</tr>
+			</thead>
+				<c:forEach items="${allData}" var="leaveD">
+					<tr>
+						<td>${leaveD.leave_year}</td>
+						<td>${leaveD.leave_sem}</td>
+						<td>${leaveD.leave_change}</td>
+						<td>${leaveD.leave_dt}</td>
+						<td>${leaveD.leave_state}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

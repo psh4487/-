@@ -5,9 +5,78 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <head>
 </head>
+<style>
+.form-control {
+   width: auto;;
+}
+
+
+.table {
+   width:700px;
+}
+	html {
+		background: url(images/bg.jpg) no-repeat 50% 50% fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+
+	.container {
+	    width: auto;
+	    max-width: 1140px;
+	}
+	
+	.table td, .table th {
+	    padding: .30rem;
+	}
+	.btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+    /*     .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity = 0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        } */
+        .btn-primary {
+            background-color : blue;
+            border-color: red;
+        }
+        .btn {
+       		height: 25px;
+       		width: 80px;
+       		vertical-align: bottom;
+       		padding: .0rem .75rem;
+       		font-size: 13px;
+       	}
+       	.col-md-6 {
+		    max-width: none;
+		}
+		.btn-dark:focus {
+			color: #fff;
+		    background-color: #343a40;
+		    border-color: #343a40;
+		}
+</style>
 <body>
+<div class="container">
+<div class="container" style="width: 1000px;">
+<div style="float: left; width: 50%; margin:30px;">
+
 <form name="form1" method="post">
-   <table class="est_view">
+   <table class="est_view" >
       <colgroup>
          <col width="15%" />
          <col width="35%" />
@@ -18,10 +87,10 @@
 
 <c:forEach var="list" items="${list}">
 
-      <span style="font-weight:bold">익명</span><br>      
+      <span style="font-weight:bold"></span><br>      
    </c:forEach>   
    </table>
-<span style="font-weight:bold">1. 강의계획서가 충실하게 구성되어 강좌선택에 도움이 되었다.</span><br>
+<span style="font-weight:bold; width: 800px;">1. 강의계획서가 충실하게 구성되어 강좌선택에 도움이 되었다.</span><br>
          <input type="checkbox" name="no1" value="1"  disabled="disabled">전혀아니다
          <input type="checkbox" name="no1" value="2"  disabled="disabled">아니다
          <input type="checkbox" name="no1" value="3"  disabled="disabled">보통이다
@@ -84,12 +153,15 @@
       <c:forEach var="list" items="${list}">
       <span style="font-weight:bold">교수에게 하고 싶은 말 </span><br>   
       <textarea rows="10" cols="60" name="prof_say" Placeholder="교수에게 하고싶은 말을 입력하세요." style="resize:none;">${list.prof_say}</textarea><br>
-   
-   <button type="button" onclick="location.href='EstimationinfoPro.do'">목록으로</button>
+   <br>
+   <button type="button" class='btn btn-dark' onclick="location.href='EstimationinfoPro.do'">목록으로</button>
 
-<button type="button" id="$list.es_state}" onclick="location.href='estok.do?stu_no=${list.stu_no}'">확인</button>
+<button type="button" class='btn btn-dark' id="$list.es_state}" onclick="location.href='estok.do?stu_no=${list.stu_no}'">확인</button>
 </c:forEach>
 </form>   
+</div>
+</div>
+</div>
 <script type="text/javascript">
 var no1= document.getElementsByName("no1");
 var no2= document.getElementsByName("no2");

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="<c:url value="/resources/css/menustyle.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/table_style.css" />" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/89f095f2b7.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -38,8 +39,8 @@
                 <ul class="submenu">
                     <li><a href="#"> 개인 정보 확인 <span class="submenu-indicator">+</span></a>
                         <ul class="submenu">
-                            <li><a href="#"> 개인정보 확인/변경 </a></li>
-                            <li><a href="#"> 비밀번호 변경 </a></li>
+                            <li><a href="stuInfoSel.do"> 개인정보 확인/변경 </a></li>
+                            <li><a href="passUpForm.do"> 비밀번호 변경 </a></li>
                         </ul>
                     </li>
                     <li><a href="couInfo.do"> 상담 신청 관리 </a></li>
@@ -71,5 +72,5 @@
     </div>
 </div>
 </body>
-<script src="<c:url value="/resources/js/menujs.js" />"></script>
 </html>
+<script src="<c:url value="/resources/js/menujs.js" />"></script>

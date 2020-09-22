@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="searchRest2" resultType="uni.sta.model.SubjectDto">
 	select b.PROF_NM, a.SUB_NM, a.noclass_dt, a.noclass_state, c.SUB_CD from subject_tb a join PROFESSOR_TB b join class_cancel_tb c
 	where a.prof_cd = b.prof_cd and a.SUB_CD = c.SUB_CD
-	and CAN_STATE = '대기';
+	and CAN_STATE = '미승인';
 	</select>
 	<update id="accept" parameterType="String">
 		update class_cancel_tb set CAN_STATE = "승인" where sub_cd = #{sub_cd}

@@ -11,8 +11,8 @@
 </head>
 <body>
 <form action="subjecttb.do"  method="post" name="form" enctype="multipart/form-data">
-	강의코드 : <input type="text" name="sub_cd" id="sub_cd" value="${sub_cd}" readonly="readonly">
-	교수명 : <input type="text" name="교수명" value="${login.prof_nm}">
+	강의코드 : <input type="text" name="sub_cd" id="sub_cd" value="${sub_cd}" readonly="readonly" style="width:80px;"/>
+	교수명 : <input type="text" name="교수명" value="${login.prof_nm}" style="width:130px;"/>
 	<input type="hidden" name="prof_cd" value="${login.prof_cd}">
 	<br>
 	이수구분 : <select name="isu" onchange="isuNum(this)">
@@ -22,7 +22,7 @@
 	<option>교양필수</option>
 	<option>교양선택</option>
 	</select>
-	학점<input type="text" name="credit" id="credit" readonly="readonly">
+	학점<input type="text" name="credit" id="credit" readonly="readonly" style="width:155px;"/>
 	<div class="filewrap">
 	강의계획서<input type="text" id="fileName"  name="fileName" readonly="readonly">
 	<label for="upFile" class="file_upload_btn">파일 업로드</label>
@@ -30,15 +30,15 @@
 	</div>
 	강의명 <input type="text" name="sub_nm" id="sub_nm">
 	<input type="hidden" name="dept_cd" id="dept_cd" value="${login.dept_cd}">
-	최대 강의 인원(60) : <input type="text" name="max_mem" id="max_mem">	
+	최대 강의 인원(60) : <input type="text" name="max_mem" id="max_mem" style="width:88px;"/>	
 	<br>
-	<input type="button" value="강의실/시간선택" onclick="window.open('lectureroom.do','window팝업','width=600, height=600, menubar=no, status=no, toolbar=no');">
+	<input type="button" value="강의실/시간선택" class='btn btn-dark' onclick="window.open('lectureroom.do','window팝업','width=600, height=600, menubar=no, status=no, toolbar=no');">
 	<input type="text" name="subroom_nm" id="subroom_nm" />
 	<input type="hidden" name="check" id="check"/><!-- 보낼값(찐) -->
 	<input type="text" name="check1" id="check1"/><!-- 보일값 (짭)-->
 	<br>	
-	<input type="submit" value="강의신청">
-	<input type="button" value="취소" onclick="location.href='main.do'">
+	<input type="submit" value="강의신청" class='btn btn-dark'>
+	<input type="button" value="취소" class='btn btn-dark' onclick="location.href='main.do'">
 </form>
 <script>
 $(document).ready(function(){

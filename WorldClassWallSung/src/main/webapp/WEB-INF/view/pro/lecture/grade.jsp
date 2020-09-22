@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -20,6 +21,15 @@
 .swal2-styled.swal2-confirm {
 	font-size: 10px;
 }
+.col-md-6 {
+    width: 700px;
+    max-width: 100%;
+}
+.btn-dark:focus {
+         color: #fff;
+          background-color: #343a40;
+          border-color: #343a40;
+      } 
 </style>
 <script>
 $(function(){
@@ -29,7 +39,6 @@ $(function(){
 		,url:url		
 		,dataType:"json" })
 		.done(function(args){
-				//응답이 성공 상태 코드를 반환하면 호출되는 함수
 			 for(var i=0; i < args.length; i++) {
 				 $("#subname").append("<option value='"+args[i].sub_cd+"'>"+args[i].sub_nm+"</option>");
 			 }
@@ -37,16 +46,16 @@ $(function(){
 	    .fail(function(e) {
 	    	alert(e.responseText);
 	    })
-});//ready 끝
-$(function(){
+});
+
+$(function(){ 
 	var url="testScore.do";	
 	$.ajax({
 		type:"post"	
 		,url:url		
 		,dataType:"json" })
 		.done(function(args){
-				//응답이 성공 상태 코드를 반환하면 호출되는 함수
-			 $("#empInfo").append("<table id='emp' border='1'><tr><td>과목명</td><td>학번</td><td>학생이름</td><td>중간</td><td>기말</td><td>과제</td><td>출석</td><td>총합</td><td>등급</td><td>평균</td></tr></table>");
+			 $("#stugrade").append("<table class='table table-striped custab' id='stugadeinfo'><tr><td>과목명</td><td>학번</td><td>학생이름</td><td>중간</td><td>기말</td><td>과제</td><td>출석</td><td>총합</td><td>등급</td><td>평균</td></tr></table>");
 			 for(var i=0; i < args.length; i++) {
 				 var str="<tr><td>"+args[i].sub_nm
 			        + "</td>" + "<td>"+args[i].stu_no
@@ -59,13 +68,13 @@ $(function(){
 					+ "</td>" + "<td>" +args[i].attend_grade
 					+ "</td>" + "<td>" +args[i].attend_rating
 					+ "</td></tr>";
-				 $("#emp").append(str);
+				 $("#stugadeinfo").append(str);
 			 }
  			})
 	    .fail(function(e) {
 	    	alert(e.responseText);
 	    })
-});//ready 끝
+});
 function selectPerson(){	  	    			
 			var subname=$("#subname option:selected").html();
 			var stuname=$("#stuname option:selected").html();
@@ -79,7 +88,6 @@ function selectPerson(){
 
  function selectBuil(){
 	var stuname = $("#subname :selected").val();
-	if(stuname !=""){
 	var url="stuname.do";
 	var params="sub_cd="+stuname;	
 	console.log(params);
@@ -100,16 +108,13 @@ function selectPerson(){
 	    .fail(function(e) {
 	    	alert(e.responseText);
 	    });	
-		}
 }
-
+ //등급계산 및 평점입력
  function grade(){ 
 	var mid_score = document.getElementById("mid_score").value;
 	var end_score = document.getElementById("end_score").value;
 	var report_score = document.getElementById("report_score").value;
 	var attend_score = document.getElementById("attend_score").value;
-	var params="mid_score=" + mid_score+"end_score"+end_score+"report_score"+report_score+"attend_score"+attend_score;
-	var sendData = JSON.stringify({mid_score:$('#mid_score').val(), end_score:$('#end_score').val(),report_score:$('#report_score').val(),attend_score:$('#attend_score').val()});
 	var arr = [mid_score,end_score,report_score,attend_score]; 
 	var sum =0;	
 	
@@ -154,6 +159,7 @@ function selectPerson(){
 		}
 };
 
+//성적 입력 범위 제한
 $(document).on("keyup", "input[name=mid_score]", function() {
     var val= $(this).val();
 
@@ -205,6 +211,8 @@ $(document).on("keyup", "input[name=attend_score]", function() {
         $(this).val('');
     }
 });
+
+//강의선택 및 성적입력이 안되엇을때 보여줄 창
 function checkIt(){
 	var a = $("#subname1").val()
 	var b = $("#stuname1").val()
@@ -256,9 +264,9 @@ function checkIt(){
 		<option value="">::학생 선택::</option>
 	</select>
 	<br>	
-	강의명 : <input type="text" id="subname1" name="subname1" readonly="readonly">&nbsp;
-	학생명 : <input type="text" id="stuname1" name="stuname1" readonly="readonly"> <br>
-<form action="test.do" onsubmit="return checkIt()" name="myForm">
+	&nbsp;&nbsp;강의명 : <input type="text" style="margin-left: 1.81px;" id="subname1" name="subname1" readonly="readonly">&nbsp;
+	&nbsp;&nbsp;&nbsp;학생명 : <input type="text" id="stuname1" name="stuname1" readonly="readonly"> <br>
+	<form action="test.do" onsubmit="return checkIt()" margin-left: -1px; name="myForm">
 	<input type="hidden" id="sub_cd" name="sub_cd"> 
 	<input type="hidden" id="stu_no" name="stu_no">
 	<br>
@@ -266,11 +274,11 @@ function checkIt(){
 	과제(15) : <input type="text" id="report_score" name="report_score"> <br>
 	기말(40) : <input type="text" id="end_score" name="end_score">&nbsp;
 	출석(10) : <input type="text" id="attend_score" name="attend_score"> <br>
-	합계 : <input type="text" id="sum" readonly="readonly"> 등급 : <input type="text" id="gra" readonly="readonly"><br>
-	<input type="submit" value="성적 입력">
-	<input type="button" id="save" value="계산" onclick="grade()"> <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;합계 :&nbsp;&nbsp; <input type="text" style="margin-left: 0.5px;" id="sum" readonly="readonly">&nbsp;&nbsp;&nbsp;&nbsp;등급 : &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="margin-left: 0px;" id="gra" readonly="readonly"><br>
+	<input class="btn btn-dark" type="submit" value="성적 입력">
+	<input class="btn btn-dark" type="button" id="save" value="계산" onclick="grade()"> <br>
 </form>
 <br>
-	<div id="empInfo"></div>
+	<div id="stugrade" class="row col-md-6 col-md-offset-2 custyle"></div>
 </body>
 </html>

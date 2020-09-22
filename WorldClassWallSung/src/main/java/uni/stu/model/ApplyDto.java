@@ -1,6 +1,5 @@
 package uni.stu.model;
 
-
 public class ApplyDto {
 	
 	String dept_cd;
@@ -24,7 +23,6 @@ public class ApplyDto {
 	String sem;
 	String sub_state;
 	int years;
-	
 	public String getDept_cd() {
 		return dept_cd;
 	}
@@ -107,7 +105,7 @@ public class ApplyDto {
 		return sub_path;
 	}
 	public void setSub_path(String sub_path) {
-		this.sub_path = sub_path.replace("\\","/");
+		this.sub_path = sub_path;
 	}
 	public String getWeek() {
 		return week;
@@ -151,8 +149,5 @@ public class ApplyDto {
 	public void setYears(int years) {
 		this.years = years;
 	}	
-	
-	
-	
 	
 }

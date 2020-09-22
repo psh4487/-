@@ -49,8 +49,8 @@
 </head>
 <body>
 	<div>
-		<div style="float: left; width: 50%;">
-			<image src="<c:url value="/resources/image/top_logo.png" />">
+		<div style="float: left; width: 50%;" onclick="location.href='layout3.do'">
+			<image src="<c:url value="/resources/image/top_logo.png"/>">
 		</div>
 		<div style="float: right; width: 50%; text-align: right; padding-right: 15px; padding-top: 13px;">
 			<span style="color: white; padding-top: 5px;"> <b>${login.staff_nm}</b> 님

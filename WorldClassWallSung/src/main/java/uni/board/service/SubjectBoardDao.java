@@ -41,4 +41,8 @@ public class SubjectBoardDao extends SqlSessionDaoSupport{
 	public int update(SubjectBoardDto dto) {
 		return getSqlSession().update("subjectboard.updateTitle",dto);
 	}
+	//학과출력
+	public String dept_nm(int prof_cd) {
+		return getSqlSession().selectOne("subjectboard.deptList", prof_cd);
+	}
 }

@@ -18,8 +18,22 @@
 	<!-- 로그인 -->
 	<bean id="LoginStuDao" class="uni.main.service.LoginStuDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	<!-- 게시판 -->
+	<bean class = "uni.board.service.BoardDao" id = "boardDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean class = "uni.board.service.QnaDao" id = "qnaDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+	<bean class = "uni.board.service.QnaReplyDao" id = "qnaReplyDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
 	
+	<bean class = "uni.board.service.SubjectBoardDao" id = "subjectBoardDao" 
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
 	<!-- 학생  -->
+	<bean id="StuPassUpDao" class="uni.stu.service.StuPassUpDao"
+      p:sqlSessionFactory-ref="sqlSessionFactory" /> 
 	<bean class="uni.stu.service.SubjectDao" id="subjectDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"/>
 		
@@ -101,19 +115,7 @@
 
 	<bean id="StuInsertDao" class="uni.sta.service.StuInsertDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory" />
-	
-	<!-- 게시판  -->	
-	<bean class = "uni.board.service.BoardDao" id = "boardDao" 
-		p:sqlSessionFactory-ref="sqlSessionFactory" />
 		
-	<bean class = "uni.board.service.QnaDao" id = "qnaDao" 
-		p:sqlSessionFactory-ref="sqlSessionFactory" />
-		
-	<bean class = "uni.board.service.QnaReplyDao" id = "qnaReplyDao" 
-		p:sqlSessionFactory-ref="sqlSessionFactory" />
-	
-	<bean class = "uni.board.service.SubjectBoardDao" id = "subjectBoardDao" 
-		p:sqlSessionFactory-ref="sqlSessionFactory" />
 
 	
 	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
@@ -135,8 +137,12 @@
  	<mvc:interceptors>
 		<mvc:interceptor>    
 			<mvc:mapping path="/**" />
-			<!-- <mvc:exclude-mapping path="/stafflist/login*"/> -->
-			<mvc:exclude-mapping path="/stafflist/findpass/*"/>
+			 <mvc:exclude-mapping path="/loginstu.do"/>
+			 <mvc:exclude-mapping path="/loginCheck.do"/>
+			 <mvc:exclude-mapping path="/find_pass_start_all.do"/>
+			 <mvc:exclude-mapping path="/find_pass_all.do"/>
+			 <mvc:exclude-mapping path="/pass_injeung_all.do"/>
+			 <mvc:exclude-mapping path="/pass_change.do"/>
 			<bean class="uni.main.AuthLoginInterceptor.AuthLoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

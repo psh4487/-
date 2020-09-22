@@ -5,24 +5,24 @@
 <html>
 <head>
 <title>학교 게시판</title>
-<style type = "text/css">
-	table{border:2px solid; border-collapse:collapse; }
-	li{list-style:none; float:left; padding:6px;}
-	th,td{border:1px solid; text-align:center; padding: 10px 5px;}
-	
-	tr:nth-child(1){background:blue;color:white;}
-	tr:nth-child(2){background:tomato;}
-	tr:nth-child(3){background:tomato;}
-	tr:nth-child(4){background:tomato;}
-</style>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- 부가적인 테마 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<style>
+		.form-control{padding-top:0px;
+					padding-bottom:0px;
+					
+		}
+		</style>
 </head>
 <body>
-<div>
+<div class = "container">
 <form action = "writeboardForm.do" method = "post">
 	<c:if test = "${login.mem_no == 3 || login.mem_no == 4 }">
-	<input type = "submit" value = "글 작성">
+	<input type = "submit" class = "replyWriteBtn btn btn-success" value = "글 작성">
 	</c:if>
-	<table>
+	<table class = "table table-hover">
 		
 			<tr>
 				<td>번호</td>
@@ -38,9 +38,9 @@
 				<c:when test = "${fn:length(notice) > 0 }">
 				<c:forEach items = "${notice }" var = "notice">
 					<tr>
-						<td>-</td>
-						<td>공지</td>
-						<td><a href ="#" onclick="changeContent('selectboardForm.do?no=${notice.no}')">${notice.title }</a></td>
+						<td><font color = "red">-</font></td>
+						<td><font color = "red">공지</font></td>
+						<td><a href = "selectboardForm.do?no=${notice.no }">${notice.title }</a></td>
 						<td>${notice.writer }</td>
 						<td>${notice.board_dt }</td>
 						<td>${notice.hit }</td>
@@ -59,7 +59,7 @@
 						<tr>
 							<td>${list.no }</td>
 							<td>${list.horse }</td>
-							<td><a href ="#" onclick="changeContent('selectboardForm.do?no=${list.no }')">${list.title }</a></td>
+							<td><a href = "selectboardForm.do?no=${list.no }">${list.title }</a></td>
 							<td>${list.writer }</td>
 							<td>${list.board_dt }</td>
 							<td>${list.hit }</td>
@@ -79,8 +79,8 @@
 	
 </form>
 </div>
-<div>
-	<ul>
+<div class = "col-md-offset-3">
+	<ul class = "pagination">
 		<c:if test = "${pageMaker.prev }">
 		<li><a href = "boardMain.do${pageMaker.makeQuery(pageMaker.startPage - 1) }">이전</a></li>
 		</c:if>
@@ -93,15 +93,19 @@
 			<li><a href = "boardMain.do${pageMaker.makeQuery(pageMaker.endPage + 1) }">다음</a></li>
 		</c:if>
 	</ul>
-</div><br><br>
-<div>
-	<select name = "searchType">	
+</div>
+<div class = "search row">
+	<div class = "col-xs-2 col-sm-2">
+	<select name = "searchType" class = "form-control">
 		<option value = "t"<c:out value = "${scri.searchType eq 't' ? 'selected':'' }"/>>제목</option>
 		<option value = "c"<c:out value = "${scri.searchType eq 'c' ? 'selected':'' }"/>>내용</option>
 		<option value = "w"<c:out value = "${scri.searchType eq 'w' ? 'selected':'' }"/>>작성자</option>
 		<option value = "tc"<c:out value = "${scri.searchType eq 'tc' ? 'selected':'' }"/>>제목+내용</option>
+		
 	</select>
-	<input type = "text" name = "keyword" id = "keywordInput" value = "${scri.keyword }" />
+	</div>
+	<div class = "col-xs-10 col-sm-10">
+	<input type = "text" name = "keyword" id = "keywordInput" value = "${scri.keyword }" size = "50"/>
 	<button id = "searchBtn" type = "button">검색</button>
 <script>
 $(function(){
@@ -111,5 +115,7 @@ $(function(){
 });
 </script>
 </div>
+</div>
 </body>
+
 </html>

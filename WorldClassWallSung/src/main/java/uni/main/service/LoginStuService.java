@@ -24,11 +24,6 @@ public class LoginStuService {
 		this.mailSender = mailSender;
 	}
 
-	/*
-	 * public void LoginStuQ(StuDto dto) { MimeMessage dao =
-	 * mailSender.createMimeMessage(); }
-	 */
-
 	@Autowired
 	public void setDao(LoginStuDao dao) {
 		this.dao = dao;
@@ -71,6 +66,8 @@ public class LoginStuService {
 		dao.pass_change_sta(map, dto);
 	}
 
+	
+	
 	public boolean mailSend(Login_All_Dto email) {
 
 		try {
@@ -78,7 +75,6 @@ public class LoginStuService {
 
 			msg.setSubject(email.getSubject());
 
-			// 일반 텍스트만 전송하려는 경우
 			msg.setText(email.getContent());
 			msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
 

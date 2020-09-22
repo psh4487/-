@@ -29,20 +29,24 @@ public class StuInfoService {
 	}
 	
 	public StaffDto SelInfoSta(int staff_no) {
-		return dao.SelInfoSta(staff_no);		
+		return dao.SelInfoSta(staff_no);
+		
 	}
 
 		
 	public void upInfo(Login_All_Dto dto) {
 		dao.upInfo(dto);
+
 	}
 	
 	public void upInfoPro(Login_All_Dto dto) {
 		dao.upInfoPro(dto);
+
 	}
 	
 	public void upInfoSta(Login_All_Dto dto) {
 		dao.upInfoSta(dto);
+
 	}
 	
 	

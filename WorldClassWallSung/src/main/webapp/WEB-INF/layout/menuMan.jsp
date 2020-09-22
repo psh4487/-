@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>관리자 사이드 메뉴</title>
+    <title>교직원 사이드 메뉴</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -34,12 +34,12 @@
     <div id="jquery-accordion-menu" class="jquery-accordion-menu white">
         <div class="jquery-accordion-menu-header"> WallSung University </div>
         <ul>
-            <li class="active"><a href="#"><i class="fas fa-user"></i> 관리자메뉴 <span class="submenu-indicator">+</span></a>
+            <li class="active"><a href="#"><i class="fas fa-user"></i> 교직원메뉴 <span class="submenu-indicator">+</span></a>
                 <ul class="submenu">
                     <li><a href="#"> 개인 정보 확인 <span class="submenu-indicator">+</span></a>
                         <ul class="submenu">
                             <li><a href="stuInfoSel.do"> 개인정보 확인/변경 </a></li>
-                            <li><a href="#"> 비밀번호 변경 </a></li>
+                            <li><a href="passUpForm.do"> 비밀번호 변경 </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -71,6 +71,7 @@
     </div>
 </div>
 </body>
+</html>
 <script src="<c:url value="/resources/js/menujs.js" />"></script>
 <script>
 function changeContent(name){

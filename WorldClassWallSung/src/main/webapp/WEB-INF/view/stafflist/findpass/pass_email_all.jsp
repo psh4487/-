@@ -35,7 +35,7 @@ $(function() {
 				<tr>
 					<td>
 						<center>
-							<form action="pass_injeung_all" method="post">
+							<form action="pass_injeung_all.do" method="post">
 
 								<center>
 									<br>

@@ -41,46 +41,61 @@ public class QnaController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
-		model.addAttribute("pageMaker", pageMaker);		
+		model.addAttribute("pageMaker", pageMaker);
 		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
-		if(mem == 2) {
-			return "qnaBoard2";
-		}else if(mem == 3) {
-			return "qnaBoard3";			
-		}else if(mem == 3) {
-			return "qnaBoard4";			
-		}
+	  	if(mem == 2) {
+	  		return "qnaBoard2"; 
+	  	}else if(mem==3) {
+	  		return "qnaBoard3";
+	  	}else if(mem==4) {
+	  		return "qnaBoard4";
+	  	}
 		return "qnaBoard1";
 	}
 	//글 작성 폼
 	@RequestMapping("writeQnaForm.do")
-	public String writeForm(Model model,@ModelAttribute("scri")SearchCriteria scri) {
+	public String writeForm(Model model,@ModelAttribute("scri")SearchCriteria scri,HttpSession session) {
 		List<QnaDto> list = service.list(scri);
 		model.addAttribute("list", list);
-		return "board/qnaBoard/writeForm";
+	 	
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
+	  	if(mem == 2) {
+	  	  	return "qnaBoardwriteForm2"; 
+	  	}
+		return "qnaBoardwriteForm1";
 	}
 	//글 작성
 	@RequestMapping("writeQnaPro.do")
 	public String writePro(QnaDto dto) {
 		service.insert(dto);
-		return "redirect:/qnaMain.do";
+		return "redirect:qnaMain.do";
 	}
 	//글 조회, 댓글  삭제, 출력
 	@RequestMapping("selectQnaForm.do")
-	public String selectTitle(@RequestParam("no")int no, Model model) {
+	public String selectTitle(@RequestParam("no")int no, Model model,HttpSession session) {
 		QnaDto dto = service.selectTitle(no);
 		model.addAttribute("no", dto);
 		service.addHit(no);
 		List<QnaReplyDto> replyList = reservice.reList(no);
-		
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
 		model.addAttribute("replyList",replyList);
-		return "board/qnaBoard/titleForm";
+		if(mem == 2) {
+			return "selectQnaForm2";
+		}
+		if(mem==3) {
+			return "selectQnaForm3";	
+		}else if(mem==4) {
+			return "selectQnaForm4";
+		}
+		return "selectQnaForm1";
+		
 	}
 	//댓글 입력
 	@RequestMapping("insertReply.do")
 	public String insertReply(QnaReplyDto dto, RedirectAttributes redirect) {
 		//QnaDto dto = new QnaDto();
-		redirect.addAttribute("no", dto.getNo());		
+		redirect.addAttribute("no", dto.getNo());
+		System.out.println(dto.toString());
 		reservice.insertReply(dto);
 		
 		return "redirect:selectQnaForm.do";
@@ -93,17 +108,29 @@ public class QnaController {
 	}
 	//글 수정 폼
 	@RequestMapping("updateQnaForm.do")
-	public String updateTitleForm(@RequestParam("no")int no,Model model) {
+	public String updateTitleForm(@RequestParam("no")int no,Model model,HttpSession session) {
 		QnaDto dto = service.selectTitle(no);
 		model.addAttribute("no", dto);
-		
-		return "board/qnaBoard/updateForm";
+		int mem = ((Login_All_Dto)session.getAttribute("login")).getMem_no();
+	  	if(mem == 2) {
+	  	  	return "qnaBoardupdateForm2"; 
+	  	}
+		return "qnaBoardupdateForm1";
 	}
 	//글 수정
 	@RequestMapping("updateQnaPro.do")
 	public String updateTitlePro(QnaDto dto, RedirectAttributes redirect) {
 		redirect.addAttribute("no", dto.getNo());
 		service.updateTitle(dto);
+		return "redirect:selectQnaForm.do";
+	}
+	//댓글 삭제
+	@RequestMapping("deleteReply.do")
+	public String deleteReplyPro(@RequestParam("rno")int rno,RedirectAttributes redirect) {
+		reservice.deleteReply(rno);
+		System.out.println(rno);
+		QnaDto dto = new QnaDto();
+		redirect.addAttribute("no",dto.getNo());
 		return "redirect:selectQnaForm.do";
 	}
 }

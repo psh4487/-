@@ -200,7 +200,7 @@ public class LoginStuController {
 		}
 	}
 
-	@RequestMapping(value = "pass_injeung_all")
+	@RequestMapping(value = "pass_injeung_all.do")
 	public ModelAndView join_certification(HttpSession session, HttpServletRequest request, int inputCode,
 			String prof_email, HttpServletResponse response_equals) throws IOException {
 
@@ -235,13 +235,14 @@ public class LoginStuController {
 	}
 
 	// 변경할 비밀번호를 입력한 후에 확인 버튼을 누르면 넘어오는 컨트롤러
-	@RequestMapping(value = "pass_change", method = RequestMethod.POST)
+	@RequestMapping(value = "pass_change.do", method = RequestMethod.POST)
 	public ModelAndView pass_change_sta(HttpServletRequest request, StuDto dto, ProDto dto1, StaffDto dto2,
 			HttpServletResponse pass) throws Exception {
 
 		HttpSession session = request.getSession();
 		String all_email = (String) session.getAttribute("all_email");
 		String all_pwd = request.getParameter("all_pwd");
+		
 
 		int all_cd = (int) session.getAttribute("all_cd");
 		ModelAndView mv = new ModelAndView();
@@ -249,24 +250,24 @@ public class LoginStuController {
 		if (all_cd < 2020201 && all_cd > 2020100) {
 
 			dto.setStu_pwd(all_pwd);
-			dto.setStu_email(all_email);
+			dto.setStu_no(all_cd);
 
 			Map<String, Object> map = new HashMap<>();
 
 			map.put("stu_pwd", dto.getStu_pwd());
-			map.put("stu_email", dto.getStu_email());
+			map.put("stu_no", dto.getStu_no());
 
 			lss.pass_change_stu(map, dto);
 		}
 
 		if (all_cd < 2020300 && all_cd > 2020200) {
 			dto1.setProf_pwd(all_pwd);
-			dto1.setProf_email(all_email);
+			dto1.setProf_cd(all_cd);
 
 			Map<String, Object> map = new HashMap<>();
 
 			map.put("prof_pwd", dto1.getProf_pwd());
-			map.put("prof_email", dto1.getProf_email());
+			map.put("prof_cd", dto1.getProf_cd());
 
 			lss.pass_change_pro(map, dto1);
 
@@ -274,12 +275,12 @@ public class LoginStuController {
 
 		if (all_cd < 2020401 && all_cd >= 2020300) {
 			dto2.setStaff_pwd(all_pwd);
-			dto2.setStaff_email(all_email);
+			dto2.setStaff_no(all_cd);
 
 			Map<String, Object> map = new HashMap<>();
 
 			map.put("staff_pwd", dto2.getStaff_pwd());
-			map.put("staff_email", dto2.getStaff_email());
+			map.put("staff_no", dto2.getStaff_no());
 
 			lss.pass_change_sta(map, dto2);
 

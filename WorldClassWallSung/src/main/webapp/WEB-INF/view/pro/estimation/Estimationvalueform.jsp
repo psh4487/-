@@ -9,9 +9,9 @@
 <title>과목평가상세보기</title>
 </head>
 <body>
-<form name="form1" method="post">
+<form name="form1" method="post" >
 
-	<table class="cou_view">
+	<table class="cou_view" class='table table-striped custab' style='text-align: center; width: 600px;'>
 		<colgroup>
 			<col width="15%" />
 			<col width="35%" />
@@ -20,14 +20,14 @@
 		</colgroup>
 		<c:forEach var="list" items="${list}">
 		<tr>
-		<td>총학생수:</td><td>${list.num}/${list.ATTEND_MEM}</td>
+		<td> 평가한 학생/총 학생</td><td>${list.num}/${list.ATTEND_MEM}</td>
 		</tr>
 
-		<caption style="background-color: #ccc">과목평가상세보기</caption>
+		
 		
 			
 		<tr>
-		<th scope="row">과목명</th>
+		<th scope="row">과목명: &nbsp; </th>
 		<td>${list.sub_nm}</td>
 		<tr>
 		<tbody>
@@ -75,7 +75,7 @@
 		</tbody>
 	
 	</table>
-
+	<br>
 	<button type="button" onclick="location.href='EstimationinfoPro.do'">목록으로</button>
 </form>	
 </body>

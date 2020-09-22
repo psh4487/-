@@ -29,13 +29,12 @@
 <script>
 $(document).ready(function() {
          $.ajax({
-            type : "post" // 포스트방식
-            ,url : "appLineAddForm_select_one.do" // url 주소
+            type : "post" 
+            ,url : "appLineAddForm_select_one.do" 
             ,dataType : "json"
          }).done(                
-               function(args) { //응답이 성공 상태 코드를 반환하면 호출되는 함수
+               function(args) {
                   for (var i = 0; i < args.length; i++) {
-                     //console.log(args); 
                      $("#Subject_room_tb").append(
                               "<option value='"+args[i]+"'>"
                                     + args[i]+ "</option>");
@@ -43,36 +42,30 @@ $(document).ready(function() {
                }).fail(function(e) {
             alert(e.responseText);
          })  
-});//ready 끝
+});
       
-function check1(){   	
-  $("input:checkbox[name=checkb]").prop("disabled", false);
+function check1(){//선택된 강의실명을 가져가서 강의신청된 시간은 체크박스를 체크못하게 막고 그외부분을 선택할수있게 만든 부분
          var Subject_room_tb=$("#Subject_room_tb").val();
          var params = "Subroom_nm=" + Subject_room_tb; 
             $.ajax({
                type : "post"
                ,url : "appLineAddForm_select_two.do"
                ,data : params
-               ,dataType : "json"
-               ,contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-            }).done(function(args) {   
-           	var splitDATA;            
-               $("input:checkbox[name='checkb']").attr("checked", false);      	  
-               for (var idx = 0; idx <= args.length; idx++) {
-                  var times = args[idx];
-                  var DATA="";	
-                 for (var name in times){
-                 //alert(times[name]);              	
-             		$("input:checkbox[name=checkb][value='"+times[name]+"']").prop("disabled", true);
-       			   }               
-               //console.log(checkBoxArr);             
+               ,dataType : "json"  
+            }).done(function(args) {
+            $("input:checkbox[name=checkb]").prop("disabled", false);  
+               for (var i = 0; i <= args.length; i++) {
+                 var times = args[i];
+                 for (var day in times){  	
+             		$("input:checkbox[name=checkb][value='"+times[day]+"']").prop("disabled", true);
+       			   }                        
                }  
            }).fail(function(e) {
                alert(e.responseText);
             });
       }
-
-function click1(){
+//
+function click1(){ //체크로 선택한값을 배열에 담아서 부모창의 텍스트박스에 집어넣는부분
  		var checkBoxArr = []; 		
  		var checkBoxArr2 = []; 		
         $("input[name=checkb]:checked").each(function() {
@@ -104,27 +97,24 @@ function click1(){
 
 var maxChecked = 3;   //선택가능한 체크박스 갯수
 var totalChecked = 0; // 설정 끝
-function CountChecked(field) {
-	if (field.checked) // input check 박스가 체크되면 
+//체크박스를 선택시에 3개이상 선택하면 선택못하게끔 막는 펑션
+function CountChecked(checkbox) {
+	if (checkbox.checked)
 		totalChecked += 1; // totalChecked 증가
-	else // 체크가 아니면
+	else 
 		totalChecked -= 1; // totalChecked 감소
-	if (totalChecked > maxChecked) { // totalchecked 수가 maxchecked수보다 크다면
-		alert ("최대 3개 까지만 가능합니다."); // 팝업창 띄움
+	if (totalChecked > maxChecked) { 
+		alert ("최대 3개 까지만 가능합니다."); 
 		field.checked = false;
 		totalChecked -= 1;
     }    
 }
 </script>
 <body>
-	<h1>강의실 선택</h1>
-<!-- 	<select id="build" name="build" onchange="check123()">
-		<option value="">::건물선택::</option>
-	</select> -->
 	<select id="Subject_room_tb" name="Subject_room_tb" onchange="check1()">
 		<option value="">::강의실선택::</option>
 	</select>
-	<h2><span>시간/요일 월 화 수 목 금</span></h2>
+	<h2><span>시간/요일 &emsp;월  화 수 목 금</span></h2>
      <%
             for (int i = 1; i <= 9; i++) {
                
@@ -138,8 +128,8 @@ function CountChecked(field) {
             for (int t = i; t <= 49; t = t + 10) {   
                
          %>
-         <input type="checkbox" id="dd" name="checkb" value="<%=t%>" class="input30"
-         onclick="CountChecked(this)" >
+         <input type="checkbox" id="checkb" name="checkb" value="<%=t%>" class="input30"
+         onclick="CountChecked(this)" style="width:18px;height:18px;" >
          <%      
          }
          %>
@@ -148,6 +138,5 @@ function CountChecked(field) {
             }
          %>
              <input type="button" value="보내기" onclick="click1()">
-         </form>
 </body> 
 </html>

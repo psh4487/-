@@ -45,7 +45,7 @@ public class StaSubController {
 		ModelAndView mav = new ModelAndView();
 		List<SubjectDto> list = rss.viewSubOne(sub_nm);		
 		mav.addObject("list", list);	
-		mav.setViewName("StaSubMain");		
+		mav.setViewName("sta/StaSubSub");		
 		return mav; 
 	}
 	

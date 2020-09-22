@@ -4,12 +4,15 @@
 <html>
 <head>
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- 부가적인 테마 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 <body>
 <form name = "form1" action = '<c:url value='writeQnaPro.do'/>' onsubmit="return writeSave()" method = "post">
-	<div>
-		<label for = "exampleFormControlInput1">제목</label>
-		<input type = "text" id = "title" name = "title" placeholder = "제목을 작성해 주세요.">
+	<div align = "center">
+		<label for = "title">제목</label>
+		<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "title" name = "title" placeholder = "제목을 작성해 주세요.">
 		<c:if test = "${login.mem_no == 1 }">
 		<input type = "hidden" id = "stu_no" name = "stu_no" value = "${login.stu_no }">
 		</c:if>
@@ -18,21 +21,23 @@
 		</c:if>
 		<input type = "hidden" id = "mem_no" name = "mem_no" value = "${login.mem_no }">
 	</div>
-	<div>
-		<label for = "exampleFormControlInput1">작성자</label>
+	<div align = "center">
+		<label for = "writer">작성자</label>
 		<c:if test = "${login.mem_no == 1 }">
-		<input type = "text" id = "exampleFormControlInput1" name = "writer" value = "${login.stu_name }" readonly>
+		<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "exampleFormControlInput1" name = "writer" value = "${login.stu_name }" readonly>
 		</c:if>
 		<c:if test = "${login.mem_no == 2 }">
-		<input type = "text" id = "exampleFormControlInput1" name = "writer" value = "${login.prof_nm }" readonly>
+		<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "exampleFormControlInput1" name = "writer" value = "${login.prof_nm }" readonly>
 		</c:if>
 	</div>
-	<div>
-		<label for = "exampleFormControlTextarea1">내용</label>
-		<textarea id = "exampleFromControlTextarea1" name = "content" rows = "10"></textarea>
+	<div align = "center">
+		<label for = "content">내용</label>
+		<textarea style = "width:500px;" class = "form-control" id = "exampleFromControlTextarea1" name = "content" rows = "10"></textarea>
 	</div>
-	<input type = "submit" value = "등록하기" id = "insert">
-	<input type = "button" value = "목록으로" onclick = "location.href='qnaMain.do'">
+	<div class = "input-group" style = "padding:0px 650px;">
+	<input type = "submit" style = "margin-right:15px;" class = "replyWriteBtn btn btn-success"  value = "등록하기" id = "insert">
+	<input type = "button" class = "replyWriteBtn btn btn-primary" value = "목록으로" onclick = "location.href='qnaMain.do'">
+	</div>
 </form>
 </body>
 <script>

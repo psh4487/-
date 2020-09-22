@@ -6,9 +6,10 @@
 <title>이수 학점</title>
 </head>
 <body>
-<div align = "center">
+<div class="container">
+	<h2> 이수 학점 </h2>
 	<form id = "isu" name = "isu" method = "post">
-		<table border = "1" >
+		<table class="table table-striped custab" >
 			<thead>
 				<tr>
 					<th>이수구분</th>
@@ -32,7 +33,7 @@
 			</c:forEach>
 		</tbody>
 		</table>
-	<table border = 1>
+	<table style="text-align:center; float:right; width:250px" class="table table-striped custab">
 		<tr>
 		<td colspan = 6 align = center>이수학점</td>
 		</tr>

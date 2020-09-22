@@ -4,21 +4,28 @@
 <html>
 <head>
 <title>강의실 관리</title>
+<style>
+	th{
+		background-color:orange;
+		}
+	.he{
+		height:60px;}
+</style>
 </head>
 <body>
-<div id="print_pdf" style="text-align:center; width:1200px;">	
-	<table border="1" style="text-align:center; width:800px;">
+<div id="print_pdf" style="text-align:center; margin-left:200px;">	
+	<table border="1" style="text-align:center; width:1150px; font-size:10pt;">
 		<tr>
-			<td width="100">교시</td>
-			<td width="100">월</td>
-			<td width="100">화</td>
-			<td width="100">수</td>
-			<td width="100">목</td>
-			<td width="100">금</td>
+			<th width="100" height = 30>교시</th>
+			<th width="100">월</th>
+			<th width="100">화</th>
+			<th width="100">수</th>
+			<th width="100">목</th>
+			<th width="100">금</th>
 		</tr>
 		<c:forEach var="i" begin="0" end="8">
-			<tr>
-				<td>${i+1}교시<br>(${i+8}:00~${i+9}:50)</td>
+			<tr class = "he">
+				<td style = "background-color:orange;">${i+1}교시<br>(${i+8}:00~${i+9}:50)</td>
 				<c:forEach begin="0" end="0">
 					<td>
 						<c:forEach var="list" items="${list}">

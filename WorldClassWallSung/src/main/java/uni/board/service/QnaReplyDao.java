@@ -10,4 +10,7 @@ public class QnaReplyDao extends SqlSessionDaoSupport{
 	public int insertReply(QnaReplyDto dto) {
 		return getSqlSession().insert("qnaboard.writeReply", dto);
 	}
+	public int deleteReply(int rno) {
+		return getSqlSession().delete("qnaboard.deleteReply",rno);
+	}
 }

@@ -4,6 +4,28 @@
 <html>
   <head>
    <title>강의 개설/강의실 관리</title>  
+   <style>
+   .btn-primary {
+            background-color : blue;
+            border-color: red;
+        }
+        .btn {
+       		height: 25px;
+       		width: 80px;
+       		vertical-align: bottom;
+       		padding: .0rem .75rem;
+       		font-size: 13px;
+       	}
+       	.col-md-6 {
+		    max-width: none;
+		}
+		.btn-dark:focus {
+			color: #fff;
+		    background-color: #343a40;
+		    border-color: #343a40;
+		}
+		
+   </style>
 <script>
     function selectMenu(){        
     		var menu=$("#menu1").val();
@@ -33,10 +55,10 @@
 	    		$.ajax({
 					type:"post"		
 					,url:url		
-					,dataType:"json" })
+					,dataType:"json"})
 					.done(function(args){	
 								 $("#con").append(									
-									"<table id='table' border='1'><tr><td>번호</td><td>이수구분</td><td>강의명</td><td>교수명</td><td>강의코드</td><td>학점</td><td>시간</td><td>상태</td></tr>");
+									"<table class='table table-striped custab' style='margin-left:200px;width:1000px;' id='table'><tr><td>번호</td><td>이수구분</td><td>강의명</td><td>교수명</td><td>강의코드</td><td>학점</td><td>시간</td><td>상태</td></tr>");
 						 for(var i=0; i < args.length; i++) {							
 											var c = i+1
 											var str = "<tr><td>" + c
@@ -166,7 +188,7 @@ $(function(){
   	</span>
   	<br>
     <!-- 최종 선택 결과를 표시할 곳 -->
-    <div id="con"></div>
+    <div id="con" align="center" style="margin-top:50px; height: 700px;"></div>
   </body>
 </html>
 

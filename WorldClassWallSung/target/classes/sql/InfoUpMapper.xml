@@ -5,7 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Info">
-
+   
+   <!-- 프로필 출력 -->
 	<select id="selInfoPro" resultType="uni.sta.model.ProDto" parameterType="int">
 		select prof_path,
 		prof_cd,
@@ -19,9 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         from PROFESSOR_TB where prof_cd = #{prof_cd}      
 	</select>
 
-	
-	
-		<select id="selInfo" resultType="uni.sta.model.StuDto" parameterType="int">
+	<select id="selInfo" resultType="uni.sta.model.StuDto" parameterType="int">
 		select stu_email,
 		stu_address,
         stu_zip,stu_path,
@@ -47,6 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         staff_address
         from STAFF_TB where staff_no = #{staff_no}      
 	</select>
+	
+	<!-- 프로필 업데이트 -->
 	<update id="upInfo" parameterType="uni.main.model.Login_All_Dto">
 		update STUDENT_TB set
 		stu_tel= #{stu_tel},
@@ -73,4 +74,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		staff_address= #{staff_address}
 		where staff_no= #{staff_no}
 	</update>
+	
+	<!-- 로그인 상태에서 비밀번호 변경 -->
+	<update parameterType="hashMap" id="pwdUpdateStu">
+      update STUDENT_TB set stu_pwd=#{stu_pwd} where stu_no=#{stu_no};
+   </update>
+   <update parameterType="hashMap" id="pwdUpdatePro">
+      update PROFESSOR_TB set prof_pwd=#{prof_pwd} where prof_cd=#{prof_cd};
+   </update>
+   <update parameterType="hashMap" id="pwdUpdateSta">
+      update STAFF_TB set staff_pwd=#{staff_pwd} where staff_no=#{staff_no};
+   </update>
+   
+    <!--  로그인 상태에서 비밀번호 변경시 기존비밀번호 셀렉 -->
+   <select id="pwd_check_stu" parameterType="int"
+		resultType="String">
+		select stu_pwd from STUDENT_TB where stu_no=#{stu_no}
+	</select>
+
+	<select id="pwd_check_pro" parameterType="int"
+		resultType="String">
+		select prof_pwd from PROFESSOR_TB where PROF_CD=#{prof_cd}
+	</select>
+
+	<select id="pwd_check_sta" parameterType="int"
+		resultType="String">
+		select staff_pwd from STAFF_TB where staff_no=#{staff_no}
+	</select>
 </mapper>
+
+

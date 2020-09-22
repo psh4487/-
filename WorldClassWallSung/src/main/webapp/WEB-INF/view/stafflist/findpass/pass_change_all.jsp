@@ -33,7 +33,7 @@ $(function() {
 				<tr>
 					<td>
 						<center>
-							<form action="pass_change" method="post">
+							<form action="pass_change.do" method="post">
 
 								<center>
 									<br>

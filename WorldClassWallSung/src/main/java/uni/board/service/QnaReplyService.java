@@ -18,4 +18,7 @@ public class QnaReplyService {
 	public int insertReply(QnaReplyDto dto) {
 		return dao.insertReply(dto);
 	}
+	public int deleteReply(int rno) {
+		return dao.deleteReply(rno);
+	}
 }

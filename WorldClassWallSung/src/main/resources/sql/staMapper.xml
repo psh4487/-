@@ -145,17 +145,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 비밀번호 변경 -->
 
 	<update id="pass_change_stu" parameterType="hashMap">
-		update STUDENT_TB set STU_PWD=#{stu_pwd} where stu_email=#{stu_email}
+		update STUDENT_TB set STU_PWD=#{stu_pwd} where stu_no=#{stu_no}
 
 	</update>
 
 	<update id="pass_change_pro" parameterType="hashMap">
-		update PROFESSOR_TB set prof_PWD=#{prof_pwd} where prof_email=#{prof_email}
+		update PROFESSOR_TB set prof_PWD=#{prof_pwd} where prof_cd=#{prof_cd}
 
 	</update>
 
 	<update id="pass_change_sta" parameterType="hashMap">
-		update STAFF_TB set staff_pwd=#{staff_pwd} where staff_email=#{staff_email}
+		update STAFF_TB set staff_pwd=#{staff_pwd} where staff_no=#{staff_no}
 
 	</update>
 

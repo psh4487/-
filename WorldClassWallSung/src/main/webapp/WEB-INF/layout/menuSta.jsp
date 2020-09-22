@@ -39,7 +39,7 @@
                     <li><a href="#"> 개인 정보 확인 <span class="submenu-indicator">+</span></a>
                         <ul class="submenu">
                             <li><a href="stuInfoSel.do"> 개인정보 확인/변경 </a></li>
-                            <li><a href="#"> 비밀번호 변경 </a></li>
+                            <li><a href="passUpForm.do"> 비밀번호 변경 </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -69,5 +69,5 @@
     </div>
 </div>
 </body>
-<script src="<c:url value="/resources/js/menujs.js" />"></script>
 </html>
+<script src="<c:url value="/resources/js/menujs.js" />"></script>

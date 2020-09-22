@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Index</title>
+<title>월성 대학교 포털  로그인</title>
 </head>
 	<body>
-	 	<a href="loginstu.do"> 로그인 </a> <br>	
+	<jsp:include page="loginstu.do"></jsp:include>	
 	</body>
 </html>

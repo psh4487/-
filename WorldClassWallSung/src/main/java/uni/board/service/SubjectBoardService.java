@@ -47,4 +47,7 @@ public class SubjectBoardService {
 	public int updateTitle(SubjectBoardDto dto) {
 		return dao.update(dto);
 	}
+	public String dept_nm(int prof_cd) {
+		return dao.dept_nm(prof_cd);
+	}
 }

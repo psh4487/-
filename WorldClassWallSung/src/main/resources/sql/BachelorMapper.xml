@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where  b.sub_cd = c.sub_cd
 		and a.prof_cd = c.prof_cd
 		and c.prof_cd =#{prof_cd}
+		and b.can_state="대기";
 	</select>
 
 	<insert id="class_cancel" parameterType="uni.pro.model.Class_cancel_Dto">
@@ -26,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="select" resultType="uni.pro.model.ProSubjectDto" parameterType="int">
-		select isu,sub_nm,credit,lec_1,lec_2,lec_3,sub_state from SUBJECT_TB where PROF_CD = #{prof_cd}
+		select isu,sub_nm,credit,lec_1,lec_2,lec_3,sub_state,SUBROOM_NM from SUBJECT_TB where PROF_CD = #{prof_cd}
 	</select>
 	
 	<select id="lectureroom" resultType="uni.pro.model.ProSubjectDto">
@@ -93,7 +94,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                         LEC_2=#{lec_2},
                         LEC_3=#{lec_3},
                         isu=#{isu},
-                        MAX_MEM=#{max_mem},
-                        ATTEND_MEM='0'
+                        MAX_MEM=#{max_mem}
 	</insert>
 </mapper>

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import uni.stu.model.ScheduleDto;
 import uni.stu.model.SelScheduleDto;
 import uni.stu.service.SelScheduleService;
 

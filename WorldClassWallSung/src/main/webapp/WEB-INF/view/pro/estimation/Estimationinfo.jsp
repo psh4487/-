@@ -62,7 +62,7 @@ function selectsub(){
 					function(args) {
 						$("#EstimationInfo").html("");
 						$("#EstimationInfo").append(
-								"<table id='table' border='1'><tr><td>이름</td><td>상태</td></tr></table>");
+								"<table id='table' border='1'class='table table-striped custab' style='text-align: center; width: 1000px;'><tr><td>이름</td><td>상태</td></tr></table>");
 						for (var i = 0; i<args.length;i++) {
 							var str="<tr><td>"+"<a href='#' onclick='clickGo1("+args[i].stu_no+")'>" +"익명"
 									+"</td>" + "<td>" +args[i].est_state	
@@ -104,6 +104,10 @@ function clickGo1(name){
 
 </head>
 <body>
+<div class="container"  style="float: left; width: 50%; margin:30px;">
+<h2>강의 평가</h2>
+<div class="container" style="width: 437px;">
+<div style="float: left; width: 50%; margin:30px;">
 <select id="mainS" onchange="selectMain()">	
 	<option value="">::강의평가::</option>
 	<option value="1">학생별 평가 점수</option>
@@ -118,5 +122,8 @@ function clickGo1(name){
 <input type="text" id ="cc" hidden="">
 <hr>
 <div id="EstimationInfo"></div>
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -9,6 +9,27 @@
 <meta charset="EUC-KR">
 <title>강의실 시간표 조회</title>
 </head>
+<style>
+        .btn-primary {
+            background-color : blue;
+            border-color: red;
+        }
+        .btn {
+       		height: 25px;
+       		width: 80px;
+       		vertical-align: bottom;
+       		padding: .0rem .75rem;
+       		font-size: 13px;
+       	}
+       	.col-md-6 {
+		    max-width: none;
+		}
+		.btn-dark:focus {
+			color: #fff;
+		    background-color: #343a40;
+		    border-color: #343a40;
+		}
+</style>
 <script>
 $(function(){
 	var url="builName.do";
@@ -79,7 +100,7 @@ $(function() {
 				,data:params
 				,dataType:"html"})
 				.done(function(args){
-					var top = "<h1>" +builName+"  "+subroom_nm + " 시간표 </h1>"
+					var top = "<h1 style='margin-left:200px;'>" +builName+"  "+subroom_nm + " 시간표 </h1>"
 					$("#print_pdf").text("");//기존 내용 제거
 					$("#print_pdf").html(top + args);
 				})
@@ -93,15 +114,16 @@ $(function() {
 
 <body>
 <div style="text-align:left; width:1280px;">
+	<h2>강의실별 시간표 조회</h2>
 	<select id="builName" onchange="selectBuil()">
 		<option value="">::건물 선택::</option>
 	</select>
 	<select id="subroomName" >
 		<option value="">::강의실 선택::</option>
 	</select>
-	<input type="button" id="selCheck" value="조회" >
+	<input type="button" class="btn-dark" id="selCheck" value="조회" >
 </div>
-<div id="print_pdf" style="text-align:center; width:1280px;" >
+<div id="print_pdf" style="text-align:center; width:1280px; margin:auto;" >
 </div>
 </body>
 </html>

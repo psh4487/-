@@ -23,5 +23,5 @@ public class UniMainController {
 	@RequestMapping(value="layout4.do", method = RequestMethod.GET)
 	public String layout4(Model model) {
 		return "layout4";
-	}
+	}	
 }
