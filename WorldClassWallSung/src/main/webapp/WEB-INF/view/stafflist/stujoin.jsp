@@ -148,12 +148,12 @@ function checkIt() {
 			<tr>
 				<td width="200" style='text-align: center;'>학년</td>
 				<td width="400"><input type="text" id="stu_year"
-					name="stu_year" size="40" maxlength="30"></td>
+					name="stu_year" size="40" maxlength="30" oninput="this.value = this.value.replace(/[^0-9]/g, '');"></td>
 			</tr>
 			<tr>
 				<td width="200" style='text-align: center;'>학기</td>
 				<td width="400"><input type="text" id="stu_sem" name="stu_sem"
-					size="40" maxlength="30"></td>
+					size="40" maxlength="30" oninput="this.value = this.value.replace(/[^0-9]/g, '');"></td>
 			</tr>
 			<tr>
 				<td width="200" style='text-align: center;'>연락처</td>
