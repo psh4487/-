@@ -52,7 +52,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="all_cd" id="all_cd"  class="form-control" placeholder="username">
+                        <input type="text" name="all_cd" id="all_cd" oninput="this.value = this.value.replace(/[^0-9]/g, '');" class="form-control" placeholder="username">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -67,7 +67,7 @@
             </div>
             <div class="card-footer">
                 <div class="d-flex flex-end">
-                    <a href='find_pass_start_all.do' onclick="window.open(this.href,'find_pass','width=430,height=430,scrollbars=no, toolbars=no, menubar=no, resizable=no'); return false;" target="_blank">비밀번호 찾기</a>
+                    <a href='find_pass_start_all.do' onclick="window.open(this.href,'find_pass','width=430,height=330,scrollbars=no, toolbars=no, menubar=no, resizable=no'); return false;" target="_blank">비밀번호 찾기</a>
                 </div>
             </div>
         </div>
