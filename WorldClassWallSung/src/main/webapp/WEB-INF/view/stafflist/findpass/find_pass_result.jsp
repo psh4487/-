@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+
+body {background-color: #FFC800;}
+
+</style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
@@ -22,10 +27,13 @@ setTimeout('mclose()',5000);
 
 
 <body>
+<br>
+<br>
+<br>
 <form cellSpacing=1 cellPadding=1 width="500" border=1 align="center">
-��й�ȣ�� ����Ǿ����ϴ�.<br>
-5�� �� �ڵ����� ����˴ϴ�.<br>
-���ο� ��й�ȣ�� �α������ּ���.
+비밀번호가 변경되었습니다.<br>
+5초 후 자동으로 종료됩니다.<br>
+새로운 비밀번호로 로그인해주세요.
 </form>
 </body>
 </html>
