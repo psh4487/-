@@ -53,8 +53,8 @@
     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete : function(data) {
-                document.getElementById("stu_zip").value = data.zonecode;
-                document.getElementById("stu_address").value = data.address;
+                document.getElementById("prof_zip").value = data.zonecode;
+                document.getElementById("prof_address").value = data.address;
             }
         }).open();
     }
