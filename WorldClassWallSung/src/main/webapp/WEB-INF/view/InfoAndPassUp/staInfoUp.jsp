@@ -104,7 +104,7 @@
 
                             <div class="box-body">
                                 <div class="col-sm-6">
-                                    <div align="center"> <img alt="User Pic" src="resources/imgFileSta/${login.stu_path}" id="profile-image1" class="img-circle img-responsive">
+                                    <div align="center"> <img alt="User Pic" src="resources/imgFileSta/${login.staff_path}" id="profile-image1" class="img-circle img-responsive">
                                         <input id="profile-image-upload" class="hidden" type="file">
                                         <!--Upload Image Js And Css-->
                                     </div>
