@@ -396,7 +396,7 @@ insert into PROFESSOR_TB set
                                PROF_ADDRESS='서울시 노원구 동일로 182길 현대아파트 301동 808호',
                                PROF_ZIP=25558,
                                PROF_TEL='010-5667-8765',
-                               PROF_EMAIL='art123@naver.com',
+                               PROF_EMAIL='momomichael7@gmail.com',
                                PROF_COUN='대한민국',
                                PROF_GEN='남',
                                 PROf_PATH="2020201.jpg",
