@@ -7,16 +7,9 @@
 <html>
 
 <head>
-<style>
-
-body {background-color: #FFC800;}
-
-</style>
-
- 
 <meta charset="utf-8">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-<title>비밀번호찾기</title>
+<title>비밀번호찾기1</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -39,35 +32,24 @@ $(function() {
 </script>
 
 <body>
-
-<div class="form-group">
-			<div>
-				<div
-					style="border-bottom: 1px solid #888; padding-top: 15px; font-size: 130%">
-					비밀번호 찾기</div>
-			</div>
-		</div>
-		<br>
-		<br>
 	<form:form id="signupform" class="form-horizontal" role="form"
-		action="find_pass_all.do" method="post" style="margin-left: 25%">
+		action="find_pass_all.do" method="post">
 		<div class="form-group">
 			<label for="all_cd">ID</label>
 		</div>
 		<div class="col-md-10">
-			<input type="text" name="all_cd" placeholder="ID를 입력해주세요"  style="width:200px;" >
+			<input type="text" name="all_cd" placeholder="ID를 입력해주세요">
 		</div>
 		<br>
 		<label for="all_email">E-Mail</label>
 		<div class="col-md-10">
-			<input type="text" name="all_email" placeholder="E-Mail을 입력해주세요" style="width:200px;" >
+			<input type="text" name="all_email" placeholder="E-Mail을 입력해주세요">
 
 
 		</div>
-		<br>
-		<br>
 
-		<div style="margin-left: 25%">
+
+		<div style="margin-left: 82%">
 			<!-- Button -->
 
 			<div>
@@ -75,7 +57,13 @@ $(function() {
 			</div>
 		</div>
 
-		
+		<div class="form-group">
+			<div>
+				<div
+					style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+					가입하신 이메일로 인증번호를 전송해드리겠습니다.</div>
+			</div>
+		</div>
 
 	</form:form>
 
