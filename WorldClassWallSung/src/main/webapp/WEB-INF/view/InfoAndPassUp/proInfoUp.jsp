@@ -148,7 +148,7 @@
                                 <div class="bot-border"></div>
 
                                 <div class="col-sm-5 col-xs-6 tital ">E-mail</div>
-                                <div class="col-sm-7"><input type="text" name="prof_email" id="prof_email" value="${login.prof_tel}"></div>
+                                <div class="col-sm-7"><input type="text" name="prof_email" id="prof_email" value="${login.prof_email}"></div>
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>
 
