@@ -1266,4 +1266,4 @@ insert into STAFF_TB set STAFF_NO=2020300,
                              STAFF_DEPT="관리부",
                              MEM_NO=3,
                              STAFF_NM="관리자",
-                             STAFF_PWD=1111;
+                             STAFF_PWD=1234;
