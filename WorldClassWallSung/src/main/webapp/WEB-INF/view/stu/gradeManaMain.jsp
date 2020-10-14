@@ -68,7 +68,8 @@
       var url = "gm_listAll.do";
       var years = $("#gm_years").val();
       var sem = $("#gm_sem").val();
-      var params = "gm_years=" + years + "&gm_sem=" + sem + "&stu_no=2020101"; // 여기를 수정하면 됩니다.
+      var stu_no = ${login.stu_no}
+      var params = "gm_years=" + years + "&gm_sem=" + sem + "&stu_no=" + stu_no; // 여기를 수정하면 됩니다.
       $.ajax({
          type : "post",
          url : url,

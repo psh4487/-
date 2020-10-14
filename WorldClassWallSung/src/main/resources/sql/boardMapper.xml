@@ -48,6 +48,7 @@ SELECT  * FROM (
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY NO DESC;
 </select>
+<!-- 검색 기능 -->
 <select id = "listCount" resultType = "int" parameterType = "uni.board.model.SearchCriteria">
 select count(no) 
 	from board_tb 

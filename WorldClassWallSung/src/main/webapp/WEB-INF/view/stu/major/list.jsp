@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>수강관리</title>.<style>
+<title>수강관리</title>
+<style>
         .btn-primary {
             background-color : blue;
             border-color: red;
@@ -27,7 +28,8 @@
 </style>
 </head>
 <body>
-	<div>
+	<div class="container">
+	<h2> 수강 신청 관리  </h2>
 		<div align="center" style="overflow: auto; height: 400px;">
 			<form action="majorMain.do" method="get">
 				<input type="radio" id="major" name="subject" value="전공" checked>전공

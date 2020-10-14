@@ -3,6 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="revoke">
+	<!-- 현재 신청한 수강 출력 -->
 	<select id="revokeList" resultType="uni.stu.model.RevokeDto" parameterType="map">
 		select d.stu_no,
 			   b.SUB_CD,
@@ -14,11 +15,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where a.stu_no = d.stu_no
 		and b.prof_cd = c.prof_cd
         and a.sub_cd = b.sub_cd
-		and b.years=(select date_format(now(), "%Y") as years)
+		and b.years=(select date_format(now(), "%Y") as years) <!-- 현재날짜의 년도를 가져온다. -->
 		and b.sem = d.stu_sem
         and a.stu_no=#{stu_no}
 		group by sub_cd
 	</select>
+	<!-- 수강 철회 -->
 	<delete id="revokeDelete" parameterType="map">
 		delete from ATTEND_TB where stu_no = #{stu_no} and sub_cd = #{sub_cd};	
 	</delete>

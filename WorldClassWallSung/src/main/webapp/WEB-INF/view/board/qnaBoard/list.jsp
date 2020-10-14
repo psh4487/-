@@ -14,8 +14,9 @@
 		</style>
 </head>
 <body>
-<div class = "container">
+<div style="width: 840px;" class = "container">
 	<form action = "writeQnaForm.do" method = "post">
+	<h3>질의 게시판</h3>
 	<!-- 글작성은 세션에서 login.mem_no == 1 || login.mem_no == 2 일때만 표시 -->
 	<c:if test = "${login.mem_no == 1 || login.mem_no == 2 }">
 	<input type = "submit" class = "replyWriteBtn btn btn-success" value = "글 작성">

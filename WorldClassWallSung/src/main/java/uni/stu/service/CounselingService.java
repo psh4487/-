@@ -26,14 +26,8 @@ public class CounselingService{
 		return cdao.historyList(m);
 	}
 	
-	public int counselingApply(int sub_cd, int stu_no, String cs_date, String cs_nm, String cs_con) {
-		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("sub_cd", sub_cd);
-		m.put("stu_no", stu_no);
-		m.put("cs_date", cs_date);
-		m.put("cs_nm", cs_nm);
-		m.put("cs_con", cs_con);
-		return cdao.counselingApply(m);
+	public int counselingApply(CounselingDto dto) {
+		return cdao.counselingApply(dto);
 	}
 	
 	public void setCdao(CounselingDao cdao) {

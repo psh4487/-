@@ -100,7 +100,7 @@ $(function() {
 				,data:params
 				,dataType:"html"})
 				.done(function(args){
-					var top = "<h1 style='margin-left:200px;'>" +builName+"  "+subroom_nm + " 시간표 </h1>"
+					var top = "<h1>" +builName+"  "+subroom_nm + " 시간표 </h1>"
 					$("#print_pdf").text("");//기존 내용 제거
 					$("#print_pdf").html(top + args);
 				})
@@ -121,7 +121,7 @@ $(function() {
 	<select id="subroomName" >
 		<option value="">::강의실 선택::</option>
 	</select>
-	<input type="button" class="btn-dark" id="selCheck" value="조회" >
+	<input type="button" class="btn-dark" id="selCheck" value="조회" onclick="selecList()">
 </div>
 <div id="print_pdf" style="text-align:center; width:1280px; margin:auto;" >
 </div>

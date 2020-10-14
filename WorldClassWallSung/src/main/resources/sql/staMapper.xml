@@ -89,27 +89,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 로그인 -->
-
 	<select id="selectstu" resultType="uni.main.model.Login_All_Dto"
 		parameterType="hashMap">
 		select * from STUDENT_TB where stu_no=#{stu_no} and stu_pwd=#{stu_pwd}
 	</select>
 	<select id="selectsta" resultType="uni.main.model.Login_All_Dto"
 		parameterType="hashMap">
-		select * from STAFF_TB where staff_no=#{staff_no} and
-		staff_pwd=#{staff_pwd}
+		select * from STAFF_TB where staff_no=#{staff_no} and staff_pwd=#{staff_pwd}
 	</select>
 
 	<select id="selectpro" resultType="uni.main.model.Login_All_Dto"
 		parameterType="hashMap">
-		select * from PROFESSOR_TB where PROF_CD=#{prof_cd} and
-		PROF_PWD=#{prof_pwd}
+		select * from PROFESSOR_TB where PROF_CD=#{prof_cd} and PROF_PWD=#{prof_pwd}
 	</select>
-
-
-
-
-
+	
+	
 	<!-- 휴복학 업데이트 -->
 	<update id="leavestateno" parameterType="int">
 		update LEAVE_TB set LEAVE_STATE="미승인" where no=#{no}

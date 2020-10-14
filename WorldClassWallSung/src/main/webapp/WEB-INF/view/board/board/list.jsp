@@ -17,12 +17,13 @@
 		</style>
 </head>
 <body>
-<div class = "container">
+<div style="width: 840px;" class = "container">
 <form action = "writeboardForm.do" method = "post">
+	<h3>학교 게시판</h3>
 	<c:if test = "${login.mem_no == 3 || login.mem_no == 4 }">
 	<input type = "submit" class = "replyWriteBtn btn btn-success" value = "글 작성">
 	</c:if>
-	<table class = "table table-hover">
+	<table class = "table table-hover" style="margin-top: 6px;">
 		
 			<tr>
 				<td>번호</td>

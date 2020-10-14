@@ -15,17 +15,12 @@ public class LeaveService{
 	
 	public LeaveService() {}
 
-	public List<LeaveDto> leaveList() {
-		return ldao.leaveList();
+	public List<LeaveDto> leaveList(int stu_no) {
+		return ldao.leaveList(stu_no);
 	}
 	
-	public int leaveInsert(String leave_year, String leave_sem, String leave_change, int stu_no) {
-		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("leave_year", leave_year);
-		m.put("leave_sem", leave_sem);
-		m.put("leave_change", leave_change);
-		m.put("stu_no", stu_no);
-		return ldao.leaveInsert(m);
+	public int leaveInsert(LeaveDto dto) {
+		return ldao.leaveInsert(dto);
 	}
 	
 	public void setLdao(LeaveDao ldao) {

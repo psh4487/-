@@ -8,15 +8,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<style>
-	.replyList{margin-left:400px;
-			   }
-	
-	.rep{margin-left:500px;}
-</style>
 </head>
 <body>
-<form>
+<form style="width: 840px;">
 <div class = "form-group" align = "center">
 	<label for = "title">제목</label>
 	<input type = "text" class = "form-control" style = "width:500px;height:34px;" id = "exampleFormControlInput1" name = "exampleFormControlInput1" value = "${no.title }" readonly>
@@ -29,7 +23,7 @@
 <label for = "content">내용</label>
 	<textarea class = "form-control" id = "exampleFormControlTextarea1" style = "width:500px;" name = "exampleFormControlTextarea1" rows = "10" readonly >${no.content }</textarea>
 </div>
-<div class = "input-group" style = "padding:0px 650px">
+<div class = "form-group" align = "center">
 <input type = "button" value = "목록으로" class = "replyWriteBtn btn btn-primary" onclick = "location.href='qnaMain.do'">
 <!-- 수정, 삭제는 글 작성에서 stu_no값을 저장, login.stu_no값이 일치하면 출력 -->
 

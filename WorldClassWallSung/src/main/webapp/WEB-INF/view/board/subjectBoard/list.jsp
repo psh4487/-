@@ -11,8 +11,9 @@
 
 </head>
 <body>
-<div class = "container">
+<div style="width: 840px;" class = "container">
 	<form action = "writeSubjectBoardForm.do" method = "post">
+	<h3>학과 게시판</h3>
 	<c:if test = "${login.mem_no == 2 }">
 	<input type = "hidden" id = "prof_cd" name = "prof_cd" value = "${login.prof_cd }">
 	</c:if>

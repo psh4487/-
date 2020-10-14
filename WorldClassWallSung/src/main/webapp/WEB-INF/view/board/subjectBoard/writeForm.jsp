@@ -40,7 +40,7 @@
 		<label for = "contentInput">내용</label>
 		<textarea id = "Textarea1" class = "form-control" style = "width:500px;" name = "content" rows = "10"></textarea>
 	</div>
-	<div class = "input-group">
+	<div class = "form-group" align = "center">
 	<input type = "submit" value = "등록하기" style = "margin-right:15px;" class = "replyWriteBtn btn btn-success" id = "insert">
 	<input type = "button" value = "목록으로" class = "replyWriteBtn btn btn-primary" onclick = "location.href='subjectBoardMain.do'">
 	</div>

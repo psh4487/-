@@ -10,24 +10,15 @@ import uni.sta.model.StuDto;
 
 public class LoginStuDao extends SqlSessionDaoSupport {
 
-	public Login_All_Dto LoginStu(Map<String, Object> map, Login_All_Dto alldto) {
-
-		map.get("stu_no");
-		map.get("stu_pwd");
+	public Login_All_Dto LoginStu(Map<String, Object> map) {
 		return getSqlSession().selectOne("staff.selectstu", map);
 	}
 
-	public Login_All_Dto LoginSta(Map<String, Object> map, Login_All_Dto alldto) {
-
-		map.get("staff_no");
-		map.get("staff_pwd");
+	public Login_All_Dto LoginSta(Map<String, Object> map) {
 		return getSqlSession().selectOne("staff.selectsta", map);
 	}
 
-	public Login_All_Dto LoginPro(Map<String, Object> map, Login_All_Dto alldto) {
-
-		map.get("prof_cd");
-		map.get("prof_pwd");
+	public Login_All_Dto LoginPro(Map<String, Object> map) {
 		return getSqlSession().selectOne("staff.selectpro", map);
 	}
 

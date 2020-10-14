@@ -27,7 +27,7 @@
 	<label for = "content">내용</label>
 	<textarea id = "exampleFormControlTextarea1" class = "form-control" style = "width:500px;" name = "content" rows = "10">${no.content }</textarea>
 </div>
-<div class = "input-group">
+<div class = "form-group" align = "center">
 <input type = "submit" style="margin-right:15px;" class = "replyWriteBtn btn btn-warning" value = "수	정" id = 'update'>
 <input type = "button" class = "replyWriteBtn btn btn-danger"  value = "취	소" onclick = "location.href='selectSubjectBoardForm.do?no=${no.no}'">
 </div>

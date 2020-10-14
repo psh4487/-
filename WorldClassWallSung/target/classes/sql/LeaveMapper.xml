@@ -3,10 +3,18 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="leave">
-	<select id="leaveList" resultType="uni.stu.model.LeaveDto">
-		select NO, STU_NO, LEAVE_CHANGE, LEAVE_STATE, LEAVE_YEAR, LEAVE_SEM, DATE_FORMAT(LEAVE_DT, '%Y-%m-%d') as 'LEAVE_DT' from LEAVE_TB
+	<select id="leaveList" resultType="uni.stu.model.LeaveDto" parameterType="int">
+		select NO,
+			   STU_NO,
+			   LEAVE_CHANGE,
+			   LEAVE_STATE,
+			   LEAVE_YEAR,
+			   LEAVE_SEM,
+			   DATE_FORMAT(LEAVE_DT, '%Y-%m-%d') as 'LEAVE_DT'
+		from LEAVE_TB
+		where stu_no=#{stu_no}
 	</select>
-	<insert id="leaveInsert" parameterType="map">
+	<insert id="leaveInsert" parameterType="uni.stu.model.LeaveDto">
 		insert into LEAVE_TB
 		set STU_NO=#{stu_no},
 			LEAVE_CHANGE=#{leave_change},

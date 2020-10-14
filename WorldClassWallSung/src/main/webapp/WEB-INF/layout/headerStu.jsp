@@ -6,12 +6,12 @@
 <html>
 <head>
 <style type="text/css">
-.btn-file {
+.btn-file1 {
 	position: relative;
 	overflow: hidden;
 }
 
-.btn-file input[type=file] {
+.btn-file1 input[type=file] {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -56,11 +56,10 @@
 			<span style="color: white; padding-top: 5px;"> <b>${login.stu_name}</b> 님
 				안녕하세요.&nbsp;&nbsp;&nbsp;
 			</span> 
-			<span class="btn btn-warning btn-file">
+			<span class="btn btn-warning btn-file1">
 				<input type="file" onchange="readURL(this);" onclick="location.href='logout.do'"> 로그아웃
 			</span>
 		</div>
-		
 	</div>
 </body>
 </html>

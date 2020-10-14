@@ -15,7 +15,7 @@ public class CounselingDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("counseling.historyList", m);
 	}
 	
-	public int counselingApply(Map<String, Object> m) {
-		return getSqlSession().insert("counseling.counselingApply", m);
+	public int counselingApply(CounselingDto dto) {
+		return getSqlSession().insert("counseling.counselingApply", dto);
 	}
 }

@@ -29,16 +29,16 @@ public class LoginStuService {
 		this.dao = dao;
 	}
 
-	public Login_All_Dto LoginStu(Map<String, Object> map, Login_All_Dto alldto) {
-		return dao.LoginStu(map, alldto);
+	public Login_All_Dto LoginStu(Map<String, Object> map) {
+		return dao.LoginStu(map);
 	}
 
-	public Login_All_Dto LoginSta(Map<String, Object> map, Login_All_Dto alldto) {
-		return dao.LoginSta(map, alldto);
+	public Login_All_Dto LoginSta(Map<String, Object> map) {
+		return dao.LoginSta(map);
 	}
 
-	public Login_All_Dto LoginPro(Map<String, Object> map, Login_All_Dto alldto) {
-		return dao.LoginPro(map, alldto);
+	public Login_All_Dto LoginPro(Map<String, Object> map) {
+		return dao.LoginPro(map);
 	}
 
 	public Login_All_Dto idmailcheck_stu(Map<String, Object> map, Login_All_Dto alldto) {

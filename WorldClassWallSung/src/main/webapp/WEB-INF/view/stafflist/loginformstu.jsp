@@ -67,7 +67,7 @@
             </div>
             <div class="card-footer">
                 <div class="d-flex flex-end">
-                    <a href='find_pass_start_all.do' onclick="window.open(this.href,'find_pass','width=430,height=330,scrollbars=no, toolbars=no, menubar=no, resizable=no'); return false;" target="_blank">비밀번호 찾기</a>
+                    <a href='find_pass_start_all.do' onclick="window.open(this.href,'find_pass','width=430,height=430,scrollbars=no, toolbars=no, menubar=no, resizable=no'); return false;" target="_blank">비밀번호 찾기</a>
                 </div>
             </div>
         </div>

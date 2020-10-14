@@ -37,7 +37,6 @@
 <body>
       <div class="container" style="height: 600px; width: 700px;">
       <h2>수강 철회</h2>
-         <span style="line-height: 190%"><br></span>
          <table class="table table-striped custab">
             <tr>
                <td width="100">강의 코드</td>

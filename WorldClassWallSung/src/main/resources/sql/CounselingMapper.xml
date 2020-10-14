@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and b.prof_cd = d.prof_cd
 		and a.stu_no = #{stu_no}
 	</select>
-	<insert id="counselingApply" parameterType="map">
+	<insert id="counselingApply" parameterType="uni.stu.model.CounselingDto">
 		insert into counseling_tb
 		set sub_cd=#{sub_cd},
 			cs_date=#{cs_date},

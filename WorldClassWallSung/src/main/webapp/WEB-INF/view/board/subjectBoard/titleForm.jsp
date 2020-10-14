@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 <body>
-<form>
+<form style="width: 840px;">
 <div class = "form-group" align = "center">
 	<label for = "title">제목</label>
 	<input type = "text" class = "form-control"  style = "width:500px;height:34px;"id = "titlecontrol" name = "title" value = "${no.title }" readonly>
@@ -23,7 +23,7 @@
 	<label for = "textarea">내용</label>
 	<textarea id = "textarea1" style = "width:500px" class = "form-control" name = "content" rows="10" readonly>${no.content }</textarea>
 </div>
-<div class = "input-group" style = "padding:0px 650px">
+<div class = "form-group" align = "center">
 <input type = "button" value = "목록으로" class = "replyWriteBtn btn btn-primary" onclick = "location.href='subjectBoardMain.do'">
 <c:if test = "${login.mem_no == 2 && login.prof_cd == no.prof_cd }">
 

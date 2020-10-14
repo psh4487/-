@@ -9,7 +9,6 @@
       console.log(path.value);
       var Fname = path.value;
       var i = Fname.lastIndexOf("\\");
-                     
          var report_file = Fname.substring(i+1);
          console.log(report_file);
          document.getElementById('fileName').value = report_file;
@@ -17,8 +16,8 @@
 </script>
 
 <style>
-<
-style type ="text /css ">.btn-file {
+<style type ="text /css ">
+.btn-file {
 	position: relative;
 	overflow: hidden;
 }
@@ -37,6 +36,10 @@ style type ="text /css ">.btn-file {
 	background: white;
 	cursor: inherit;
 	display: block;
+}
+.btn-file {
+position: relative;
+     overflow: hidden;
 }
 
 .btn-primary {

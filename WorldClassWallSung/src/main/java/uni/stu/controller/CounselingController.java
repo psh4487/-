@@ -22,29 +22,31 @@ import uni.stu.service.CounselingService;
 public class CounselingController {
 	@Autowired
 	CounselingService cs;
-	
+	// 학생이 상담 신청한 내역을 출력
 	@RequestMapping("counselingMain.do")
 	public String historyList(Model m, CounselingDto cdto,HttpSession session) throws Exception {
 		int stu_no = ((Login_All_Dto)session.getAttribute("login")).getStu_no();
-		List<CounselingDto> list = cs.historyList(stu_no); // 여기를 수정하면 됩니다.
+		List<CounselingDto> list = cs.historyList(stu_no);
 		m.addAttribute("historyList", list);
 		return "counselingMain";
 	}
-	
+	// 학생이 듣고 있는 수업의 list를 출력
 	@RequestMapping(value = "subroomList.do", method = RequestMethod.POST)
 	public void subroomList(HttpServletResponse resp,HttpSession session) throws Exception {
 		int stu_no = ((Login_All_Dto)session.getAttribute("login")).getStu_no();
-		List<CounselingDto> list = cs.subroomList(stu_no); // 여기를 수정하면 됩니다.
+		List<CounselingDto> list = cs.subroomList(stu_no);
 		Gson json = new Gson(); 
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
-		out.print(json.toJson(list));
+		out.print(json.toJson(list)); // list에 저장된 값을 json으로 처리
 	}
 	
+	// 상담 신청을 클릭시 insert
 	@RequestMapping(value = "counselingApply.do", method = RequestMethod.GET)
-	public String counselingApply(HttpSession session,int sub_cd, String cs_date, String cs_nm, String cs_con) throws Exception {
+	public String counselingApply(HttpSession session, CounselingDto dto) throws Exception {
 		int stu_no = ((Login_All_Dto)session.getAttribute("login")).getStu_no();
-		cs.counselingApply(sub_cd, stu_no, cs_date, cs_nm, cs_con); // 여기를 수정하면 됩니다.
+		dto.setStu_no(stu_no);
+		cs.counselingApply(dto);
 		return "redirect:counselingMain.do";
 	}
 }
