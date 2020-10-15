@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "qnaboard">
+<!-- 리스트 출력, 페이징, 검색어기능 -->
+<select id = "listPage" resultType = "uni.board.model.QnaDto" parameterType = "uni.board.model.SearchCriteria">
+SELECT  * FROM ( 
+		        SELECT NO, 
+		               TITLE, 
+		               CONTENT, 
+		               WRITER, 
+		               BOARD_DT,
+		               HIT,
+		               MEM_NO,
+		               ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		         FROM QNA_TB WHERE 1=1
+		         <include refid="search"></include>
+		         ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY NO DESC;
+</select>
+<select id = "listCount" resultType = "int" parameterType = "uni.board.model.SearchCriteria">
+select count(no) 
+	from qna_tb  
+	where 1=1
+	<include refid = "search"></include> 
+	and no > 0
+</select>
+<sql id = "search">
+	<if test = "searchType != null">
+		<if test = "searchType == 't'.toString()">AND TITLE LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'c'.toString()">AND CONTENT LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'w'.toString()">AND WRITER LIKE CONCAT('%',#{keyword},'%')</if>
+		<if test = "searchType == 'tc'.toString()">AND (TITLE LIKE CONCAT('%',#{keyword},'%')) OR (CONTENT LIKE CONCAT('%',#{keyword},'%'))</if>
+	</if>
+</sql>
+<!-- 게시판 글쓰기 -->
+<insert id = "insertBoard" parameterType = "uni.board.model.QnaDto">
+insert into qna_tb(mem_no, title, content, writer, stu_no, prof_cd) values(#{mem_no}, #{title}, #{content}, #{writer}, #{stu_no}, #{prof_cd})
+</insert>
+<!-- 게시판 글 조회 -->
+<select id = "selectTitle" parameterType = "int" resultType = "uni.board.model.QnaDto">
+select * from qna_tb where no = #{no}
+</select>
+<!-- 조회수 증가 -->
+<update id = "addHit" parameterType = "int">
+update qna_tb set hit = hit+1 where no = #{no}
+</update>
+<!-- 게시판 글 삭제 -->
+<delete id = "deleteTitle" parameterType = "int">
+delete from qna_tb where no = #{no}
+</delete>
+<!-- 게시판 글 수정 -->
+<update id = "updateTitle" parameterType = "uni.board.model.QnaDto">
+update qna_tb set title = #{title}, content = #{content} where no = #{no}
+</update>
+<!-- 게시판 댓글 목록-->
+<select id = "readReply" resultType = "uni.board.model.QnaReplyDto" parameterType = "int">
+select * from qna_reply where no = #{no}
+</select>
+<!-- 게시판 댓글 작성 -->
+<insert id = "writeReply" parameterType = "uni.board.model.QnaReplyDto">
+insert into qna_reply(no, content, writer) values(#{no}, #{content}, #{writer})
+</insert>
+<delete id = "deleteReply" parameterType = "int">
+delete from qna_reply where rno = #{rno}
+</delete>
+</mapper>

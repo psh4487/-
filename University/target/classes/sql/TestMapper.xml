@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+	<update  id="updateData" parameterType="uni.pro.model.TestDto">
+		update ATTEND_TB
+		set mid_score = #{mid_score},
+			end_score = #{end_score},
+			report_score = #{report_score},
+			attend_score = #{attend_score},
+			attend_grade = (select grade from GRADE_TB where (mid_score+end_score+report_score+attend_score) between min_grade and max_grade),
+			attend_sum = (#{mid_score}+#{end_score}+#{report_score}+#{attend_score}),
+			attend_rating = (select score from GRADE_TB where (mid_score+end_score+report_score+attend_score) between min_grade and max_grade)
+		where stu_no = #{stu_no}
+		and sub_cd = #{sub_cd}
+	</update>
+	
+	<select id="selData" resultType="uni.pro.model.TestDto" parameterType="int">
+		SELECT a.STU_NO,STU_NAME,SUB_NM,MID_SCORE,END_SCORE,REPORT_SCORE,ATTEND_SCORE,ATTEND_SUM,ATTEND_GRADE,ATTEND_RATING FROM attend_tb a, subject_tb b,student_tb c where a.STU_NO = c.STU_NO and a.SUB_CD=b.SUB_CD and PROF_CD=#{prof_cd};
+	</select>
+	
+</mapper>

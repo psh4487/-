@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="score">
+	<select id="yearScore" resultType="uni.stu.model.SubjectDto">		
+		select years from SUBJECT_TB group by years
+	</select>
+	<select id="semScore" resultType="uni.stu.model.SubjectDto">
+		select sem from SUBJECT_TB group by sem
+	</select>
+	
+	<select id="listScore" resultType="uni.stu.model.SubjectDto" parameterType="map">
+		select c.isu as 'isu'
+		      ,c.sub_NM as 'sub_nm'
+		      ,c.sub_CD as 'sub_cd'
+			  ,c.credit as 'credit'
+		      ,a.attend_GRADE as 'attend_grade'
+		      ,a.attend_RATING as 'attend_rating'
+			  ,c.sem as 'sem'
+		from ATTEND_TB a, STUDENT_TB b, SUBJECT_TB c
+		where b.dept_cd = c.dept_cd and a.sub_cd = c.sub_cd
+		and a.stu_no=#{stu_no} and years=#{years} and c.sem=#{sem} group by a.sub_cd
+	</select>
+</mapper>

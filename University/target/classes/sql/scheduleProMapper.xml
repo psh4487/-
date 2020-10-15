@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schedulepro">
+<select id="pro" resultType="uni.pro.model.SchedulProDto" parameterType="int">
+select prof_nm,dept_nm  from professor_tb natural join dept_tb where PROF_CD=#{prof_cd}
+</select>
+<select id="schedule" resultType="uni.pro.model.SchedulProDto" parameterType="int">
+select prof_nm,sub_nm,lEc_1,lec_2,lEC_3,subroom_nm from professor_tb natural join subject_tb where PROF_CD=#{prof_cd} and sub_state='승인'
+</select>
+</mapper>

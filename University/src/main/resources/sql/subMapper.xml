@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sub">
+	<select id="viewSub" resultType="uni.sta.model.SubjectDto">
+		SELECT isu,sub_nm,prof_nm,sub_cd,credit,lec_1,lec_2,lec_3,sub_state FROM subject_tb natural join professor_tb where sub_state ="미승인"
+	</select>
+ 	<select id="searchSbj" resultType="uni.sta.model.SubjectDto" parameterType="String">
+	select sub_nm,isu,sub_cd,lec_1,lec_2,lec_3,prof_nm,credit,sub_path from subject_tb natural join professor_tb where sub_nm = #{sub_nm}
+	</select>
+	<update id="accept" parameterType="String">
+		update subject_tb set sub_state = "승인" where sub_cd = #{sub_cd}
+	</update>
+		<update id="naccept" parameterType="String">
+		update subject_tb set sub_state = "미승인" where sub_cd = #{sub_cd}
+	</update> 
+	
+	<select id="searchBd" resultType="uni.sta.model.SubjectDto">
+		SELECT distinct BUIL_NO FROM subject_room_tb
+	</select>	
+	<select id="searchRm" resultType="map" parameterType="String">
+		SELECT subroom_nm FROM subject_room_tb where BUIL_NO = #{buil_no}
+	</select>	
+	<select id="selectRm" resultType="uni.sta.model.SubjectDto" parameterType="String">
+		SELECT lec_1,lec_2,lec_3,SUB_NM FROM subject_tb where subroom_nm = #{subroom_nm}
+	</select>	
+</mapper>

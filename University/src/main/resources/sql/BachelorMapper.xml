@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bachelor">
+
+	<select id="mainSel" resultType="uni.pro.model.BachelorDto">
+		select * from QNA_TB order by NO desc
+	</select>	
+	
+	<select id="submain" resultType="uni.pro.model.ProSubjectDto" parameterType="int">
+		select sub_cd,sub_nm,isu,credit,lec_1,lec_2,lec_3,subroom_nm,max_mem,attend_mem from  SUBJECT_TB where PROF_CD=#{prof_cd} and sub_state='승인'
+	</select>
+	
+	<select id="class_cancel_main" resultType="uni.pro.model.Class_cancel_Dto_main" parameterType="int">
+		select b.sub_cd, c.sub_nm, c.isu, b.can_dt, b.can_state
+		from professor_tb a, class_cancel_tb b, subject_tb c
+		where  b.sub_cd = c.sub_cd
+		and a.prof_cd = c.prof_cd
+		and c.prof_cd =#{prof_cd}
+		and b.can_state="대기";
+	</select>
+
+	<insert id="class_cancel" parameterType="uni.pro.model.Class_cancel_Dto">
+		insert into CLASS_CANCEL_TB(SUB_CD,CAN_DT,CAN_IU,CAN_STATE) 
+		values (#{sub_cd},#{can_dt},#{can_iu},"대기")    	
+	</insert>
+	
+	<select id="select" resultType="uni.pro.model.ProSubjectDto" parameterType="int">
+		select isu,sub_nm,credit,lec_1,lec_2,lec_3,sub_state from SUBJECT_TB where PROF_CD = #{prof_cd}
+	</select>
+	
+	<select id="lectureroom" resultType="uni.pro.model.ProSubjectDto">
+		select * from SUBJECT_ROOM_TB
+	</select>
+	
+	<select id="lec" resultType="map" parameterType="String">
+		select lec_1,lec_2,lec_3 from SUBJECT_TB where subroom_nm  = #{Subroom_nm} group by lec_1
+	</select>
+	
+	<select id="Subroomnm" resultType="String">
+		select Subroom_nm from Subject_room_tb;
+	</select>
+
+	<select id="sublist" resultType="string" parameterType="int">
+		select sub_nm from SUBJECT_TB where PROF_CD=#{prof_cd} and sub_state='승인'
+	</select>
+	
+	<select id="noclass" resultType="uni.pro.model.ProSubjectDto" parameterType="String">
+		select sub_cd,sub_nm from SUBJECT_TB where sub_nm=#{sub_nm}
+	</select>
+	
+	<select id="selCount" resultType="int">
+		select count(*) from QNA_TB
+	</select>
+
+	<select id="search" resultType="uni.pro.model.BachelorDto"
+		parameterType="map">
+		<if test="seache.equals('all')">
+			select * from Qna_tb where title like CONCAT('%',#{text},'%') or content like CONCAT('%',#{text},'%') or writer like CONCAT('%',#{text},'%')
+		</if>
+		<if test="seache.equals('WRITER')">
+			select * from QNA_TB where WRITER LIKE CONCAT('%',#{text},'%')
+		</if>
+		<if test="seache.equals('TITLE')">
+			select * from QNA_TB where TITLE LIKE CONCAT('%',#{text},'%')
+		</if>
+		<if test="seache.equals('CONTENT')">
+			select * from Qna_tb where CONTENT like CONCAT('%',#{text},'%')
+		</if>
+	</select>
+	
+	<select id="insert" resultType="uni.pro.model.BachelorDto" parameterType="uni.pro.model.BachelorDto">
+		insert into QNA_TB(title,CONTENT) values (#{title},#{content})
+	</select>
+	
+	<insert id="seach" parameterType="list">
+		insert into SUBJECT_TB(WEEK,LEC_1,LEC_2,LEC_3) values ({List[0]},{List[1.1]},{List[1.2]},{List[1.3]})
+	</insert>
+	
+	<select id="code" resultType="int">
+		select max(sub_cd)+1 from SUBJECT_TB
+	</select>
+		
+	   <insert id="subject" parameterType="uni.pro.model.ProSubjectDto">
+       insert into SUBJECT_TB set SUB_CD=#{sub_cd},
+                        SUBROOM_NM=#{subroom_nm},
+                        DEPT_CD=#{dept_cd},   
+                        PROF_CD=#{prof_cd},
+                        SUB_PATH=#{sub_path},         
+                        CREDIT=#{credit},
+                        SUB_NM=#{sub_nm},
+                        LEC_1=#{lec_1},
+                        LEC_2=#{lec_2},
+                        LEC_3=#{lec_3},
+                        isu=#{isu},
+                        MAX_MEM=#{max_mem}
+	</insert>
+</mapper>

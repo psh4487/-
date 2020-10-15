@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Info">
+   
+   <!-- 프로필 출력 -->
+	<select id="selInfoPro" resultType="uni.sta.model.ProDto" parameterType="int">
+		select prof_path,
+		prof_cd,
+        prof_birth,prof_nm,
+        prof_gen,prof_coun,
+        prof_tel,
+        prof_email,
+        prof_zip,
+        prof_address,
+       	(SELECT DEPT_nm FROM dept_tb where DEPT_cd=(select DEPT_cd from PROFESSOR_TB where prof_cd = #{prof_cd})) as DEPT_nm 
+        from PROFESSOR_TB where prof_cd = #{prof_cd}      
+	</select>
+
+	<select id="selInfo" resultType="uni.sta.model.StuDto" parameterType="int">
+		select stu_email,
+		stu_address,
+        stu_zip,stu_path,
+        stu_no,stu_birth,
+        stu_name,
+        stu_gen,
+        stu_year,
+        state,
+        stu_coun,
+        stu_tel,(SELECT DEPT_nm FROM dept_tb where DEPT_cd=(select DEPT_cd from STUDENT_TB where stu_no = #{stu_no})) as DEPT_nm 
+        from STUDENT_TB where stu_no = #{stu_no}      
+	</select>
+	
+		<select id="selInfoSta" resultType="uni.sta.model.StaffDto" parameterType="int">
+		select staff_path,
+		staff_no,
+        staff_birth,staff_nm,
+        staff_gen,staff_coun,
+        staff_dept,
+        staff_tel,
+        staff_email,
+        staff_zip,
+        staff_address
+        from STAFF_TB where staff_no = #{staff_no}      
+	</select>
+	
+	<!-- 프로필 업데이트 -->
+	<update id="upInfo" parameterType="uni.main.model.Login_All_Dto">
+		update STUDENT_TB set
+		stu_tel= #{stu_tel},
+		stu_email= #{stu_email},
+		stu_zip= #{stu_zip},
+		stu_address= #{stu_address}
+		where stu_no= #{stu_no}
+	</update>
+	
+		<update id="upInfoPro" parameterType="uni.main.model.Login_All_Dto">
+		update PROFESSOR_TB set
+		prof_tel= #{prof_tel},
+		prof_email= #{prof_email},
+		prof_zip= #{prof_zip},
+		prof_address= #{prof_address}
+		where prof_cd= #{prof_cd}
+	</update>
+	
+		<update id="upInfoSta" parameterType="uni.main.model.Login_All_Dto">
+		update STAFF_TB set
+		staff_tel= #{staff_tel},
+		staff_email= #{staff_email},
+		staff_zip= #{staff_zip},
+		staff_address= #{staff_address}
+		where staff_no= #{staff_no}
+	</update>
+	
+	<!-- 로그인 상태에서 비밀번호 변경 -->
+	<update parameterType="hashMap" id="pwdUpdateStu">
+      update STUDENT_TB set stu_pwd=#{stu_pwd} where stu_no=#{stu_no};
+   </update>
+   <update parameterType="hashMap" id="pwdUpdatePro">
+      update PROFESSOR_TB set prof_pwd=#{prof_pwd} where prof_cd=#{prof_cd};
+   </update>
+   <update parameterType="hashMap" id="pwdUpdateSta">
+      update STAFF_TB set staff_pwd=#{staff_pwd} where staff_no=#{staff_no};
+   </update>
+   
+    <!--  로그인 상태에서 비밀번호 변경시 기존비밀번호 셀렉 -->
+   <select id="pwd_check_stu" parameterType="int"
+		resultType="String">
+		select stu_pwd from STUDENT_TB where stu_no=#{stu_no}
+	</select>
+
+	<select id="pwd_check_pro" parameterType="int"
+		resultType="String">
+		select prof_pwd from PROFESSOR_TB where PROF_CD=#{prof_cd}
+	</select>
+
+	<select id="pwd_check_sta" parameterType="int"
+		resultType="String">
+		select staff_pwd from STAFF_TB where staff_no=#{staff_no}
+	</select>
+</mapper>
+
+

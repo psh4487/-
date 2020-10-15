@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rest">
+	<select id="searchRest1" resultType="uni.sta.model.SubjectDto" parameterType="String">
+		SELECT prof_nm,CAN_DT,SUB_NM,sup_dt,CAN_IU FROM class_cancel_tb natural join subject_tb natural join professor_tb where SUB_NM = #{sub_nm};
+	</select>
+	<select id="searchRest2" resultType="uni.sta.model.SubjectDto">
+	select b.PROF_NM, a.SUB_NM, a.noclass_dt, a.noclass_state, c.SUB_CD from subject_tb a join PROFESSOR_TB b join class_cancel_tb c
+	where a.prof_cd = b.prof_cd and a.SUB_CD = c.SUB_CD
+	and CAN_STATE = '미승인';
+	</select>
+	<update id="accept" parameterType="String">
+		update class_cancel_tb set CAN_STATE = "승인" where sub_cd = #{sub_cd}
+	</update>
+		<update id="naccept" parameterType="String">
+		update class_cancel_tb set CAN_STATE = "미승인" where sub_cd = #{sub_cd}
+	</update>
+</mapper>

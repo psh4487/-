@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="selSchedulePro">
+	<select id="builName" resultType="uni.pro.model.SelScheduleProDto" parameterType="int">
+		select * from subject_tb  where prof_cd =#{prof_cd} and sub_state ='승인'
+	</select>
+	
+	<select id="stuname" resultType="uni.pro.model.SelScheduleProDto" parameterType="int">
+	select b.STU_NAME, a.STU_NO, c.SUB_NM, a.SUB_CD 
+	from  attend_tb a ,STUDENT_TB b, SUBJECT_TB c
+	where a.STU_NO = b.stu_no
+	and  a.sub_cd = c.sub_cd
+	and a.SUB_CD=#{SUB_CD}	
+	</select>
+	<!-- <select id="subroomName" resultType="uni.pro.model.SelScheduleDto" parameterType="map">
+		select subroom_nm from subject_room_tb where buil_no=#{buil_no}
+	</select>
+	<select id="subroomList" resultType="uni.pro.model.SelScheduleDto" parameterType="map">
+		select a.buil_no,
+			   a.subroom_nm,
+		       b.sub_nm,
+		       c.prof_nm, LEC_1, LEC_2, LEC_3
+		from
+		subject_room_tb a, subject_tb b, professor_tb c
+		where b.prof_cd = c.prof_cd
+		and a.subroom_nm = b.subroom_nm
+		and a.buil_no=a.buil_no and b.subroom_nm=#{subroom_nm}
+	</select> -->
+</mapper>

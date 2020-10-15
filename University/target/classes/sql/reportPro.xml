@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="report">
+
+	<select id="sublist" resultType="uni.pro.model.ReportDto" parameterType="int">
+		select sub_nm,sub_cd from subject_tb where prof_cd=#{prof_cd}
+	</select>
+	
+	<select id="reportall" resultType="uni.pro.model.ReportDto" parameterType="String">
+		select stu_no,stu_name,report_nm,report_dt,report_state from report_tb natural join student_tb where sub_cd=#{sub_cd}
+	</select>
+	
+	<select id="viewreport" resultType="uni.pro.model.ReportDto" parameterType="uni.pro.model.ReportDto">
+		select a.stu_no,stu_name,report_nm,report_dt,report_file,report_path
+		from report_tb a natural join student_tb b
+		where a.stu_no=#{stu_no} and sub_cd=#{sub_cd}
+	</select>
+	
+	<select id="down" resultType="uni.pro.model.ReportDto" parameterType="uni.pro.model.ReportDto">
+		select report_path,report_file,report_nm from report_tb where stu_no=#{stu_no}
+	</select>
+	
+	<update id="ok" parameterType="int" >
+		update  report_tb set report_state='확인' where stu_no=#{stu_no}
+	</update>
+</mapper>
